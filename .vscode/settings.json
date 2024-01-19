@@ -29,5 +29,7 @@
   "editor.formatOnSaveMode": "modifications",
   "editor.defaultFormatter": "redhat.java",
   "java.format.comments.enabled": false,
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "editor.detectIndentation": false,
+  "editor.tabSize": 4
 }

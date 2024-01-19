@@ -140,6 +140,9 @@ public class DriveSubsystem extends SubsystemBase {
 
       double currentTime = WPIUtilJNI.now() * 1e-6;
       double elapsedTime = currentTime - m_prevTime;
+      if (inputTranslationMag == 0) {
+        inputTranslationDir = m_currentTranslationDir;
+      }
       double angleDif = SwerveUtils.AngleDifference(inputTranslationDir, m_currentTranslationDir);
       if (angleDif < 0.45*Math.PI) {
         m_currentTranslationDir = SwerveUtils.StepTowardsCircular(m_currentTranslationDir, inputTranslationDir, directionSlewRate * elapsedTime);

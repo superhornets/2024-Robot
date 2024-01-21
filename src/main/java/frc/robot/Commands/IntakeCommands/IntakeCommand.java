@@ -1,5 +1,7 @@
 package frc.robot.Commands.IntakeCommands;
 
-public class IntakeCommand {
+import edu.wpi.first.wpilibj2.command.Command;
+
+public class IntakeCommand extends Command {
 
 }

@@ -1,5 +1,7 @@
 package frc.robot.Commands.IntakeCommands;
 
-public class IntakeAtSpeedCommand {
+import edu.wpi.first.wpilibj2.command.Command;
+
+public class IntakeAtSpeedCommand extends Command {
 
 }

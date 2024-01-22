@@ -139,4 +139,10 @@ public final class Constants {
     public static final class NeoMotorConstants {
         public static final double kFreeSpeedRpm = 5676;
     }
+
+    public static final class LegConstants {
+        public static final int kMotorCanId = -123;
+        public static final boolean kMotorInverted = false;
+        public static final double kMaxExtension = 20.0; // Some unit
+    }
 }

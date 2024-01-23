@@ -1,5 +1,7 @@
 package frc.robot.Commands.ClimberCommands;
 
-public class ClimberAscendCommand {
+import edu.wpi.first.wpilibj2.command.Command;
+
+public class ClimberAscendCommand extends Command {
 
 }

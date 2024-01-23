@@ -145,4 +145,12 @@ public final class Constants {
         public static final boolean kMotorInverted = false;
         public static final double kMaxExtension = 20.0; // Some unit
     }
+
+    public static final class IndexerConstants {
+        public static final int kMotorCanId = -123;
+        public static final boolean kMotorInverted = false;
+        public static final double kMaxExtension = 20.0; // Some unit
+        public static final double kIntakeSpeed = 0.2;
+        public static final double kReverseIntakeSpeed = -0.2;
+    }
 }

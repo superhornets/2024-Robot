@@ -282,9 +282,9 @@ public class DriveSubsystem extends SubsystemBase {
     }
 
     public void driveRobotRelative(ChassisSpeeds chassisSpeeds) {
-        double x = chassisSpeeds.vxMetersPerSecond / 4;
-        double y = chassisSpeeds.vyMetersPerSecond / 4;
-        double omega = chassisSpeeds.omegaRadiansPerSecond / 6.28;
+        double x = chassisSpeeds.vxMetersPerSecond / DriveConstants.kMaxSpeedMetersPerSecond;
+        double y = chassisSpeeds.vyMetersPerSecond / DriveConstants.kMaxSpeedMetersPerSecond;
+        double omega = chassisSpeeds.omegaRadiansPerSecond / (Math.PI * 2);
         drive(x, y, omega, false, true);
     }
 

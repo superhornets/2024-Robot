@@ -59,6 +59,11 @@ public class RobotContainer {
                 .whileTrue(new RunCommand(
                         () -> m_robotDrive.setX(),
                         m_robotDrive));
+        // intake
+
+        //indexer
+
+        //climber
     }
 
     /**

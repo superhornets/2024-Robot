@@ -40,6 +40,12 @@ public class RobotContainer {
     private final IntakeSubsystem m_intake = new IntakeSubsystem();
     private final ClimberSubsystem m_climber = new ClimberSubsystem();
 
+    // Indexer Commands
+
+    // Intake Commands
+
+    // Climber Commands
+
     // The driver's controller
     CommandXboxController m_driverController = new CommandXboxController(OIConstants.kDriverControllerPort);
 

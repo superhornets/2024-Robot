@@ -8,7 +8,6 @@ public class OuttakeCommand extends Command {
     private final IntakeSubsystem kOuttakeSubsystem;
 
     // Declare subsystem state (i.e. status) and initialize
-    private boolean goodHealth = true;
 
     public OuttakeCommand(IntakeSubsystem outtake) {
         addRequirements(outtake);
@@ -23,10 +22,9 @@ public class OuttakeCommand extends Command {
     @Override
     public void execute() {
         //Continue outtaking
-        if (goodHealth) {
             kOuttakeSubsystem.takeOut();
         }
-    }
+
 
     @Override
     public void end(boolean interrupted) {

@@ -11,17 +11,20 @@ import frc.robot.Constants.IndexerConstants;
 public class IndexerSubsystem extends SubsystemBase {
     // Initialize motors and sensors
 
-    private final CANSparkMax m_motor = new CANSparkMax(IndexerConstants.kMotorCanId, MotorType.kBrushless);
+    private final CANSparkMax m_motorRight = new CANSparkMax(IndexerConstants.kMotorRightCanId, MotorType.kBrushless);
+    private final CANSparkMax m_motorLeft = new CANSparkMax(IndexerConstants.kMotorLeftCanId, MotorType.kBrushless);
 
-    private final SparkLimitSwitch m_switch = m_motor.getForwardLimitSwitch(SparkLimitSwitch.Type.kNormallyOpen);
+    private final SparkLimitSwitch m_switch = m_motorRight.getForwardLimitSwitch(SparkLimitSwitch.Type.kNormallyOpen);
 
     public IndexerSubsystem() {
         // Initialize anything else that couldn't be initialized yet
 
         // Configure anything
-        m_motor.setInverted(IndexerConstants.kMotorInverted);
+        m_motorRight.setInverted(IndexerConstants.kMotorInverted);
+        m_motorLeft.setInverted(IndexerConstants.kMotorInverted);
 
-        this.setDefaultCommand(new RunCommand(() -> m_motor.set(0)));
+        this.setDefaultCommand(new RunCommand(() -> m_motorRight.set(0)));
+        this.setDefaultCommand(new RunCommand(() -> m_motorLeft.set(0)));
     }
 
     public boolean isTriggered() {
@@ -30,18 +33,22 @@ public class IndexerSubsystem extends SubsystemBase {
 
     public void intake() {
         if (isTriggered()) {
-            m_motor.set(0);
+            m_motorRight.set(0);
+            m_motorLeft.set(0);
         } else {
-            m_motor.set(IndexerConstants.kIntakeSpeed);
+            m_motorRight.set(IndexerConstants.kIntakeSpeed);
+            m_motorLeft.set(IndexerConstants.kIntakeSpeed);
         }
     }
 
     public void reverse() {
-        m_motor.set(IndexerConstants.kReverseIntakeSpeed);
+        m_motorRight.set(IndexerConstants.kReverseIntakeSpeed);
+        m_motorLeft.set(IndexerConstants.kReverseIntakeSpeed);
     }
 
     public void shoot() {
-        m_motor.set(IndexerConstants.kIntakeSpeed);
+        m_motorRight.set(IndexerConstants.kIntakeSpeed);
+        m_motorLeft.set(IndexerConstants.kIntakeSpeed);
     }
 
     @Override

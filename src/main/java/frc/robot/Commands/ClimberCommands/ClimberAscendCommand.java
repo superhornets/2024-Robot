@@ -1,6 +1,7 @@
 package frc.robot.Commands.ClimberCommands;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Constants.ClimberConstants;
 import frc.robot.subsystems.ClimberSubsystem;
 
 public class ClimberAscendCommand extends Command {
@@ -8,7 +9,6 @@ public class ClimberAscendCommand extends Command {
     private final ClimberSubsystem m_Climber;
 
     // Declare subsystem state (i.e. status) and initialize
-    private boolean goodHealth = true;
 
     public ClimberAscendCommand(ClimberSubsystem Climber) {
         addRequirements(Climber);
@@ -22,14 +22,7 @@ public class ClimberAscendCommand extends Command {
 
     @Override
     public void execute() {
-        // Continue walking
-        if (goodHealth) {
-            m_Climber.extend();
-        }
-
-        if (m_Climber.isOverExtended()) {
-            goodHealth = false;
-        }
+        m_Climber.set(ClimberConstants.kAscendPower);
     }
 
     @Override

@@ -110,6 +110,8 @@ public class DriveSubsystem extends SubsystemBase {
                         m_rearLeft.getPosition(),
                         m_rearRight.getPosition()
                 });
+        //System.out.println("fr: " + m_frontRight.getState() + "fl: " + m_frontLeft.getState() + " rr: "
+        //+ m_rearRight.getState() + " rl: " + m_rearLeft.getState());
     }
 
     /**
@@ -280,10 +282,10 @@ public class DriveSubsystem extends SubsystemBase {
     }
 
     public void driveRobotRelative(ChassisSpeeds chassisSpeeds) {
-        double x = chassisSpeeds.vxMetersPerSecond;
-        double y = chassisSpeeds.vyMetersPerSecond;
-        double omega = chassisSpeeds.omegaRadiansPerSecond;
-        drive(x, y, omega, false, false);
+        double x = chassisSpeeds.vxMetersPerSecond / 4;
+        double y = chassisSpeeds.vyMetersPerSecond / 4;
+        double omega = chassisSpeeds.omegaRadiansPerSecond / 6.28;
+        drive(x, y, omega, false, true);
     }
 
 }

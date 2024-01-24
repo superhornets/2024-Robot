@@ -7,8 +7,6 @@ public class IntakeCommand extends Command {
     // Declare subsystem variables
     private final IntakeSubsystem kIntakeSubsystem;
 
-    // Declare subsystem state (i.e. status) and initialize
-    private boolean goodHealth = true;
 
     public IntakeCommand(IntakeSubsystem intake) {
         addRequirements(intake);
@@ -23,9 +21,8 @@ public class IntakeCommand extends Command {
     @Override
     public void execute() {
         //Continue intaking
-        if (goodHealth) {
-            kIntakeSubsystem.takeIn();
-        }
+        kIntakeSubsystem.takeIn();
+
     }
 
     @Override
@@ -35,6 +32,7 @@ public class IntakeCommand extends Command {
 
     @Override
     public boolean isFinished() {
+        //Check if is finished
         return true;
     }
 }

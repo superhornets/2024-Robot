@@ -22,8 +22,8 @@ public class OuttakeCommand extends Command {
     @Override
     public void execute() {
         //Continue outtaking
-            kOuttakeSubsystem.takeOut();
-        }
+        kOuttakeSubsystem.takeOut();
+    }
 
 
     @Override

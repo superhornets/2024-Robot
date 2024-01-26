@@ -20,6 +20,7 @@ import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.util.WPIUtilJNI;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants.DriveConstants;
 import frc.utils.SwerveUtils;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -110,6 +111,7 @@ public class DriveSubsystem extends SubsystemBase {
                         m_rearLeft.getPosition(),
                         m_rearRight.getPosition()
                 });
+        System.out.println(getRobotRelativeSpeeds());
         //System.out.println("fr: " + m_frontRight.getState() + "fl: " + m_frontLeft.getState() + " rr: "
         //+ m_rearRight.getState() + " rl: " + m_rearLeft.getState());
     }
@@ -285,6 +287,9 @@ public class DriveSubsystem extends SubsystemBase {
         double x = chassisSpeeds.vxMetersPerSecond / DriveConstants.kMaxSpeedMetersPerSecond;
         double y = chassisSpeeds.vyMetersPerSecond / DriveConstants.kMaxSpeedMetersPerSecond;
         double omega = chassisSpeeds.omegaRadiansPerSecond / (Math.PI * 2);
+        SmartDashboard.putNumber("x", x);
+        SmartDashboard.putNumber("y", y);
+        SmartDashboard.putNumber("omega", omega);
         drive(x, y, omega, false, true);
     }
 

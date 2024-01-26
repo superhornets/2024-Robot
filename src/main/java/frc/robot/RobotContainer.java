@@ -13,6 +13,9 @@ import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.trajectory.Trajectory;
 import edu.wpi.first.math.trajectory.TrajectoryConfig;
 import edu.wpi.first.math.trajectory.TrajectoryGenerator;
+import frc.robot.Commands.IntakeCommands.IntakeAtSpeedCommand;
+import frc.robot.Commands.IntakeCommands.IntakeCommand;
+import frc.robot.Commands.IntakeCommands.OuttakeCommand;
 import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
@@ -38,6 +41,8 @@ public class RobotContainer {
 
     private final IndexerSubsystem m_indexer = new IndexerSubsystem();
     private final IntakeSubsystem m_intake = new IntakeSubsystem();
+    private final IntakeSubsystem m_intakeAtSpeed = new IntakeSubsystem();
+    private final IntakeSubsystem m_outtake = new IntakeSubsystem();
     private final ClimberSubsystem m_climber = new ClimberSubsystem();
 
     // The driver's controller
@@ -67,7 +72,9 @@ public class RobotContainer {
                         () -> m_robotDrive.setX(),
                         m_robotDrive));
         // intake
-
+        m_driverController.leftBumper().onTrue(new IntakeCommand(m_intake));
+        m_driverController.leftTrigger().onTrue(new IntakeAtSpeedCommand());
+        m_driverController.y().onTrue(new OuttakeCommand(m_outtake));
         //indexer
 
         //climber

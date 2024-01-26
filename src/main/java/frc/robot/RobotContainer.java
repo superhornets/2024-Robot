@@ -69,7 +69,7 @@ public class RobotContainer {
                                 true, true),
                         m_robotDrive));
 
-        m_driverController.rightBumper().whileTrue(new DriveSetXCommand(m_robotDrive));
+        m_driverController.x().whileTrue(new DriveSetXCommand(m_robotDrive));
         // intake
         m_driverController.leftBumper().onTrue(new IntakeCommand(m_intake));
         m_driverController.leftTrigger().onTrue(new IntakeAtSpeedCommand());

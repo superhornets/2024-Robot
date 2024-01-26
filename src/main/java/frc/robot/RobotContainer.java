@@ -13,6 +13,7 @@ import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.trajectory.Trajectory;
 import edu.wpi.first.math.trajectory.TrajectoryConfig;
 import edu.wpi.first.math.trajectory.TrajectoryGenerator;
+import frc.robot.Commands.DriveCommands.DriveSetXCommand;
 import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
@@ -40,12 +41,6 @@ public class RobotContainer {
     private final IntakeSubsystem m_intake = new IntakeSubsystem();
     private final ClimberSubsystem m_climber = new ClimberSubsystem();
 
-    // Indexer Commands
-
-    // Intake Commands
-
-    // Climber Commands
-
     // The driver's controller
     CommandXboxController m_driverController = new CommandXboxController(OIConstants.kDriverControllerPort);
 
@@ -69,9 +64,7 @@ public class RobotContainer {
                                 true, true),
                         m_robotDrive));
 
-        m_driverController.rightBumper().whileTrue(new RunCommand(
-                        () -> m_robotDrive.setX(),
-                        m_robotDrive));
+        m_driverController.rightBumper().whileTrue(new DriveSetXCommand(m_robotDrive));
         // intake
 
         //indexer

@@ -16,6 +16,7 @@ import edu.wpi.first.math.trajectory.TrajectoryGenerator;
 import frc.robot.Commands.IntakeCommands.IntakeAtSpeedCommand;
 import frc.robot.Commands.IntakeCommands.IntakeCommand;
 import frc.robot.Commands.IntakeCommands.OuttakeCommand;
+import frc.robot.Commands.DriveCommands.DriveSetXCommand;
 import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
@@ -68,9 +69,7 @@ public class RobotContainer {
                                 true, true),
                         m_robotDrive));
 
-        m_driverController.rightBumper().whileTrue(new RunCommand(
-                        () -> m_robotDrive.setX(),
-                        m_robotDrive));
+        m_driverController.rightBumper().whileTrue(new DriveSetXCommand(m_robotDrive));
         // intake
         m_driverController.leftBumper().onTrue(new IntakeCommand(m_intake));
         m_driverController.leftTrigger().onTrue(new IntakeAtSpeedCommand());

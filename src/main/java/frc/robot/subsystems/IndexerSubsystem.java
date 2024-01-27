@@ -23,8 +23,10 @@ public class IndexerSubsystem extends SubsystemBase {
         m_motorRight.setInverted(IndexerConstants.kMotorInverted);
         m_motorLeft.setInverted(IndexerConstants.kMotorInverted);
 
-        this.setDefaultCommand(new RunCommand(() -> m_motorRight.set(0)));
-        this.setDefaultCommand(new RunCommand(() -> m_motorLeft.set(0)));
+        this.setDefaultCommand(new RunCommand(() -> {
+            m_motorLeft.set(0);
+            m_motorRight.set(0);
+        }, this));
     }
 
     public boolean isTriggered() {

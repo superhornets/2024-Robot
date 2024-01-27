@@ -19,7 +19,7 @@ public class IntakeSubsystem extends SubsystemBase {
         m_encoder.setVelocityConversionFactor(IntakeConstants.kGearRatio);
         m_motor.setInverted(IntakeConstants.kMotorInverted);
 
-        this.setDefaultCommand(new RunCommand(() -> m_motor.set(0)));
+        this.setDefaultCommand(new RunCommand(() -> m_motor.set(0), this));
 
     }
 

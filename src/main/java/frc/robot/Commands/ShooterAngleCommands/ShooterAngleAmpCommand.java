@@ -19,7 +19,7 @@ public class ShooterAngleAmpCommand extends Command {
 
     @Override
     public void execute() {
-
+        m_angleSubsystem.move();
     }
 
     @Override

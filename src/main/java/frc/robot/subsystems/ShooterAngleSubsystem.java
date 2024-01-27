@@ -7,6 +7,7 @@ import com.revrobotics.SparkPIDController;
 
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants.IndexerConstants;
 import frc.robot.Constants.LegConstants;
 import frc.robot.Constants.ShooterAngleConstants;
 
@@ -53,9 +54,10 @@ public class ShooterAngleSubsystem extends SubsystemBase {
         m_motor.set(0.01);
     }
 
-    public boolean isOverExtended() {
-        return m_encoder.getPosition() > ShooterAngleConstants.kMaxExtension;
+    public void move() {
+        m_motor.set(ShooterAngleConstants.kMotorSpeed);
     }
+
 
     @Override
     public void periodic() {

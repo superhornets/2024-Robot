@@ -170,9 +170,10 @@ public final class Constants {
     }
 
     public static final class ShooterAngleConstants {
-        public static final int kMotorCanId = 15;
+        public static final int kMotorCanId = 10;
         public static final boolean kMotorInverted = false;
-        public static final double kMaxExtension = 20.0; // Some unit
+        public static final double kMotorSpeed = 0.2;
+
     }
 }
 

@@ -142,7 +142,8 @@ public final class Constants {
     }
 
     public static final class ClimberConstants {
-        public static final int kMotorCanId = -123;
+        public static final int kMotorRightCanId = 14;
+        public static final int kMotorLeftCanId = 15;
         public static final boolean kMotorInverted = false;
         public static final double kMaxExtension = 20.0; // Some unit
         public static final double kAscendPower = 0.5;
@@ -161,8 +162,8 @@ public final class Constants {
         public static final double kGearRatio = 1;
     }
     public static final class IndexerConstants {
-        public static final int kMotorRightCanId = -123;
-        public static final int kMotorLeftCanId = -124;
+        public static final int kMotorRightCanId = 11;
+        public static final int kMotorLeftCanId = 10;
         public static final boolean kMotorInverted = false;
         public static final double kMaxExtension = 20.0; // Some unit
         public static final double kIntakeSpeed = 0.2;

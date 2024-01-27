@@ -10,20 +10,22 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ClimberConstants;
 
 public class ClimberSubsystem extends SubsystemBase {
-    private final CANSparkMax m_motor = new CANSparkMax(ClimberConstants.kMotorCanId, MotorType.kBrushless);
-    private final RelativeEncoder m_encoder = m_motor.getEncoder();
+    private final CANSparkMax m_motorRight = new CANSparkMax(ClimberConstants.kMotorRightCanId, MotorType.kBrushless);
+    private final CANSparkMax m_motorLeft = new CANSparkMax(ClimberConstants.kMotorLeftCanId, MotorType.kBrushless);
+    private final RelativeEncoder m_encoder = m_motorRight.getEncoder();
 
     public ClimberSubsystem() {
         // Initialize anything else that couldn't be initialized yet
 
         // Configure anything
-        m_motor.setInverted(ClimberConstants.kMotorInverted);
+        m_motorRight.setInverted(ClimberConstants.kMotorInverted);
 
-        this.setDefaultCommand(new RunCommand(() -> m_motor.set(0)));
+        this.setDefaultCommand(new RunCommand(() -> m_motorRight.set(0)));
+        this.setDefaultCommand(new RunCommand(() -> m_motorLeft.set(0)));
     }
 
     public void set(double speed) {
-        m_motor.set(speed);
+        m_motorRight.set(speed);
 
     }
 

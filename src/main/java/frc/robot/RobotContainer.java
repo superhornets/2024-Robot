@@ -14,6 +14,8 @@ import edu.wpi.first.math.trajectory.Trajectory;
 import edu.wpi.first.math.trajectory.TrajectoryConfig;
 import edu.wpi.first.math.trajectory.TrajectoryGenerator;
 import frc.robot.Commands.DriveCommands.DriveSetXCommand;
+import frc.robot.Commands.IndexerCommands.IndexerShootCommand;
+import frc.robot.Commands.IntakeCommands.IntakeCommand;
 import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
@@ -68,8 +70,11 @@ public class RobotContainer {
         // intake
 
         //indexer
+        m_operatorController.rightTrigger().whileTrue(new IndexerShootCommand(m_indexer));
+        m_driverController.leftBumper().whileTrue(new IntakeCommand(m_intake));
 
         //climber
+
     }
 
     /**

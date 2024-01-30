@@ -24,7 +24,8 @@ public class ShooterLowerCommand extends Command {
 
     @Override
     public void end(boolean interrupted) {
-
+        double position = m_angleSubsystem.getPosition();
+        m_angleSubsystem.moveTo(position);
     }
 
     @Override

@@ -1,5 +1,7 @@
 package frc.robot.Commands.ShooterAngleCommands;
 
+import com.revrobotics.RelativeEncoder;
+
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.ShooterAngleConstants;
 import frc.robot.subsystems.ShooterAngleSubsystem;
@@ -25,7 +27,8 @@ public class ShooterRaiseCommand extends Command {
 
     @Override
     public void end(boolean interrupted) {
-
+        double position = m_angleSubsystem.getPosition();
+        m_angleSubsystem.moveTo(position);
     }
 
     @Override

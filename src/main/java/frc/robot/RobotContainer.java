@@ -47,8 +47,8 @@ public class RobotContainer {
     private final DriveSubsystem m_robotDrive = new DriveSubsystem();
 
     private final IndexerSubsystem m_indexer = new IndexerSubsystem();
-    //private final IntakeSubsystem m_intake = new IntakeSubsystem();
-    //private final ClimberSubsystem m_climber = new ClimberSubsystem();
+    private final IntakeSubsystem m_intake = new IntakeSubsystem();
+    private final ClimberSubsystem m_climber = new ClimberSubsystem();
     private final ShooterAngleSubsystem m_angleSubsystem = new ShooterAngleSubsystem();
 
     // The driver's controller

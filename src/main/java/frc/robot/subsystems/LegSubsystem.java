@@ -21,7 +21,7 @@ public class LegSubsystem extends SubsystemBase {
         m_motor.setInverted(LegConstants.kMotorInverted);
 
         // If we're not walking, stop! There are other ways to stop too.
-        this.setDefaultCommand(new RunCommand(() -> m_motor.set(0)));
+        this.setDefaultCommand(new RunCommand(() -> m_motor.set(0), this));
     }
 
     public void extend() {

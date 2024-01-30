@@ -17,6 +17,12 @@ import frc.robot.Commands.IntakeCommands.IntakeAtSpeedCommand;
 import frc.robot.Commands.IntakeCommands.IntakeCommand;
 import frc.robot.Commands.IntakeCommands.OuttakeCommand;
 import frc.robot.Commands.DriveCommands.DriveSetXCommand;
+import frc.robot.Commands.IndexerCommands.IndexerRunToSensorCommand;
+import frc.robot.Commands.IndexerCommands.IndexerShootCommand;
+import frc.robot.Commands.IntakeCommands.IntakeCommand;
+import frc.robot.Commands.ShooterAngleCommands.ShooterAngleAmpCommand;
+import frc.robot.Commands.ShooterAngleCommands.ShooterPodiumCommand;
+import frc.robot.Commands.ShooterAngleCommands.ShooterSubwooferCommand;
 import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
@@ -24,6 +30,7 @@ import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.IndexerSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.ShooterAngleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SwerveControllerCommand;
@@ -43,6 +50,7 @@ public class RobotContainer {
     private final IndexerSubsystem m_indexer = new IndexerSubsystem();
     private final IntakeSubsystem m_intake = new IntakeSubsystem();
     private final ClimberSubsystem m_climber = new ClimberSubsystem();
+    private final ShooterAngleSubsystem m_angleSubsystem = new ShooterAngleSubsystem();
 
     // The driver's controller
     CommandXboxController m_driverController = new CommandXboxController(OIConstants.kDriverControllerPort);
@@ -73,8 +81,15 @@ public class RobotContainer {
         m_driverController.leftTrigger().onTrue(new IntakeAtSpeedCommand());
         m_driverController.y().onTrue(new OuttakeCommand(m_intake));
         //indexer
-
+        m_operatorController.rightTrigger().whileTrue(new IndexerShootCommand(m_indexer));
+        m_driverController.leftBumper().whileTrue(new IndexerRunToSensorCommand(m_indexer));
+        m_driverController.leftTrigger(.1).whileTrue(new IndexerRunToSensorCommand(m_indexer));
+        //Shooter angle
+        m_operatorController.b().onTrue(new ShooterAngleAmpCommand(m_angleSubsystem));
+        m_operatorController.a().onTrue(new ShooterSubwooferCommand(m_angleSubsystem));
+        m_operatorController.x().onTrue(new ShooterPodiumCommand(m_angleSubsystem));
         //climber
+
     }
 
     /**

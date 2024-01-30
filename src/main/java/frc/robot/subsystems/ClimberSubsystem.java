@@ -20,8 +20,10 @@ public class ClimberSubsystem extends SubsystemBase {
         // Configure anything
         m_motorRight.setInverted(ClimberConstants.kMotorInverted);
 
-        this.setDefaultCommand(new RunCommand(() -> m_motorRight.set(0)));
-        this.setDefaultCommand(new RunCommand(() -> m_motorLeft.set(0)));
+        this.setDefaultCommand(new RunCommand(() -> {
+            m_motorRight.set(0);
+            m_motorLeft.set(0);
+        }, this));
     }
 
     public void set(double speed) {

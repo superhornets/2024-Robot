@@ -162,12 +162,24 @@ public final class Constants {
         public static final double kGearRatio = 1;
     }
     public static final class IndexerConstants {
-        public static final int kMotorRightCanId = 11;
-        public static final int kMotorLeftCanId = 10;
+        public static final int kMotorRightCanId = 12;
+        public static final int kMotorLeftCanId = 11;
         public static final boolean kMotorInverted = false;
-        public static final double kMaxExtension = 20.0; // Some unit
         public static final double kIntakeSpeed = 0.2;
         public static final double kReverseIntakeSpeed = -0.2;
+    }
+
+    public static final class ShooterAngleConstants {
+        public static final int kMotorCanId = 10;
+        public static final boolean kMotorInverted = false;
+        public static final double kMotorSpeed = 0.2;
+        public static final double kP = 0.001;
+        public static final double kI = 0;
+        public static final double kD = 0;
+        public static final double kSubwooferPosition = 5;
+        public static final double kPodiumPosition = 2.5;
+        public static final double kAmpPosition = 90;
+
     }
 }
 

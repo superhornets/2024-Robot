@@ -180,6 +180,7 @@ public final class Constants {
         public static final double kSubwooferPosition = 5;
         public static final double kPodiumPosition = 2.5;
         public static final double kAmpPosition = 90;
+        public static final double kAngle = 0;
 
     }
 }

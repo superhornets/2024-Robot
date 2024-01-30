@@ -58,11 +58,18 @@ public class ShooterAngleSubsystem extends SubsystemBase {
         m_motor.set(0.01);
     }
 
-    public void move(double angle) {
-        //m_motor.set(ShooterAngleConstants.kMotorSpeed);
+    public void moveTo(double angle) {
+
         m_pidController.setReference(angle, ControlType.kPosition);
     }
 
+    public void moveUp() {
+        m_motor.set(ShooterAngleConstants.kRaiseSpeed);
+    }
+
+    public void moveDown() {
+        m_motor.set(ShooterAngleConstants.kLowerSpeed);
+    }
 
     @Override
     public void periodic() {

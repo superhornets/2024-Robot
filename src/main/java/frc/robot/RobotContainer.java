@@ -42,8 +42,6 @@ public class RobotContainer {
 
     private final IndexerSubsystem m_indexer = new IndexerSubsystem();
     private final IntakeSubsystem m_intake = new IntakeSubsystem();
-    private final IntakeSubsystem m_intakeAtSpeed = new IntakeSubsystem();
-    private final IntakeSubsystem m_outtake = new IntakeSubsystem();
     private final ClimberSubsystem m_climber = new ClimberSubsystem();
 
     // The driver's controller
@@ -73,7 +71,7 @@ public class RobotContainer {
         // intake
         m_driverController.leftBumper().onTrue(new IntakeCommand(m_intake));
         m_driverController.leftTrigger().onTrue(new IntakeAtSpeedCommand());
-        m_driverController.y().onTrue(new OuttakeCommand(m_outtake));
+        m_driverController.y().onTrue(new OuttakeCommand(m_intake));
         //indexer
 
         //climber

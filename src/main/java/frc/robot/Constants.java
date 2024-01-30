@@ -162,7 +162,7 @@ public final class Constants {
         public static final double kGearRatio = 1;
     }
     public static final class IndexerConstants {
-        public static final int kMotorRightCanId = -123;
+        public static final int kMotorRightCanId = 12;
         public static final int kMotorLeftCanId = 11;
         public static final boolean kMotorInverted = false;
         public static final double kIntakeSpeed = 0.2;

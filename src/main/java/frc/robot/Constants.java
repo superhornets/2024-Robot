@@ -173,6 +173,12 @@ public final class Constants {
         public static final int kMotorCanId = 10;
         public static final boolean kMotorInverted = false;
         public static final double kMotorSpeed = 0.2;
+        public static final double kP = 0.001;
+        public static final double kI = 0;
+        public static final double kD = 0;
+        public static final double kSubwooferPosition = 5;
+        public static final double kPodiumPosition = 2.5;
+        public static final double kAmpPosition = 90;
 
     }
 }

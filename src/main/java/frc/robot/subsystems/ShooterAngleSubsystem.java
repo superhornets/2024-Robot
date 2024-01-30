@@ -4,11 +4,10 @@ import com.revrobotics.CANSparkLowLevel.MotorType;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkPIDController;
+import com.revrobotics.CANSparkBase.ControlType;
 
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants.IndexerConstants;
-import frc.robot.Constants.LegConstants;
 import frc.robot.Constants.ShooterAngleConstants;
 
 public class ShooterAngleSubsystem extends SubsystemBase {
@@ -26,8 +25,13 @@ public class ShooterAngleSubsystem extends SubsystemBase {
         // Configure anything
         m_motor.setInverted(ShooterAngleConstants.kMotorInverted);
 
-        // If we're not walking, stop! There are other ways to stop too.
         this.setDefaultCommand(new RunCommand(() -> m_motor.set(0), this));
+
+        m_pidController.setP(ShooterAngleConstants.kP);
+        m_pidController.setI(ShooterAngleConstants.kI);
+        m_pidController.setD(ShooterAngleConstants.kD);
+
+        m_encoder.setPositionConversionFactor(5 * 360);
     }
 
     public void raise() {
@@ -54,17 +58,14 @@ public class ShooterAngleSubsystem extends SubsystemBase {
         m_motor.set(0.01);
     }
 
-    public void move() {
-        m_motor.set(ShooterAngleConstants.kMotorSpeed);
+    public void move(double angle) {
+        //m_motor.set(ShooterAngleConstants.kMotorSpeed);
+        m_pidController.setReference(angle, ControlType.kPosition);
     }
 
 
     @Override
     public void periodic() {
-        // Send sensor values and any other telemetry to the Smart Dashboard
-
-        // If there were actually 2 of the same subsystems, take care to differentiate each instance by name.
-        // Otherwise, they will fight over the same Smart Dashboard key/name.
 
     }
 }

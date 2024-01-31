@@ -18,34 +18,34 @@ public class ShooterSubsystem extends SubsystemBase {
     private final RelativeEncoder m_rightEncoder = m_rightMotor.getEncoder();
 
     public ShooterSubsystem() {
-        m_leftMotor.setInverted(ShooterConstants.isLeftMotorInverted);
-        m_rightMotor.setInverted(ShooterConstants.isRightMotorInverted);
+        m_leftMotor.setInverted(ShooterConstants.kIsLeftMotorInverted);
+        m_rightMotor.setInverted(ShooterConstants.kIsRightMotorInverted);
 
-        m_leftPIDController.setP(ShooterConstants.shooterP);
-        m_leftPIDController.setI(ShooterConstants.shooterI);
-        m_leftPIDController.setD(ShooterConstants.shooterD);
-        m_leftPIDController.setFF(ShooterConstants.shooterFF);
-        m_leftPIDController.setOutputRange(ShooterConstants.shooterMin, ShooterConstants.shooterMax);
-        m_rightPIDController.setP(ShooterConstants.shooterP);
-        m_rightPIDController.setI(ShooterConstants.shooterI);
-        m_rightPIDController.setD(ShooterConstants.shooterD);
-        m_rightPIDController.setFF(ShooterConstants.shooterFF);
-        m_rightPIDController.setOutputRange(ShooterConstants.shooterMin, ShooterConstants.shooterMax);
+        m_leftPIDController.setP(ShooterConstants.kShooterP);
+        m_leftPIDController.setI(ShooterConstants.kShooterI);
+        m_leftPIDController.setD(ShooterConstants.kShooterD);
+        m_leftPIDController.setFF(ShooterConstants.kShooterFF);
+        m_leftPIDController.setOutputRange(ShooterConstants.kShooterMin, ShooterConstants.kShooterMax);
+        m_rightPIDController.setP(ShooterConstants.kShooterP);
+        m_rightPIDController.setI(ShooterConstants.kShooterI);
+        m_rightPIDController.setD(ShooterConstants.kShooterD);
+        m_rightPIDController.setFF(ShooterConstants.kShooterFF);
+        m_rightPIDController.setOutputRange(ShooterConstants.kShooterMin, ShooterConstants.kShooterMax);
     }
 
     public void runShooterSubwoofer() {
-        m_leftPIDController.setReference(ShooterConstants.shooterSpeedSubwoofer, ControlType.kVelocity);
-        m_rightPIDController.setReference(ShooterConstants.shooterSpeedSubwoofer, ControlType.kVelocity);
+        m_leftPIDController.setReference(ShooterConstants.kShooterSpeedSubwoofer, ControlType.kVelocity);
+        m_rightPIDController.setReference(ShooterConstants.kShooterSpeedSubwoofer, ControlType.kVelocity);
     }
 
     public void runShooterPodium() {
-        m_leftPIDController.setReference(ShooterConstants.shooterSpeedPodium, ControlType.kVelocity);
-        m_rightPIDController.setReference(ShooterConstants.shooterSpeedPodium, ControlType.kVelocity);
+        m_leftPIDController.setReference(ShooterConstants.kShooterSpeedPodium, ControlType.kVelocity);
+        m_rightPIDController.setReference(ShooterConstants.kShooterSpeedPodium, ControlType.kVelocity);
     }
 
     public void runShooterAmp() {
-        m_leftPIDController.setReference(ShooterConstants.shooterSpeedAmp, ControlType.kVelocity);
-        m_rightPIDController.setReference(ShooterConstants.shooterSpeedAmp, ControlType.kVelocity);
+        m_leftPIDController.setReference(ShooterConstants.kShooterSpeedAmp, ControlType.kVelocity);
+        m_rightPIDController.setReference(ShooterConstants.kShooterSpeedAmp, ControlType.kVelocity);
     }
 
     public void stopShooter() {

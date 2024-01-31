@@ -17,6 +17,10 @@ import frc.robot.Commands.DriveCommands.DriveSetXCommand;
 import frc.robot.Commands.IndexerCommands.IndexerRunToSensorCommand;
 import frc.robot.Commands.IndexerCommands.IndexerShootCommand;
 import frc.robot.Commands.IntakeCommands.IntakeCommand;
+import frc.robot.Commands.ShooterCommands.ShooterRunAmpCommand;
+import frc.robot.Commands.ShooterCommands.ShooterRunPodiumCommand;
+import frc.robot.Commands.ShooterCommands.ShooterRunSubwooferCommand;
+import frc.robot.Commands.ShooterCommands.ShooterStopCommand;
 import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
@@ -24,6 +28,7 @@ import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.IndexerSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SwerveControllerCommand;
@@ -43,6 +48,7 @@ public class RobotContainer {
     private final IndexerSubsystem m_indexer = new IndexerSubsystem();
     private final IntakeSubsystem m_intake = new IntakeSubsystem();
     private final ClimberSubsystem m_climber = new ClimberSubsystem();
+    private final ShooterSubsystem m_shooter = new ShooterSubsystem();
 
     // The driver's controller
     CommandXboxController m_driverController = new CommandXboxController(OIConstants.kDriverControllerPort);
@@ -77,6 +83,16 @@ public class RobotContainer {
 
         //climber
 
+        //shooter
+        m_operatorController.x().onTrue(new ShooterRunPodiumCommand(m_shooter));
+        m_operatorController.a().onTrue(new ShooterRunSubwooferCommand(m_shooter));
+        m_operatorController.b().onTrue(new ShooterRunAmpCommand(m_shooter));
+        m_operatorController.start().onTrue(new ShooterStopCommand(m_shooter));
+
+    }
+
+    public void teleopInit() {
+        m_shooter.stopShooter();
     }
 
     /**

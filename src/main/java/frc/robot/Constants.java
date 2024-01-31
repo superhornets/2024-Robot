@@ -155,7 +155,8 @@ public final class Constants {
     }
 
     public static final class IntakeConstants {
-        public static final int kMotorCanId = 9;
+        public static final int kMotorTopCanId = 9;
+        public static final int kMotorBottomCanId = 10;
         public static final boolean kMotorInverted = false;
         public static final double kIntakeSpeed = 0.1;
         public static final double kOuttakeSpeed = -0.1;
@@ -170,7 +171,7 @@ public final class Constants {
     }
 
     public static final class ShooterAngleConstants {
-        public static final int kMotorCanId = 10;
+        public static final int kMotorCanId = 15;
         public static final boolean kMotorInverted = false;
         public static final double kMotorSpeed = 0.2;
         public static final double kP = 0.001;

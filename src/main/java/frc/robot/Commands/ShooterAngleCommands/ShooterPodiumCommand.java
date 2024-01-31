@@ -20,7 +20,7 @@ public class ShooterPodiumCommand extends Command {
 
     @Override
     public void execute() {
-        m_angleSubsystem.move(ShooterAngleConstants.kPodiumPosition);
+        m_angleSubsystem.moveTo(ShooterAngleConstants.kPodiumPosition);
     }
 
     @Override

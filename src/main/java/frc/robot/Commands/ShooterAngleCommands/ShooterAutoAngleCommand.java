@@ -4,12 +4,14 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.ShooterAngleConstants;
 import frc.robot.subsystems.ShooterAngleSubsystem;
 
-public class ShooterAngleAmpCommand extends Command {
-    // Declare subsystem variables
+public class ShooterAutoAngleCommand extends Command {
     private final ShooterAngleSubsystem m_angleSubsystem;
 
-    public ShooterAngleAmpCommand(ShooterAngleSubsystem angleSubsystem) {
+    private double m_angle;
+
+    public ShooterAutoAngleCommand(double angle, ShooterAngleSubsystem angleSubsystem) {
         addRequirements(angleSubsystem);
+        m_angle = angle;
         m_angleSubsystem = angleSubsystem;
     }
 
@@ -20,7 +22,7 @@ public class ShooterAngleAmpCommand extends Command {
 
     @Override
     public void execute() {
-        m_angleSubsystem.moveTo(ShooterAngleConstants.kAmpPosition);
+        m_angleSubsystem.moveTo(m_angle);
     }
 
     @Override
@@ -30,7 +32,6 @@ public class ShooterAngleAmpCommand extends Command {
 
     @Override
     public boolean isFinished() {
-        // Have we reached our destination?
-        return false;
+        return (m_angleSubsystem.getPosition() - m_angle) < ShooterAngleConstants.kAngle;
     }
 }

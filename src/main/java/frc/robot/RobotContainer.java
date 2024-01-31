@@ -21,7 +21,10 @@ import frc.robot.Commands.IndexerCommands.IndexerRunToSensorCommand;
 import frc.robot.Commands.IndexerCommands.IndexerShootCommand;
 import frc.robot.Commands.IntakeCommands.IntakeCommand;
 import frc.robot.Commands.ShooterAngleCommands.ShooterAngleAmpCommand;
+import frc.robot.Commands.ShooterAngleCommands.ShooterAutoAngleCommand;
+import frc.robot.Commands.ShooterAngleCommands.ShooterLowerCommand;
 import frc.robot.Commands.ShooterAngleCommands.ShooterPodiumCommand;
+import frc.robot.Commands.ShooterAngleCommands.ShooterRaiseCommand;
 import frc.robot.Commands.ShooterAngleCommands.ShooterSubwooferCommand;
 import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.DriveConstants;
@@ -88,6 +91,8 @@ public class RobotContainer {
         m_operatorController.b().onTrue(new ShooterAngleAmpCommand(m_angleSubsystem));
         m_operatorController.a().onTrue(new ShooterSubwooferCommand(m_angleSubsystem));
         m_operatorController.x().onTrue(new ShooterPodiumCommand(m_angleSubsystem));
+        m_operatorController.povUp().whileTrue(new ShooterRaiseCommand(m_angleSubsystem));
+        m_operatorController.povDown().whileTrue(new ShooterLowerCommand(m_angleSubsystem));
         //climber
 
     }

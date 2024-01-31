@@ -25,13 +25,17 @@ public class ShooterAngleSubsystem extends SubsystemBase {
         // Configure anything
         m_motor.setInverted(ShooterAngleConstants.kMotorInverted);
 
-        this.setDefaultCommand(new RunCommand(() -> m_motor.set(0), this));
+        //this.setDefaultCommand(new RunCommand(() -> m_motor.set(0), this));
 
         m_pidController.setP(ShooterAngleConstants.kP);
         m_pidController.setI(ShooterAngleConstants.kI);
         m_pidController.setD(ShooterAngleConstants.kD);
 
         m_encoder.setPositionConversionFactor(5 * 360);
+    }
+
+    public double getPosition() {
+        return m_encoder.getPosition();
     }
 
     public void raise() {
@@ -58,11 +62,18 @@ public class ShooterAngleSubsystem extends SubsystemBase {
         m_motor.set(0.01);
     }
 
-    public void move(double angle) {
-        //m_motor.set(ShooterAngleConstants.kMotorSpeed);
+    public void moveTo(double angle) {
+
         m_pidController.setReference(angle, ControlType.kPosition);
     }
 
+    public void moveUp() {
+        m_motor.set(ShooterAngleConstants.kRaiseSpeed);
+    }
+
+    public void moveDown() {
+        m_motor.set(ShooterAngleConstants.kLowerSpeed);
+    }
 
     @Override
     public void periodic() {

@@ -20,7 +20,7 @@ public class ShooterSubwooferCommand extends Command {
 
     @Override
     public void execute() {
-        m_angleSubsystem.move(ShooterAngleConstants.kSubwooferPosition);
+        m_angleSubsystem.moveTo(ShooterAngleConstants.kSubwooferPosition);
     }
 
     @Override

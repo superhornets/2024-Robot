@@ -158,7 +158,7 @@ public final class Constants {
         public static final int kMotorCanId = 9;
         public static final boolean kMotorInverted = false;
         public static final double kIntakeSpeed = 0.1;
-        public static final double kOuttakeSpeed = 0.1;
+        public static final double kOuttakeSpeed = -0.1;
         public static final double kGearRatio = 1;
     }
     public static final class IndexerConstants {

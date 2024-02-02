@@ -182,8 +182,9 @@ public final class Constants {
         public static final double kPodiumPosition = 2.5;
         public static final double kAmpPosition = 90;
         public static final double kAngle = 0;
-        public static final double kEncoderConstant = 5 * 360;
-
+        public static final double kAbsoluteEncoderConversion = 360;
+        public static final double kAbsoluteEncoderPositionPIDMinInput = 0; // degrees
+        public static final double kAbsoluteEncoderPositionPIDMaxInput = kAbsoluteEncoderConversion; // degrees
     }
 }
 

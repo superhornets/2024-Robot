@@ -4,13 +4,12 @@ import com.revrobotics.CANSparkLowLevel.MotorType;
 import com.revrobotics.SparkAbsoluteEncoder.Type;
 import com.revrobotics.AbsoluteEncoder;
 import com.revrobotics.CANSparkMax;
-import com.revrobotics.RelativeEncoder;
+//import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkPIDController;
 import com.revrobotics.CANSparkBase.ControlType;
 
-import edu.wpi.first.wpilibj2.command.RunCommand;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants.ModuleConstants;
 import frc.robot.Constants.ShooterAngleConstants;
 
 public class ShooterAngleSubsystem extends SubsystemBase {
@@ -27,8 +26,6 @@ public class ShooterAngleSubsystem extends SubsystemBase {
         // Configure anything
         m_motor.setInverted(ShooterAngleConstants.kMotorInverted);
 
-        //this.setDefaultCommand(new RunCommand(() -> m_motor.set(0), this));
-
         m_pidController.setP(ShooterAngleConstants.kP);
         m_pidController.setI(ShooterAngleConstants.kI);
         m_pidController.setD(ShooterAngleConstants.kD);
@@ -36,35 +33,20 @@ public class ShooterAngleSubsystem extends SubsystemBase {
         // m_encoder.setPositionConversionFactor(5 * 360);
 
         m_pidController.setFeedbackDevice(m_encoder);
-        m_encoder.setPositionConversionFactor(ShooterAngleConstants.kEncoderConstant);
+        m_encoder.setPositionConversionFactor(ShooterAngleConstants.kAbsoluteEncoderConversion);
+        m_encoder.setVelocityConversionFactor(ShooterAngleConstants.kAbsoluteEncoderConversion);
+
+        m_pidController.setPositionPIDWrappingEnabled(true);
+        m_pidController.setPositionPIDWrappingMinInput(ShooterAngleConstants.kAbsoluteEncoderPositionPIDMinInput);
+        m_pidController.setPositionPIDWrappingMaxInput(ShooterAngleConstants.kAbsoluteEncoderPositionPIDMaxInput);
     }
 
     public double getPosition() {
         return m_encoder.getPosition();
     }
 
-    public void raise() {
-        m_motor.set(0.01);
-    }
-
-    public void lower() {
-        m_motor.set(0.01);
-    }
-
-    public void ampAngle() {
-        m_motor.set(0.01);
-    }
-
-    public void autoAngle() {
-        m_motor.set(0.01);
-    }
-
-    public void podiumAngle() {
-        m_motor.set(0.01);
-    }
-
-    public void subwooferAngle() {
-        m_motor.set(0.01);
+    public double getVelocity() {
+        return m_encoder.getVelocity();
     }
 
     public void moveTo(double angle) {
@@ -82,6 +64,10 @@ public class ShooterAngleSubsystem extends SubsystemBase {
 
     @Override
     public void periodic() {
+        SmartDashboard.putNumber("Shooter angle position (deg)", getPosition());
+        SmartDashboard.putNumber("Shooter angle velocity (deg/sec)", getVelocity());
+
+        System.out.println(getPosition());
 
     }
 }

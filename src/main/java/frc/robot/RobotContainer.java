@@ -13,6 +13,9 @@ import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.trajectory.Trajectory;
 import edu.wpi.first.math.trajectory.TrajectoryConfig;
 import edu.wpi.first.math.trajectory.TrajectoryGenerator;
+import frc.robot.Commands.IntakeCommands.IntakeAtSpeedCommand;
+import frc.robot.Commands.IntakeCommands.IntakeCommand;
+import frc.robot.Commands.IntakeCommands.OuttakeCommand;
 import frc.robot.Commands.DriveCommands.DriveSetXCommand;
 import frc.robot.Commands.IndexerCommands.IndexerRunToSensorCommand;
 import frc.robot.Commands.IndexerCommands.IndexerShootCommand;
@@ -75,9 +78,11 @@ public class RobotContainer {
                                 true, true),
                         m_robotDrive));
 
-        m_driverController.rightBumper().whileTrue(new DriveSetXCommand(m_robotDrive));
+        m_driverController.x().whileTrue(new DriveSetXCommand(m_robotDrive));
         // intake
-
+        m_driverController.leftBumper().whileTrue(new IntakeCommand(m_intake));
+        m_driverController.leftTrigger().whileTrue(new IntakeAtSpeedCommand());
+        m_driverController.y().whileTrue(new OuttakeCommand(m_intake));
         //indexer
         m_operatorController.rightTrigger().whileTrue(new IndexerShootCommand(m_indexer));
         m_driverController.leftBumper().whileTrue(new IndexerRunToSensorCommand(m_indexer));

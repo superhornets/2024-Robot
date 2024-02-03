@@ -13,6 +13,7 @@ import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.trajectory.Trajectory;
 import edu.wpi.first.math.trajectory.TrajectoryConfig;
 import edu.wpi.first.math.trajectory.TrajectoryGenerator;
+import frc.robot.Commands.ClimberCommands.ClimberCommand;
 import frc.robot.Commands.IntakeCommands.IntakeAtSpeedCommand;
 import frc.robot.Commands.IntakeCommands.IntakeCommand;
 import frc.robot.Commands.IntakeCommands.OuttakeCommand;
@@ -27,6 +28,7 @@ import frc.robot.Commands.ShooterAngleCommands.ShooterPodiumCommand;
 import frc.robot.Commands.ShooterAngleCommands.ShooterRaiseCommand;
 import frc.robot.Commands.ShooterAngleCommands.ShooterSubwooferCommand;
 import frc.robot.Constants.AutoConstants;
+import frc.robot.Constants.ClimberConstants;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.subsystems.ClimberSubsystem;
@@ -50,9 +52,12 @@ public class RobotContainer {
     // The robot's subsystems
     private final DriveSubsystem m_robotDrive = new DriveSubsystem();
 
+    // private final IndexerSubsystem m_indexer = new IndexerSubsystem();
+    //private final IntakeSubsystem m_intake = new IntakeSubsystem();
+    private final ClimberSubsystem m_rightClimber = new ClimberSubsystem(ClimberConstants.kMotorRightCanId);
+    private final ClimberSubsystem m_leftClimber = new ClimberSubsystem(ClimberConstants.kMotorLeftCanId);
     private final IndexerSubsystem m_indexer = new IndexerSubsystem();
     private final IntakeSubsystem m_intake = new IntakeSubsystem();
-    private final ClimberSubsystem m_climber = new ClimberSubsystem();
     private final ShooterAngleSubsystem m_angleSubsystem = new ShooterAngleSubsystem();
 
     // The driver's controller
@@ -94,7 +99,15 @@ public class RobotContainer {
         m_operatorController.povUp().whileTrue(new ShooterRaiseCommand(m_angleSubsystem));
         m_operatorController.povDown().whileTrue(new ShooterLowerCommand(m_angleSubsystem));
         //climber
-
+        m_operatorController.leftStick().whileTrue(new ClimberCommand(m_leftClimber, m_operatorController.getLeftY()));
+        m_operatorController.rightStick()
+                .whileTrue(new ClimberCommand(m_rightClimber, m_operatorController.getRightY()));
+        m_leftClimber.setDefaultCommand(new RunCommand(() -> {
+            m_leftClimber.set(m_operatorController.getLeftY());
+        }, m_leftClimber));
+        m_rightClimber.setDefaultCommand(new RunCommand(() -> {
+            m_rightClimber.set(m_operatorController.getRightY());
+        }, m_rightClimber));
     }
 
     /**

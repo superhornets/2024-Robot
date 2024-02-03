@@ -149,7 +149,7 @@ public final class Constants {
         public static final double kAscendPower = 0.5;
     }
     public static final class LegConstants {
-        public static final int kMotorCanId = -123;
+        public static final int kMotorCanId = -124;
         public static final boolean kMotorInverted = false;
         public static final double kMaxExtension = 20.0; // Some unit
     }
@@ -163,8 +163,8 @@ public final class Constants {
         public static final double kGearRatio = 1;
     }
     public static final class IndexerConstants {
-        public static final int kMotorRightCanId = 12;
-        public static final int kMotorLeftCanId = 11;
+        public static final int kMotorRightCanId = 11;
+        public static final int kMotorLeftCanId = 12;
         public static final boolean kMotorInverted = false;
         public static final double kIntakeSpeed = 0.2;
         public static final double kReverseIntakeSpeed = -0.2;

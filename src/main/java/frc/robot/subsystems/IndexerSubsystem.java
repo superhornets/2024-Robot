@@ -27,6 +27,7 @@ public class IndexerSubsystem extends SubsystemBase {
             m_motorLeft.set(0);
             m_motorRight.set(0);
         }, this));
+
     }
 
     public boolean isTriggered() {
@@ -51,6 +52,10 @@ public class IndexerSubsystem extends SubsystemBase {
     public void shoot() {
         m_motorRight.set(IndexerConstants.kIntakeSpeed);
         m_motorLeft.set(IndexerConstants.kIntakeSpeed);
+    }
+
+    public boolean getNoteAcquired() {
+        return m_switch.isPressed();
     }
 
     @Override

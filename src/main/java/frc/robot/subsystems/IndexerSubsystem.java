@@ -14,7 +14,7 @@ public class IndexerSubsystem extends SubsystemBase {
     private final CANSparkMax m_motorRight = new CANSparkMax(IndexerConstants.kMotorRightCanId, MotorType.kBrushless);
     private final CANSparkMax m_motorLeft = new CANSparkMax(IndexerConstants.kMotorLeftCanId, MotorType.kBrushless);
 
-    private final SparkLimitSwitch m_switch = m_motorLeft.getForwardLimitSwitch(SparkLimitSwitch.Type.kNormallyOpen);
+    private final SparkLimitSwitch m_switch = m_motorLeft.getForwardLimitSwitch(SparkLimitSwitch.Type.kNormallyClosed);
 
     public IndexerSubsystem() {
         // Initialize anything else that couldn't be initialized yet
@@ -22,6 +22,7 @@ public class IndexerSubsystem extends SubsystemBase {
         // Configure anything
         m_motorRight.setInverted(IndexerConstants.kMotorInverted);
         m_motorLeft.setInverted(IndexerConstants.kMotorInverted);
+
 
         this.setDefaultCommand(new RunCommand(() -> {
             m_motorLeft.set(0);

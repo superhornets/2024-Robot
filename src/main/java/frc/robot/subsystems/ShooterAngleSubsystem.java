@@ -67,7 +67,6 @@ public class ShooterAngleSubsystem extends SubsystemBase {
         SmartDashboard.putNumber("Shooter angle position (deg)", getPosition());
         SmartDashboard.putNumber("Shooter angle velocity (deg/sec)", getVelocity());
 
-        System.out.println(getPosition());
 
     }
 }

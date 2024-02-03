@@ -142,8 +142,8 @@ public final class Constants {
     }
 
     public static final class ClimberConstants {
-        public static final int kLeftMotorCanId = 11;
-        public static final int kRightMotorCanId = 17;
+        public static final int kMotorRightCanId = 17;
+        public static final int kMotorLeftCanId = 16;
         public static final boolean kMotorInverted = false;
         public static final double kMaxExtension = 20.0; // Some unit
         public static final double kAscendPower = 0.5;
@@ -155,20 +155,36 @@ public final class Constants {
     }
 
     public static final class IntakeConstants {
-        public static final int kMotorCanId = -125;
+        public static final int kMotorTopCanId = 9;
+        public static final int kMotorBottomCanId = 10;
         public static final boolean kMotorInverted = false;
-        public static final double kMaxExtension = 20.0; // Some unit
-        public static final double kIntakeSpeed = 0;
-        public static final double kOuttakeSpeed = 0;
+        public static final double kIntakeSpeed = 0.1;
+        public static final double kOuttakeSpeed = -0.1;
         public static final double kGearRatio = 1;
     }
     public static final class IndexerConstants {
-        public static final int kMotorRightCanId = -126;
-        public static final int kMotorLeftCanId = -124;
+        public static final int kMotorRightCanId = 11;
+        public static final int kMotorLeftCanId = 12;
         public static final boolean kMotorInverted = false;
-        public static final double kMaxExtension = 20.0; // Some unit
         public static final double kIntakeSpeed = 0.2;
         public static final double kReverseIntakeSpeed = -0.2;
+    }
+
+    public static final class ShooterAngleConstants {
+        public static final int kMotorCanId = 15;
+        public static final boolean kMotorInverted = false;
+        public static final double kRaiseSpeed = 0.2;
+        public static final double kLowerSpeed = -0.2;
+        public static final double kP = 0.001;
+        public static final double kI = 0;
+        public static final double kD = 0;
+        public static final double kSubwooferPosition = 5;
+        public static final double kPodiumPosition = 2.5;
+        public static final double kAmpPosition = 90;
+        public static final double kAngle = 0;
+        public static final double kAbsoluteEncoderConversion = 360;
+        public static final double kAbsoluteEncoderPositionPIDMinInput = 0; // degrees
+        public static final double kAbsoluteEncoderPositionPIDMaxInput = kAbsoluteEncoderConversion; // degrees
     }
 }
 

@@ -29,6 +29,6 @@ public class IndexerRunToSensorCommand extends Command {
     @Override
     public boolean isFinished() {
         // Have we reached our destination?
-        return true;
+        return false;
     }
 }

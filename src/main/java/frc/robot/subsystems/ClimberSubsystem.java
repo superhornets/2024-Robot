@@ -38,9 +38,9 @@ public class ClimberSubsystem extends SubsystemBase {
         // Otherwise, they will fight over the same Smart Dashboard key/name.
 
         String label = "motor value" + m_motor.getDeviceId();
-        if (m_motor.getDeviceId() == ClimberConstants.kLeftMotorCanId) {
+        if (m_motor.getDeviceId() == ClimberConstants.kMotorLeftCanId) {
             label = "Left climbed height (motor rotations)";
-        } else if (m_motor.getDeviceId() == ClimberConstants.kRightMotorCanId) {
+        } else if (m_motor.getDeviceId() == ClimberConstants.kMotorRightCanId) {
             label = "Right climbed height (motor rotations)";
         }
         SmartDashboard.putNumber(label, m_encoder.getPosition());

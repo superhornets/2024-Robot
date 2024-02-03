@@ -1,18 +1,19 @@
 package frc.robot.Commands.ClimberCommands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.Constants.ClimberConstants;
 import frc.robot.subsystems.ClimberSubsystem;
 
-public class ClimberAscendCommand extends Command {
+public class ClimberCommand extends Command {
     // Declare subsystem variables
     private final ClimberSubsystem m_Climber;
+    private double m_Speed;
 
     // Declare subsystem state (i.e. status) and initialize
 
-    public ClimberAscendCommand(ClimberSubsystem Climber) {
-        addRequirements(Climber);
-        m_Climber = Climber;
+    public ClimberCommand(ClimberSubsystem climber, double speed) {
+        addRequirements(climber);
+        m_Climber = climber;
+        m_Speed = speed;
     }
 
     @Override
@@ -22,7 +23,7 @@ public class ClimberAscendCommand extends Command {
 
     @Override
     public void execute() {
-        m_Climber.set(ClimberConstants.kAscendPower);
+        m_Climber.set(-m_Speed);
     }
 
     @Override

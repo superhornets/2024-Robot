@@ -16,7 +16,7 @@ public class IndexerShootCommand extends Command {
 
     @Override
     public void initialize() {
-
+        m_indexer.setSwitchDisabled();
     }
 
     @Override

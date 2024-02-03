@@ -58,6 +58,14 @@ public class IndexerSubsystem extends SubsystemBase {
         return m_switch.isPressed();
     }
 
+    public void setSwitchEnabled() {
+        m_switch.enableLimitSwitch(true);
+    }
+
+    public void setSwitchDisabled() {
+        m_switch.enableLimitSwitch(false);
+    }
+
     @Override
     public void periodic() {
         // Send sensor values and any other telemetry to the Smart Dashboard

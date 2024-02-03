@@ -15,4 +15,10 @@ public class ShooterRunSubwooferCommand extends Command {
     public void execute() {
         m_ShooterSubsystem.runShooterSubwoofer();
     }
+
+    @Override
+    public boolean isFinished() {
+        //Check if is finished
+        return true;
+    }
 }

@@ -15,4 +15,10 @@ public class ShooterStopCommand extends Command {
     public void execute() {
         m_ShooterSubsystem.stopShooter();
     }
+
+    @Override
+    public boolean isFinished() {
+        //Check if is finished
+        return true;
+    }
 }

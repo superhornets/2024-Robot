@@ -17,4 +17,10 @@ public class ShooterRunAtSpeedCommand extends Command {
     public void execute() {
         m_ShooterSubsystem.runShooterToInput(speed);
     }
+
+    @Override
+    public boolean isFinished() {
+        //Check if is finished
+        return true;
+    }
 }

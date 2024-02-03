@@ -15,4 +15,10 @@ public class ShooterRunAmpCommand extends Command {
     public void execute() {
         m_ShooterSubsystem.runShooterAmp();
     }
+
+    @Override
+    public boolean isFinished() {
+        //Check if is finished
+        return true;
+    }
 }

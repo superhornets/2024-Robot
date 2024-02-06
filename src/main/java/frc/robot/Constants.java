@@ -120,6 +120,7 @@ public final class Constants {
         public static final int kDriverControllerPort = 0;
         public static final int kOperatorControllerPort = 1;
         public static final double kDriveDeadband = 0.05;
+        public static final double kClimberDeadband = 0.15;
     }
 
     public static final class AutoConstants {
@@ -145,8 +146,7 @@ public final class Constants {
         public static final int kMotorRightCanId = 17;
         public static final int kMotorLeftCanId = 16;
         public static final boolean kMotorInverted = false;
-        public static final double kMaxExtension = 20.0; // Some unit
-        public static final double kAscendPower = 0.5;
+        public static final double kPower = 0.5;
     }
     public static final class LegConstants {
         public static final int kMotorCanId = -124;
@@ -163,8 +163,8 @@ public final class Constants {
         public static final double kGearRatio = 1;
     }
     public static final class IndexerConstants {
-        public static final int kMotorRightCanId = 12;
-        public static final int kMotorLeftCanId = 11;
+        public static final int kMotorRightCanId = 12; // 11
+        public static final int kMotorLeftCanId = 11; //12
         public static final boolean kMotorInverted = false;
         public static final double kIntakeSpeed = 0.2;
         public static final double kReverseIntakeSpeed = -0.2;

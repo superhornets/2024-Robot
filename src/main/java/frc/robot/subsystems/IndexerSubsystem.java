@@ -23,10 +23,10 @@ public class IndexerSubsystem extends SubsystemBase {
         m_motorRight.setInverted(IndexerConstants.kMotorInverted);
         m_motorLeft.setInverted(IndexerConstants.kMotorInverted);
 
+        m_motorRight.follow(m_motorLeft);
 
         this.setDefaultCommand(new RunCommand(() -> {
             m_motorLeft.set(0);
-            m_motorRight.set(0);
         }, this));
 
     }
@@ -37,21 +37,17 @@ public class IndexerSubsystem extends SubsystemBase {
 
     public void intake() {
         if (isTriggered()) {
-            m_motorRight.set(0);
             m_motorLeft.set(0);
         } else {
-            m_motorRight.set(IndexerConstants.kIntakeSpeed);
             m_motorLeft.set(IndexerConstants.kIntakeSpeed);
         }
     }
 
     public void reverse() {
-        m_motorRight.set(IndexerConstants.kReverseIntakeSpeed);
         m_motorLeft.set(IndexerConstants.kReverseIntakeSpeed);
     }
 
     public void shoot() {
-        m_motorRight.set(IndexerConstants.kIntakeSpeed);
         m_motorLeft.set(IndexerConstants.kIntakeSpeed);
     }
 

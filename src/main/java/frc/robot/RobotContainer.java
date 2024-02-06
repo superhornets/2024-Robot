@@ -13,7 +13,6 @@ import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.trajectory.Trajectory;
 import edu.wpi.first.math.trajectory.TrajectoryConfig;
 import edu.wpi.first.math.trajectory.TrajectoryGenerator;
-import frc.robot.Commands.ClimberCommands.ClimberCommand;
 import frc.robot.Commands.IntakeCommands.IntakeAtSpeedCommand;
 import frc.robot.Commands.IntakeCommands.IntakeCommand;
 import frc.robot.Commands.IntakeCommands.OuttakeCommand;
@@ -99,14 +98,13 @@ public class RobotContainer {
         m_operatorController.povUp().whileTrue(new ShooterRaiseCommand(m_angleSubsystem));
         m_operatorController.povDown().whileTrue(new ShooterLowerCommand(m_angleSubsystem));
         //climber
-        m_operatorController.leftStick().whileTrue(new ClimberCommand(m_leftClimber, m_operatorController.getLeftY()));
-        m_operatorController.rightStick()
-                .whileTrue(new ClimberCommand(m_rightClimber, m_operatorController.getRightY()));
         m_leftClimber.setDefaultCommand(new RunCommand(() -> {
-            m_leftClimber.set(m_operatorController.getLeftY());
+            m_leftClimber.set(MathUtil.applyDeadband(m_operatorController.getLeftY(), OIConstants.kClimberDeadband)
+                    * ClimberConstants.kPower);
         }, m_leftClimber));
         m_rightClimber.setDefaultCommand(new RunCommand(() -> {
-            m_rightClimber.set(m_operatorController.getRightY());
+            m_rightClimber.set(MathUtil.applyDeadband(m_operatorController.getRightY(), OIConstants.kClimberDeadband)
+                    * ClimberConstants.kPower);
         }, m_rightClimber));
     }
 

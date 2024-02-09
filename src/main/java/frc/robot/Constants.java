@@ -168,6 +168,7 @@ public final class Constants {
         public static final boolean kMotorInverted = false;
         public static final double kIntakeSpeed = 0.2;
         public static final double kReverseIntakeSpeed = -0.2;
+        public static final double kTime = 5;
     }
 
     public static final class ShooterConstants {

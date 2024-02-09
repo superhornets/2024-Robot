@@ -105,7 +105,7 @@ public class RobotContainer {
         m_operatorController.x().onTrue(new ShooterRunPodiumCommand(m_shooter));
         m_operatorController.a().onTrue(new ShooterRunSubwooferCommand(m_shooter));
         m_operatorController.b().onTrue(new ShooterRunAmpCommand(m_shooter));
-        m_operatorController.y().onTrue(new ShooterStopCommand(m_shooter));
+        m_operatorController.start().onTrue(new ShooterStopCommand(m_shooter));
 
     }
 

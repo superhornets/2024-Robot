@@ -156,7 +156,7 @@ public final class Constants {
 
     public static final class IntakeConstants {
         public static final int kMotorTopCanId = 9;
-        public static final int kMotorBottomCanId = 10;
+        public static final int kMotorBottomCanId = -120;
         public static final boolean kMotorInverted = false;
         public static final double kIntakeSpeed = 0.1;
         public static final double kOuttakeSpeed = -0.1;
@@ -170,6 +170,22 @@ public final class Constants {
         public static final double kReverseIntakeSpeed = -0.2;
     }
 
+    public static final class ShooterConstants {
+        public static final int kMotorRightCanId = 14;
+        public static final int kMotorLeftCanId = 13;
+        public static final boolean kIsLeftMotorInverted = true;
+        public static final boolean kIsRightMotorInverted = false;
+        public static final double kShooterSpeedSubwoofer = 900;
+        public static final double kShooterSpeedPodium = 1500;
+        public static final double kShooterSpeedAmp = 600;
+
+        public static final double kShooterP = .00004;
+        public static final double kShooterI = 0;
+        public static final double kShooterD = 0;
+        public static final double kShooterFF = 0;
+        public static final double kShooterMin = -1;
+        public static final double kShooterMax = 1;
+    }
     public static final class ShooterAngleConstants {
         public static final int kMotorCanId = 15;
         public static final boolean kMotorInverted = false;

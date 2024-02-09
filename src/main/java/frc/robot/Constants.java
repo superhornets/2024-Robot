@@ -207,5 +207,14 @@ public final class Constants {
         public static final double kMinOutput = -1;
         public static final double kMaxOutput = 1;
     }
+
+    public static final class ExactGearRatioConstants {
+        public static final double kNeo550_3 = 2.89;
+        public static final double kNeo550_4 = 3.61;
+        public static final double kNeo550_5 = 5.23;
+        public static final double kNeo500_3 = 3;
+        public static final double kNeo500_4 = 4;
+        public static final double kNeo500_5 = 5;
+    }
 }
 

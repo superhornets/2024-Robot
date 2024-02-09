@@ -4,7 +4,7 @@ import com.revrobotics.CANSparkLowLevel.MotorType;
 import com.revrobotics.SparkAbsoluteEncoder.Type;
 import com.revrobotics.AbsoluteEncoder;
 import com.revrobotics.CANSparkMax;
-//import com.revrobotics.RelativeEncoder;
+
 import com.revrobotics.SparkPIDController;
 import com.revrobotics.CANSparkBase.ControlType;
 
@@ -16,7 +16,6 @@ public class ShooterAngleSubsystem extends SubsystemBase {
     // Initialize motors and sensors
 
     private final CANSparkMax m_motor = new CANSparkMax(ShooterAngleConstants.kMotorCanId, MotorType.kBrushless);
-    // private final RelativeEncoder m_encoder = m_motor.getEncoder();
     private final SparkPIDController m_pidController = m_motor.getPIDController();
     private final AbsoluteEncoder m_encoder = m_motor.getAbsoluteEncoder(Type.kDutyCycle);
 
@@ -25,12 +24,11 @@ public class ShooterAngleSubsystem extends SubsystemBase {
 
         // Configure anything
         m_motor.setInverted(ShooterAngleConstants.kMotorInverted);
+        m_encoder.setInverted(ShooterAngleConstants.kEncoderInverted);
 
         m_pidController.setP(ShooterAngleConstants.kP);
         m_pidController.setI(ShooterAngleConstants.kI);
         m_pidController.setD(ShooterAngleConstants.kD);
-
-        // m_encoder.setPositionConversionFactor(5 * 360);
 
         m_pidController.setFeedbackDevice(m_encoder);
         m_encoder.setPositionConversionFactor(ShooterAngleConstants.kAbsoluteEncoderConversion);
@@ -39,6 +37,11 @@ public class ShooterAngleSubsystem extends SubsystemBase {
         m_pidController.setPositionPIDWrappingEnabled(true);
         m_pidController.setPositionPIDWrappingMinInput(ShooterAngleConstants.kAbsoluteEncoderPositionPIDMinInput);
         m_pidController.setPositionPIDWrappingMaxInput(ShooterAngleConstants.kAbsoluteEncoderPositionPIDMaxInput);
+
+        m_pidController.setSmartMotionMinOutputVelocity(ShooterAngleConstants.kMinVelocity, 0);
+        m_pidController.setSmartMotionMaxVelocity(ShooterAngleConstants.kMaxVelocity, 0);
+        m_pidController.setSmartMotionMaxAccel(ShooterAngleConstants.kMaxAccel, 0);
+        m_pidController.setOutputRange(ShooterAngleConstants.kMinOutput, ShooterAngleConstants.kMaxOutput);
     }
 
     public double getPosition() {
@@ -50,22 +53,21 @@ public class ShooterAngleSubsystem extends SubsystemBase {
     }
 
     public void moveTo(double angle) {
-
-        m_pidController.setReference(angle, ControlType.kPosition);
+        m_pidController.setReference(angle, ControlType.kSmartMotion);
     }
 
     public void moveUp() {
-        m_motor.set(ShooterAngleConstants.kRaiseSpeed);
+        m_pidController.setReference(ShooterAngleConstants.kRaiseSpeed, ControlType.kDutyCycle);
     }
 
     public void moveDown() {
-        m_motor.set(ShooterAngleConstants.kLowerSpeed);
+        m_pidController.setReference(ShooterAngleConstants.kLowerSpeed, ControlType.kDutyCycle);
     }
 
     @Override
     public void periodic() {
         SmartDashboard.putNumber("Shooter angle position (deg)", getPosition());
         SmartDashboard.putNumber("Shooter angle velocity (deg/sec)", getVelocity());
-
+        SmartDashboard.putNumber("Shooter angle I accumulated", m_pidController.getIAccum());
     }
 }

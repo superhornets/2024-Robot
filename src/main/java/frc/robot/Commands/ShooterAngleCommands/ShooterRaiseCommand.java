@@ -1,9 +1,6 @@
 package frc.robot.Commands.ShooterAngleCommands;
 
-import com.revrobotics.RelativeEncoder;
-
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.Constants.ShooterAngleConstants;
 import frc.robot.subsystems.ShooterAngleSubsystem;
 
 public class ShooterRaiseCommand extends Command {

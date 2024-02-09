@@ -8,6 +8,7 @@ public class IntakeCommand extends Command {
     private final IntakeSubsystem kIntakeSubsystem;
 
 
+
     public IntakeCommand(IntakeSubsystem intake) {
         addRequirements(intake);
         kIntakeSubsystem = intake;

@@ -206,6 +206,7 @@ public final class Constants {
         public static final double kMaxAccel = 18;
         public static final double kMinOutput = -1;
         public static final double kMaxOutput = 1;
+        public static final boolean kEncoderInverted = false;
     }
 
     public static final class ExactGearRatioConstants {

@@ -25,6 +25,7 @@ public class ShooterAngleSubsystem extends SubsystemBase {
 
         // Configure anything
         m_motor.setInverted(ShooterAngleConstants.kMotorInverted);
+        m_encoder.setInverted(ShooterAngleConstants.kEncoderInverted);
 
         m_pidController.setP(ShooterAngleConstants.kP);
         m_pidController.setI(ShooterAngleConstants.kI);

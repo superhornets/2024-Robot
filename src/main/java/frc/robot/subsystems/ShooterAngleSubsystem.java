@@ -39,6 +39,11 @@ public class ShooterAngleSubsystem extends SubsystemBase {
         m_pidController.setPositionPIDWrappingEnabled(true);
         m_pidController.setPositionPIDWrappingMinInput(ShooterAngleConstants.kAbsoluteEncoderPositionPIDMinInput);
         m_pidController.setPositionPIDWrappingMaxInput(ShooterAngleConstants.kAbsoluteEncoderPositionPIDMaxInput);
+
+        m_pidController.setSmartMotionMinOutputVelocity(ShooterAngleConstants.kMinVelocity, 0);
+        m_pidController.setSmartMotionMaxVelocity(ShooterAngleConstants.kMaxVelocity, 0);
+        m_pidController.setSmartMotionMaxAccel(ShooterAngleConstants.kMaxAccel, 0);
+        m_pidController.setOutputRange(ShooterAngleConstants.kMinOutput, ShooterAngleConstants.kMaxOutput);
     }
 
     public double getPosition() {
@@ -51,15 +56,18 @@ public class ShooterAngleSubsystem extends SubsystemBase {
 
     public void moveTo(double angle) {
 
-        m_pidController.setReference(angle, ControlType.kPosition);
+        m_pidController.setReference(angle, ControlType.kSmartMotion);
+
     }
 
     public void moveUp() {
-        m_motor.set(ShooterAngleConstants.kRaiseSpeed);
+        //m_motor.set(ShooterAngleConstants.kRaiseSpeed);
+        m_pidController.setReference(ShooterAngleConstants.kRaiseSpeed, ControlType.kDutyCycle);
     }
 
     public void moveDown() {
-        m_motor.set(ShooterAngleConstants.kLowerSpeed);
+        // m_motor.set(ShooterAngleConstants.kLowerSpeed);
+        m_pidController.setReference(ShooterAngleConstants.kLowerSpeed, ControlType.kDutyCycle);
     }
 
     @Override

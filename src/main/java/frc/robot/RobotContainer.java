@@ -16,6 +16,8 @@ import edu.wpi.first.math.trajectory.TrajectoryGenerator;
 import frc.robot.Commands.IntakeCommands.IntakeAtSpeedCommand;
 import frc.robot.Commands.IntakeCommands.IntakeCommand;
 import frc.robot.Commands.IntakeCommands.OuttakeCommand;
+import frc.robot.Commands.ClimberCommands.ClimberExtendCommand;
+import frc.robot.Commands.ClimberCommands.ClimberRetractCommand;
 import frc.robot.Commands.DriveCommands.DriveSetXCommand;
 import frc.robot.Commands.IndexerCommands.IndexerRunToSensorCommand;
 import frc.robot.Commands.IndexerCommands.IndexerShootCommand;

@@ -144,10 +144,13 @@ public final class Constants {
 
     public static final class ClimberConstants {
         public static final int kMotorRightCanId = 17;
-        public static final int kMotorLeftCanId = 16;
+        public static final int kMotorLeftCanId = 16; // 16
         public static final boolean kMotorInverted = false;
         public static final double kPower = 0.5;
+        public static final double kRetractPower = 0.1;
+        public static final double kExtendPower = -0.1;
     }
+
     public static final class LegConstants {
         public static final int kMotorCanId = -124;
         public static final boolean kMotorInverted = false;

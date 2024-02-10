@@ -23,6 +23,7 @@ public class OuttakeCommand extends Command {
     public void execute() {
         //Continue outtaking
         kOuttakeSubsystem.takeOut();
+
     }
 
 

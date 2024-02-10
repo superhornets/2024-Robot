@@ -89,7 +89,7 @@ public class RobotContainer {
         m_driverController.y().whileTrue(new OuttakeCommand(m_intake));
         //indexer
         m_operatorController.rightTrigger().whileTrue(new IndexerShootCommand(m_indexer));
-        // m_driverController.leftBumper().whileTrue(new IndexerRunToSensorCommand(m_indexer));
+        m_driverController.leftBumper().whileTrue(new IndexerRunToSensorCommand(m_indexer));
         // m_driverController.leftTrigger(.1).whileTrue(new IndexerRunToSensorCommand(m_indexer));
         //Shooter angle
         m_operatorController.b().onTrue(new ShooterAngleAmpCommand(m_angleSubsystem));

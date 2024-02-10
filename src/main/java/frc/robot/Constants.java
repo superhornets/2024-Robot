@@ -159,6 +159,7 @@ public final class Constants {
         public static final int kMotorBottomCanId = 10;
         public static final boolean kMotorInverted = false;
         public static final double kIntakeSpeed = 0.1;
+        public static final double kIntakeAtSpeed = 0.2;
         public static final double kOuttakeSpeed = -0.1;
         public static final double kGearRatio = 1;
     }

@@ -13,7 +13,7 @@ public class IndexerRunToSensorCommand extends Command {
 
     @Override
     public void initialize() {
-
+        m_indexer.setSwitchEnabled();
     }
 
     @Override

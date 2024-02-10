@@ -10,25 +10,20 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ClimberConstants;
 
 public class ClimberSubsystem extends SubsystemBase {
-    private final CANSparkMax m_motorRight = new CANSparkMax(ClimberConstants.kMotorRightCanId, MotorType.kBrushless);
-    private final CANSparkMax m_motorLeft = new CANSparkMax(ClimberConstants.kMotorLeftCanId, MotorType.kBrushless);
-    private final RelativeEncoder m_encoder = m_motorRight.getEncoder();
+    private CANSparkMax m_motor;
+    private RelativeEncoder m_encoder;
 
-    public ClimberSubsystem() {
-        // Initialize anything else that couldn't be initialized yet
+    public ClimberSubsystem(int canId) {
+        // Initialize anything else that couldn't be initialized yetzz
+        m_motor = new CANSparkMax(canId, MotorType.kBrushless);
+        m_encoder = m_motor.getEncoder();
 
         // Configure anything
-        m_motorRight.setInverted(ClimberConstants.kMotorInverted);
-
-        this.setDefaultCommand(new RunCommand(() -> {
-            m_motorRight.set(0);
-            m_motorLeft.set(0);
-        }, this));
+        m_motor.setInverted(ClimberConstants.kMotorInverted);
     }
 
     public void set(double speed) {
-        m_motorRight.set(speed);
-
+        m_motor.set(speed);
     }
 
     @Override
@@ -38,6 +33,12 @@ public class ClimberSubsystem extends SubsystemBase {
         // If there were actually 2 of the same subsystems, take care to differentiate each instance by name.
         // Otherwise, they will fight over the same Smart Dashboard key/name.
 
-        SmartDashboard.putNumber("climbed height (motor rotations)", m_encoder.getPosition());
+        String label = "motor value" + m_motor.getDeviceId();
+        if (m_motor.getDeviceId() == ClimberConstants.kMotorLeftCanId) {
+            label = "Left climbed height (motor rotations)";
+        } else if (m_motor.getDeviceId() == ClimberConstants.kMotorRightCanId) {
+            label = "Right climbed height (motor rotations)";
+        }
+        SmartDashboard.putNumber(label, m_encoder.getPosition());
     }
 }

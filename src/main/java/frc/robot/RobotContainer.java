@@ -16,23 +16,29 @@ import edu.wpi.first.math.trajectory.TrajectoryGenerator;
 import frc.robot.Commands.IntakeCommands.IntakeAtSpeedCommand;
 import frc.robot.Commands.IntakeCommands.IntakeCommand;
 import frc.robot.Commands.IntakeCommands.OuttakeCommand;
+import frc.robot.Commands.ClimberCommands.ClimberExtendCommand;
+import frc.robot.Commands.ClimberCommands.ClimberRetractCommand;
 import frc.robot.Commands.DriveCommands.DriveSetXCommand;
 import frc.robot.Commands.IndexerCommands.IndexerRunToSensorCommand;
 import frc.robot.Commands.IndexerCommands.IndexerShootCommand;
-import frc.robot.Commands.IntakeCommands.IntakeCommand;
+import frc.robot.Commands.ShooterCommands.ShooterRunAmpCommand;
+import frc.robot.Commands.ShooterCommands.ShooterRunPodiumCommand;
+import frc.robot.Commands.ShooterCommands.ShooterRunSubwooferCommand;
+import frc.robot.Commands.ShooterCommands.ShooterStopCommand;
 import frc.robot.Commands.ShooterAngleCommands.ShooterAngleAmpCommand;
-import frc.robot.Commands.ShooterAngleCommands.ShooterAutoAngleCommand;
 import frc.robot.Commands.ShooterAngleCommands.ShooterLowerCommand;
 import frc.robot.Commands.ShooterAngleCommands.ShooterPodiumCommand;
 import frc.robot.Commands.ShooterAngleCommands.ShooterRaiseCommand;
 import frc.robot.Commands.ShooterAngleCommands.ShooterSubwooferCommand;
 import frc.robot.Constants.AutoConstants;
+import frc.robot.Constants.ClimberConstants;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.IndexerSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.ShooterAngleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
@@ -50,9 +56,13 @@ public class RobotContainer {
     // The robot's subsystems
     private final DriveSubsystem m_robotDrive = new DriveSubsystem();
 
+    // private final IndexerSubsystem m_indexer = new IndexerSubsystem();
+    //private final IntakeSubsystem m_intake = new IntakeSubsystem();
+    private final ClimberSubsystem m_rightClimber = new ClimberSubsystem(ClimberConstants.kMotorRightCanId);
+    private final ClimberSubsystem m_leftClimber = new ClimberSubsystem(ClimberConstants.kMotorLeftCanId);
     private final IndexerSubsystem m_indexer = new IndexerSubsystem();
     private final IntakeSubsystem m_intake = new IntakeSubsystem();
-    private final ClimberSubsystem m_climber = new ClimberSubsystem();
+    private final ShooterSubsystem m_shooter = new ShooterSubsystem();
     private final ShooterAngleSubsystem m_angleSubsystem = new ShooterAngleSubsystem();
 
     // The driver's controller
@@ -99,7 +109,25 @@ public class RobotContainer {
         m_operatorController.povUp().whileTrue(new ShooterRaiseCommand(m_angleSubsystem));
         m_operatorController.povDown().whileTrue(new ShooterLowerCommand(m_angleSubsystem));
         //climber
+        m_leftClimber.setDefaultCommand(new RunCommand(() -> {
+            m_leftClimber.set(MathUtil.applyDeadband(m_operatorController.getLeftY(), OIConstants.kClimberDeadband)
+                    * ClimberConstants.kPower);
+        }, m_leftClimber));
+        m_rightClimber.setDefaultCommand(new RunCommand(() -> {
+            m_rightClimber.set(MathUtil.applyDeadband(m_operatorController.getRightY(), OIConstants.kClimberDeadband)
+                    * ClimberConstants.kPower);
+        }, m_rightClimber));
 
+        //shooter
+        m_operatorController.x().onTrue(new ShooterRunPodiumCommand(m_shooter));
+        m_operatorController.a().onTrue(new ShooterRunSubwooferCommand(m_shooter));
+        m_operatorController.b().onTrue(new ShooterRunAmpCommand(m_shooter));
+        m_operatorController.start().onTrue(new ShooterStopCommand(m_shooter));
+
+    }
+
+    public void teleopInit() {
+        m_shooter.stopShooter();
     }
 
     /**

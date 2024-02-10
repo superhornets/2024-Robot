@@ -34,7 +34,6 @@ public class IndexerShootCommand extends Command {
 
     @Override
     public boolean isFinished() {
-        // Have we reached our destination?
         if ((Timer.getFPGATimestamp() - timeStamp) >= IndexerConstants.kTime) {
             return true;
         }

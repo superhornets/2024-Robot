@@ -5,31 +5,31 @@ import frc.robot.subsystems.IntakeSubsystem;
 
 public class OuttakeCommand extends Command {
     // Declare subsystem variables
-    private final IntakeSubsystem kOuttakeSubsystem;
+    private final IntakeSubsystem m_outtakeSubsystem;
 
     // Declare subsystem state (i.e. status) and initialize
 
     public OuttakeCommand(IntakeSubsystem outtake) {
         addRequirements(outtake);
-        kOuttakeSubsystem = outtake;
+        m_outtakeSubsystem = outtake;
     }
 
     @Override
     public void initialize() {
-        //Initializes outtake
+        //Initialize outtaking
     }
 
     @Override
     public void execute() {
         //Continue outtaking
-        kOuttakeSubsystem.takeOut();
+        m_outtakeSubsystem.takeOut();
 
     }
 
 
     @Override
     public void end(boolean interrupted) {
-        //End outtake
+        //End outtaking
     }
 
     @Override

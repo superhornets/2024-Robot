@@ -79,14 +79,15 @@ public class RobotContainer {
                         m_robotDrive));
 
         m_driverController.x().whileTrue(new DriveSetXCommand(m_robotDrive));
+
         // intake
         m_driverController.leftBumper().whileTrue(new IntakeCommand(m_intake));
         m_driverController.leftTrigger(.1)
-                // .whileTrue(new IntakeAtSpeedCommand(m_intake, m_driverController.getLeftTriggerAxis()));
                 .whileTrue(new IntakeAtSpeedCommand(m_intake, () -> {
                     return m_driverController.getLeftTriggerAxis();
                 }));
         m_driverController.y().whileTrue(new OuttakeCommand(m_intake));
+
         //indexer
         m_operatorController.rightTrigger().whileTrue(new IndexerShootCommand(m_indexer));
         m_driverController.leftBumper().whileTrue(new IndexerRunToSensorCommand(m_indexer));

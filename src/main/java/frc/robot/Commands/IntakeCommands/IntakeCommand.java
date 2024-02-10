@@ -5,13 +5,13 @@ import frc.robot.subsystems.IntakeSubsystem;
 
 public class IntakeCommand extends Command {
     // Declare subsystem variables
-    private final IntakeSubsystem kIntakeSubsystem;
+    private final IntakeSubsystem m_intakeSubsystem;
 
 
 
     public IntakeCommand(IntakeSubsystem intake) {
         addRequirements(intake);
-        kIntakeSubsystem = intake;
+        m_intakeSubsystem = intake;
     }
 
     @Override
@@ -22,7 +22,7 @@ public class IntakeCommand extends Command {
     @Override
     public void execute() {
         //Continue intaking
-        kIntakeSubsystem.takeIn();
+        m_intakeSubsystem.takeIn();
 
     }
 

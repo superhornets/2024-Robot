@@ -16,6 +16,7 @@ public class IntakeCommand extends Command {
 
     @Override
     public void initialize() {
+        System.out.println("Intake initialize");
         //Initializes intake
     }
 
@@ -28,6 +29,7 @@ public class IntakeCommand extends Command {
 
     @Override
     public void end(boolean interrupted) {
+        System.out.println("Intake end");
         //End intake
     }
 

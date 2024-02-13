@@ -16,6 +16,7 @@ public class OuttakeCommand extends Command {
 
     @Override
     public void initialize() {
+        System.out.println("Outtake initialize");
         //Initialize outtaking
     }
 
@@ -29,12 +30,14 @@ public class OuttakeCommand extends Command {
 
     @Override
     public void end(boolean interrupted) {
+        System.out.println("Outtake end");
         //End outtaking
     }
 
     @Override
     public boolean isFinished() {
         //Check if is finished
+
         return false;
     }
 }

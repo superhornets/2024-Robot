@@ -61,7 +61,7 @@ public class RobotContainer {
     private final ClimberSubsystem m_rightClimber = new ClimberSubsystem(ClimberConstants.kMotorRightCanId);
     private final ClimberSubsystem m_leftClimber = new ClimberSubsystem(ClimberConstants.kMotorLeftCanId);
     private final IndexerSubsystem m_indexer = new IndexerSubsystem();
-    private final IntakeSubsystem m_intake = new IntakeSubsystem();
+    private final IntakeSubsystem m_intake = new IntakeSubsystem(m_indexer::isTriggered);
     private final ShooterSubsystem m_shooter = new ShooterSubsystem();
     private final ShooterAngleSubsystem m_angleSubsystem = new ShooterAngleSubsystem();
 

@@ -18,6 +18,7 @@ public class IntakeAtSpeedCommand extends Command {
 
     @Override
     public void initialize() {
+        System.out.println("IntakeAtSpeed initialize");
         //Initializes intake
     }
 
@@ -30,6 +31,7 @@ public class IntakeAtSpeedCommand extends Command {
 
     @Override
     public void end(boolean interrupted) {
+        System.out.println("IntakeAtSpeed end");
         //End intake
     }
 

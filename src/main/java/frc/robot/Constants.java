@@ -169,7 +169,8 @@ public final class Constants {
     public static final class IndexerConstants {
         public static final int kMotorRightCanId = 12;
         public static final int kMotorLeftCanId = 11;
-        public static final boolean kMotorInverted = false;
+        public static final boolean kMotorLeftInverted = true;
+        public static final boolean kMotorRightInverted = false;
         public static final double kIntakeSpeed = 0.2;
         public static final double kReverseIntakeSpeed = -0.2;
         public static final double kTime = 5; //sec
@@ -180,9 +181,9 @@ public final class Constants {
         public static final int kMotorLeftCanId = 13;
         public static final boolean kIsLeftMotorInverted = true;
         public static final boolean kIsRightMotorInverted = false;
-        public static final double kShooterSpeedSubwoofer = 900; //RPM
-        public static final double kShooterSpeedPodium = 1500; //RPM
-        public static final double kShooterSpeedAmp = 600; //RPM
+        public static final double kShooterSpeedSubwoofer = 3000; //RPM
+        public static final double kShooterSpeedPodium = 5000; //RPM
+        public static final double kShooterSpeedAmp = 2000; //RPM
 
         public static final double kShooterP = .00004;
         public static final double kShooterI = 0;

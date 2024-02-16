@@ -48,7 +48,7 @@ public class IndexerSubsystem extends SubsystemBase {
     }
 
     public void shoot() {
-        m_motorLeft.set(IndexerConstants.kIntakeSpeed);
+        m_motorLeft.set(IndexerConstants.kFeedSpeed);
     }
 
     public boolean getNoteAcquired() {

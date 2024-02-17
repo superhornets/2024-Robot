@@ -16,6 +16,7 @@ import edu.wpi.first.math.trajectory.TrajectoryGenerator;
 import frc.robot.Commands.IntakeCommands.IntakeAtSpeedCommand;
 import frc.robot.Commands.IntakeCommands.IntakeCommand;
 import frc.robot.Commands.IntakeCommands.OuttakeCommand;
+import frc.robot.Commands.ResetCommands.ResetCommand;
 import frc.robot.Commands.ClimberCommands.ClimberExtendCommand;
 import frc.robot.Commands.ClimberCommands.ClimberRetractCommand;
 import frc.robot.Commands.DriveCommands.DriveSetXCommand;
@@ -39,6 +40,7 @@ import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.IndexerSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
+import frc.robot.subsystems.TestSubsystem;
 import frc.robot.subsystems.ShooterAngleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
@@ -64,6 +66,7 @@ public class RobotContainer {
     private final IntakeSubsystem m_intake = new IntakeSubsystem();
     private final ShooterSubsystem m_shooter = new ShooterSubsystem();
     private final ShooterAngleSubsystem m_angleSubsystem = new ShooterAngleSubsystem();
+    private final TestSubsystem m_arm = new TestSubsystem();
 
     // The driver's controller
     CommandXboxController m_driverController = new CommandXboxController(OIConstants.kDriverControllerPort);
@@ -123,6 +126,9 @@ public class RobotContainer {
         m_operatorController.a().onTrue(new ShooterRunSubwooferCommand(m_shooter));
         m_operatorController.b().onTrue(new ShooterRunAmpCommand(m_shooter));
         m_operatorController.start().onTrue(new ShooterStopCommand(m_shooter));
+
+        //test
+        m_driverController.leftBumper().whileTrue(new ResetCommand(m_arm));
 
     }
 

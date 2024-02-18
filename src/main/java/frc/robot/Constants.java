@@ -5,6 +5,7 @@
 package frc.robot;
 
 import com.revrobotics.CANSparkBase.IdleMode;
+import com.revrobotics.CANSparkBase.ControlType;
 
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
@@ -223,6 +224,10 @@ public final class Constants {
         public static final double kNeo500_3 = 3;
         public static final double kNeo500_4 = 4;
         public static final double kNeo500_5 = 5;
+    }
+
+    public static final class TestConstants {
+        public static final ControlType kMode = ControlType.kSmartMotion;
     }
 }
 

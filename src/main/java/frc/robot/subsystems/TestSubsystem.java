@@ -11,6 +11,8 @@ import com.revrobotics.SparkPIDController;
 import com.revrobotics.CANSparkBase.ControlType;
 import com.revrobotics.CANSparkBase.SoftLimitDirection;
 
+import frc.robot.Constants.TestConstants;
+
 public class TestSubsystem extends SubsystemBase {
     // Initialize motors and sensors
 
@@ -46,18 +48,20 @@ public class TestSubsystem extends SubsystemBase {
 
     public void moveTo(double value) {
         // m_motor.set(value);
-        m_pidController.setReference(value, ControlType.kSmartMotion);
-
-        System.out.println("--------begin-----------");
-        System.out.println("test position: " + m_encoder.getPosition());
-        System.out.println("test power: " + m_motor.getAppliedOutput());
-        System.out.println("test encoder" + m_encoder.getPosition());
-        System.out.println("------end----");
+        m_pidController.setReference(value, TestConstants.kMode);
 
     }
 
     public void resetEncoder() {
         m_encoder.setPosition(0);
+    }
+
+    public double getPosition() {
+        return m_encoder.getPosition();
+    }
+
+    public double getAppliedOutput() {
+        return m_motor.getAppliedOutput();
     }
 
     @Override

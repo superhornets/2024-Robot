@@ -1,0 +1,400 @@
+{
+	"kSmartMotionResult": [
+		{
+			"test position": "5.261898040771484",
+			"test power": "1.0"
+		},
+		{
+			"test position": "5.261898040771484",
+			"test power": "1.0"
+		},
+		{
+			"test position": "8.571456909179688",
+			"test power": "1.0"
+		},
+		{
+			"test position": "8.571456909179688",
+			"test power": "1.0"
+		},
+		{
+			"test position": "12.047670364379883",
+			"test power": "1.0"
+		},
+		{
+			"test position": "12.047670364379883",
+			"test power": "1.0"
+		},
+		{
+			"test position": "15.547613143920898",
+			"test power": "1.0"
+		},
+		{
+			"test position": "19.09517478942871",
+			"test power": "1.0"
+		},
+		{
+			"test position": "19.09517478942871",
+			"test power": "1.0"
+		},
+		{
+			"test position": "22.666545867919922",
+			"test power": "1.0"
+		},
+		{
+			"test position": "26.2141056060791",
+			"test power": "1.0"
+		},
+		{
+			"test position": "29.80928611755371",
+			"test power": "1.0"
+		},
+		{
+			"test position": "33.35684585571289",
+			"test power": "1.0"
+		},
+		{
+			"test position": "36.9520263671875",
+			"test power": "1.0"
+		},
+		{
+			"test position": "40.49958801269531",
+			"test power": "1.0"
+		},
+		{
+			"test position": "44.070960998535156",
+			"test power": "1.0"
+		},
+		{
+			"test position": "47.642574310302734",
+			"test power": "1.0"
+		},
+		{
+			"test position": "51.2619743347168",
+			"test power": "1.0"
+		},
+		{
+			"test position": "54.809940338134766",
+			"test power": "1.0"
+		},
+		{
+			"test position": "58.381717681884766",
+			"test power": "1.0"
+		},
+		{
+			"test position": "61.9773063659668",
+			"test power": "1.0"
+		},
+		{
+			"test position": "65.54908752441406",
+			"test power": "1.0"
+		},
+		{
+			"test position": "69.12086486816406",
+			"test power": "1.0"
+		},
+		{
+			"test position": "72.74026489257812",
+			"test power": "1.0"
+		},
+		{
+			"test position": "76.2882308959961",
+			"test power": "1.0"
+		},
+		{
+			"test position": "79.83619689941406",
+			"test power": "1.0"
+		},
+		{
+			"test position": "83.4317855834961",
+			"test power": "1.0"
+		},
+		{
+			"test position": "87.0035629272461",
+			"test power": "1.0"
+		},
+		{
+			"test position": "90.59915161132812",
+			"test power": "1.0"
+		},
+		{
+			"test position": "94.17020416259766",
+			"test power": "1.0"
+		},
+		{
+			"test position": "97.76497650146484",
+			"test power": "1.0"
+		},
+		{
+			"test position": "101.3359375",
+			"test power": "-1.0"
+		},
+		{
+			"test position": "104.26412963867188",
+			"test power": "-1.0"
+		},
+		{
+			"test position": "105.64490509033203",
+			"test power": "-1.0"
+		},
+		{
+			"test position": "105.04974365234375",
+			"test power": "-1.0"
+		},
+		{
+			"test position": "102.5976791381836",
+			"test power": "-1.0"
+		},
+		{
+			"test position": "99.50284576416016",
+			"test power": "1.0"
+		},
+		{
+			"test position": "96.8127212524414",
+			"test power": "1.0"
+		},
+		{
+			"test position": "95.59859466552734",
+			"test power": "1.0"
+		},
+		{
+			"test position": "96.45561981201172",
+			"test power": "1.0"
+		},
+		{
+			"test position": "98.9791030883789",
+			"test power": "0.0"
+		},
+		{
+			"test position": "102.05013275146484",
+			"test power": "-1.0"
+		},
+		{
+			"test position": "103.83561706542969",
+			"test power": "-1.0"
+		},
+		{
+			"test position": "103.71658325195312",
+			"test power": "-1.0"
+		},
+		{
+			"test position": "101.55020141601562",
+			"test power": "0.0"
+		},
+		{
+			"test position": "96.90794372558594",
+			"test power": "1.0"
+		},
+		{
+			"test position": "96.90794372558594",
+			"test power": "1.0"
+		},
+		{
+			"test position": "96.8365249633789",
+			"test power": "1.0"
+		},
+		{
+			"test position": "98.90768432617188",
+			"test power": "1.0"
+		},
+		{
+			"test position": "101.66922760009766",
+			"test power": "-1.0"
+		},
+		{
+			"test position": "103.19284057617188",
+			"test power": "-1.0"
+		},
+		{
+			"test position": "102.85955047607422",
+			"test power": "-1.0"
+		},
+		{
+			"test position": "100.57413482666016",
+			"test power": "-1.0"
+		},
+		{
+			"test position": "97.74117279052734",
+			"test power": "0.0"
+		},
+		{
+			"test position": "96.00330352783203",
+			"test power": "0.0"
+		},
+		{
+			"test position": "95.47956085205078",
+			"test power": "1.0"
+		},
+		{
+			"test position": "95.931884765625",
+			"test power": "1.0"
+		},
+		{
+			"test position": "98.21730041503906",
+			"test power": "1.0"
+		},
+		{
+			"test position": "101.24071502685547",
+			"test power": "-1.0"
+		},
+		{
+			"test position": "103.83561706542969",
+			"test power": "-1.0"
+		},
+		{
+			"test position": "104.88309478759766",
+			"test power": "-1.0"
+		},
+		{
+			"test position": "103.78800201416016",
+			"test power": "-1.0"
+		},
+		{
+			"test position": "101.19309997558594",
+			"test power": "1.0"
+		},
+		{
+			"test position": "98.19348907470703",
+			"test power": "1.0"
+		},
+		{
+			"test position": "96.36039733886719",
+			"test power": "1.0"
+		},
+		{
+			"test position": "96.31278228759766",
+			"test power": "1.0"
+		},
+		{
+			"test position": "98.38394165039062",
+			"test power": "-1.0"
+		},
+		{
+			"test position": "101.16929626464844",
+			"test power": "-1.0"
+		},
+		{
+			"test position": "102.81193542480469",
+			"test power": "0.0"
+		},
+		{
+			"test position": "103.38329315185547",
+			"test power": "-1.0"
+		},
+		{
+			"test position": "102.62149047851562",
+			"test power": "-1.0"
+		},
+		{
+			"test position": "100.19322967529297",
+			"test power": "1.0"
+		},
+		{
+			"test position": "97.43168640136719",
+			"test power": "1.0"
+		},
+		{
+			"test position": "96.02710723876953",
+			"test power": "1.0"
+		},
+		{
+			"test position": "96.57465362548828",
+			"test power": "1.0"
+		},
+		{
+			"test position": "98.9552993774414",
+			"test power": "0.0"
+		},
+		{
+			"test position": "101.81206512451172",
+			"test power": "0.0"
+		},
+		{
+			"test position": "102.93096923828125",
+			"test power": "-1.0"
+		},
+		{
+			"test position": "101.62162017822266",
+			"test power": "-1.0"
+		},
+		{
+			"test position": "99.02671813964844",
+			"test power": "0.0"
+		},
+		{
+			"test position": "97.09839630126953",
+			"test power": "1.0"
+		},
+		{
+			"test position": "96.71749114990234",
+			"test power": "1.0"
+		},
+		{
+			"test position": "98.59819793701172",
+			"test power": "-1.0"
+		},
+		{
+			"test position": "101.3359375",
+			"test power": "-1.0"
+		},
+		{
+			"test position": "102.95478057861328",
+			"test power": "-0.7603076100349426"
+		},
+		{
+			"test position": "102.78813171386719",
+			"test power": "-1.0"
+		},
+		{
+			"test position": "100.62174987792969",
+			"test power": "-1.0"
+		},
+		{
+			"test position": "97.76497650146484",
+			"test power": "1.0"
+		},
+		{
+			"test position": "96.02710723876953",
+			"test power": "1.0"
+		},
+		{
+			"test position": "96.07472229003906",
+			"test power": "1.0"
+		},
+		{
+			"test position": "98.19348907470703",
+			"test power": "1.0"
+		},
+		{
+			"test position": "101.00264739990234",
+			"test power": "-1.0"
+		},
+		{
+			"test position": "102.76432800292969",
+			"test power": "-0.7801446318626404"
+		},
+		{
+			"test position": "102.74051666259766",
+			"test power": "-1.0"
+		},
+		{
+			"test position": "100.64555358886719",
+			"test power": "1.0"
+		},
+		{
+			"test position": "97.81259155273438",
+			"test power": "0.0"
+		},
+		{
+			"test position": "95.88426971435547",
+			"test power": "0.7852717638015747"
+		},
+		{
+			"test position": "95.19388580322266",
+			"test power": "1.0"
+		},
+		{
+			"test position": "96.59846496582031",
+			"test power": "1.0"
+		}
+	]
+}

@@ -1,400 +1,493 @@
 {
-	"kSmartMotionResult": [
-		{
-			"test position": "5.261898040771484",
-			"test power": "1.0"
-		},
-		{
-			"test position": "5.261898040771484",
-			"test power": "1.0"
-		},
-		{
-			"test position": "8.571456909179688",
-			"test power": "1.0"
-		},
-		{
-			"test position": "8.571456909179688",
-			"test power": "1.0"
-		},
-		{
-			"test position": "12.047670364379883",
-			"test power": "1.0"
-		},
-		{
-			"test position": "12.047670364379883",
-			"test power": "1.0"
-		},
-		{
-			"test position": "15.547613143920898",
-			"test power": "1.0"
-		},
-		{
-			"test position": "19.09517478942871",
-			"test power": "1.0"
-		},
-		{
-			"test position": "19.09517478942871",
-			"test power": "1.0"
-		},
-		{
-			"test position": "22.666545867919922",
-			"test power": "1.0"
-		},
-		{
-			"test position": "26.2141056060791",
-			"test power": "1.0"
-		},
-		{
-			"test position": "29.80928611755371",
-			"test power": "1.0"
-		},
-		{
-			"test position": "33.35684585571289",
-			"test power": "1.0"
-		},
-		{
-			"test position": "36.9520263671875",
-			"test power": "1.0"
-		},
-		{
-			"test position": "40.49958801269531",
-			"test power": "1.0"
-		},
-		{
-			"test position": "44.070960998535156",
-			"test power": "1.0"
-		},
-		{
-			"test position": "47.642574310302734",
-			"test power": "1.0"
-		},
-		{
-			"test position": "51.2619743347168",
-			"test power": "1.0"
-		},
-		{
-			"test position": "54.809940338134766",
-			"test power": "1.0"
-		},
-		{
-			"test position": "58.381717681884766",
-			"test power": "1.0"
-		},
-		{
-			"test position": "61.9773063659668",
-			"test power": "1.0"
-		},
-		{
-			"test position": "65.54908752441406",
-			"test power": "1.0"
-		},
-		{
-			"test position": "69.12086486816406",
-			"test power": "1.0"
-		},
-		{
-			"test position": "72.74026489257812",
-			"test power": "1.0"
-		},
-		{
-			"test position": "76.2882308959961",
-			"test power": "1.0"
-		},
-		{
-			"test position": "79.83619689941406",
-			"test power": "1.0"
-		},
-		{
-			"test position": "83.4317855834961",
-			"test power": "1.0"
-		},
-		{
-			"test position": "87.0035629272461",
-			"test power": "1.0"
-		},
-		{
-			"test position": "90.59915161132812",
-			"test power": "1.0"
-		},
-		{
-			"test position": "94.17020416259766",
-			"test power": "1.0"
-		},
-		{
-			"test position": "97.76497650146484",
-			"test power": "1.0"
-		},
-		{
-			"test position": "101.3359375",
-			"test power": "-1.0"
-		},
-		{
-			"test position": "104.26412963867188",
-			"test power": "-1.0"
-		},
-		{
-			"test position": "105.64490509033203",
-			"test power": "-1.0"
-		},
-		{
-			"test position": "105.04974365234375",
-			"test power": "-1.0"
-		},
-		{
-			"test position": "102.5976791381836",
-			"test power": "-1.0"
-		},
-		{
-			"test position": "99.50284576416016",
-			"test power": "1.0"
-		},
-		{
-			"test position": "96.8127212524414",
-			"test power": "1.0"
-		},
-		{
-			"test position": "95.59859466552734",
-			"test power": "1.0"
-		},
-		{
-			"test position": "96.45561981201172",
-			"test power": "1.0"
-		},
-		{
-			"test position": "98.9791030883789",
-			"test power": "0.0"
-		},
-		{
-			"test position": "102.05013275146484",
-			"test power": "-1.0"
-		},
-		{
-			"test position": "103.83561706542969",
-			"test power": "-1.0"
-		},
-		{
-			"test position": "103.71658325195312",
-			"test power": "-1.0"
-		},
-		{
-			"test position": "101.55020141601562",
-			"test power": "0.0"
-		},
-		{
-			"test position": "96.90794372558594",
-			"test power": "1.0"
-		},
-		{
-			"test position": "96.90794372558594",
-			"test power": "1.0"
-		},
-		{
-			"test position": "96.8365249633789",
-			"test power": "1.0"
-		},
-		{
-			"test position": "98.90768432617188",
-			"test power": "1.0"
-		},
-		{
-			"test position": "101.66922760009766",
-			"test power": "-1.0"
-		},
-		{
-			"test position": "103.19284057617188",
-			"test power": "-1.0"
-		},
-		{
-			"test position": "102.85955047607422",
-			"test power": "-1.0"
-		},
-		{
-			"test position": "100.57413482666016",
-			"test power": "-1.0"
-		},
-		{
-			"test position": "97.74117279052734",
-			"test power": "0.0"
-		},
-		{
-			"test position": "96.00330352783203",
-			"test power": "0.0"
-		},
-		{
-			"test position": "95.47956085205078",
-			"test power": "1.0"
-		},
-		{
-			"test position": "95.931884765625",
-			"test power": "1.0"
-		},
-		{
-			"test position": "98.21730041503906",
-			"test power": "1.0"
-		},
-		{
-			"test position": "101.24071502685547",
-			"test power": "-1.0"
-		},
-		{
-			"test position": "103.83561706542969",
-			"test power": "-1.0"
-		},
-		{
-			"test position": "104.88309478759766",
-			"test power": "-1.0"
-		},
-		{
-			"test position": "103.78800201416016",
-			"test power": "-1.0"
-		},
-		{
-			"test position": "101.19309997558594",
-			"test power": "1.0"
-		},
-		{
-			"test position": "98.19348907470703",
-			"test power": "1.0"
-		},
-		{
-			"test position": "96.36039733886719",
-			"test power": "1.0"
-		},
-		{
-			"test position": "96.31278228759766",
-			"test power": "1.0"
-		},
-		{
-			"test position": "98.38394165039062",
-			"test power": "-1.0"
-		},
-		{
-			"test position": "101.16929626464844",
-			"test power": "-1.0"
-		},
-		{
-			"test position": "102.81193542480469",
-			"test power": "0.0"
-		},
-		{
-			"test position": "103.38329315185547",
-			"test power": "-1.0"
-		},
-		{
-			"test position": "102.62149047851562",
-			"test power": "-1.0"
-		},
-		{
-			"test position": "100.19322967529297",
-			"test power": "1.0"
-		},
-		{
-			"test position": "97.43168640136719",
-			"test power": "1.0"
-		},
-		{
-			"test position": "96.02710723876953",
-			"test power": "1.0"
-		},
-		{
-			"test position": "96.57465362548828",
-			"test power": "1.0"
-		},
-		{
-			"test position": "98.9552993774414",
-			"test power": "0.0"
-		},
-		{
-			"test position": "101.81206512451172",
-			"test power": "0.0"
-		},
-		{
-			"test position": "102.93096923828125",
-			"test power": "-1.0"
-		},
-		{
-			"test position": "101.62162017822266",
-			"test power": "-1.0"
-		},
-		{
-			"test position": "99.02671813964844",
-			"test power": "0.0"
-		},
-		{
-			"test position": "97.09839630126953",
-			"test power": "1.0"
-		},
-		{
-			"test position": "96.71749114990234",
-			"test power": "1.0"
-		},
-		{
-			"test position": "98.59819793701172",
-			"test power": "-1.0"
-		},
-		{
-			"test position": "101.3359375",
-			"test power": "-1.0"
-		},
-		{
-			"test position": "102.95478057861328",
-			"test power": "-0.7603076100349426"
-		},
-		{
-			"test position": "102.78813171386719",
-			"test power": "-1.0"
-		},
-		{
-			"test position": "100.62174987792969",
-			"test power": "-1.0"
-		},
-		{
-			"test position": "97.76497650146484",
-			"test power": "1.0"
-		},
-		{
-			"test position": "96.02710723876953",
-			"test power": "1.0"
-		},
-		{
-			"test position": "96.07472229003906",
-			"test power": "1.0"
-		},
-		{
-			"test position": "98.19348907470703",
-			"test power": "1.0"
-		},
-		{
-			"test position": "101.00264739990234",
-			"test power": "-1.0"
-		},
-		{
-			"test position": "102.76432800292969",
-			"test power": "-0.7801446318626404"
-		},
-		{
-			"test position": "102.74051666259766",
-			"test power": "-1.0"
-		},
-		{
-			"test position": "100.64555358886719",
-			"test power": "1.0"
-		},
-		{
-			"test position": "97.81259155273438",
-			"test power": "0.0"
-		},
-		{
-			"test position": "95.88426971435547",
-			"test power": "0.7852717638015747"
-		},
-		{
-			"test position": "95.19388580322266",
-			"test power": "1.0"
-		},
-		{
-			"test position": "96.59846496582031",
-			"test power": "1.0"
-		}
-	]
+"test position": "9.738137245178223",
+"test power": "0.8288521766662598"
+},
+{
+"test position": "9.738137245178223",
+"test power": "0.8288521766662598"
+},
+{
+"test position": "9.738137245178223",
+"test power": "0.8288521766662598"
+},
+{
+"test position": "12.904799461364746",
+"test power": "0.8213141560554504"
+},
+{
+"test position": "12.904799461364746",
+"test power": "0.8213141560554504"
+},
+{
+"test position": "12.904799461364746",
+"test power": "0.8138371109962463"
+},
+{
+"test position": "16.071414947509766",
+"test power": "0.8061769604682922"
+},
+{
+"test position": "16.071414947509766",
+"test power": "0.8061769604682922"
+},
+{
+"test position": "19.285648345947266",
+"test power": "0.791070282459259"
+},
+{
+"test position": "22.285598754882812",
+"test power": "0.7758110165596008"
+},
+{
+"test position": "25.309358596801758",
+"test power": "0.7606127858161926"
+Joystick axis 3 on port 1 not available, check if controller is plugged in
+}Warning at edu.wpi.first.wpilibj.DriverStation.reportJoystickUnpluggedWarning(DriverStation.java:1364): Joystick axis 3 on port 1 not available, check if controller is plugged in
+,
+{
+"test position": "28.28550148010254",
+"test power": "0.7454451322555542"
+},
+{
+"test position": "31.190216064453125",
+"test power": "0.730124831199646"
+},
+{
+"test position": "34.04731369018555",
+"test power": "0.7149571180343628"
+},
+{
+"test position": "36.85679244995117",
+"test power": "0.6996368169784546"
+},
+{
+"test position": "39.54722213745117",
+"test power": "0.6843775510787964"
+},
+{
+"test position": "42.21384811401367",
+"test power": "0.669148862361908"
+},
+{
+"test position": "44.856658935546875",
+"test power": "0.6539506316184998"
+},
+{
+"test position": "47.38064193725586",
+"test power": "0.6388744711875916"
+},
+{
+"test position": "49.85707473754883",
+"test power": "0.6235236525535583"
+},
+{
+"test position": "52.309696197509766",
+"test power": "0.6084170341491699"
+},
+{
+"test position": "54.66706848144531",
+"test power": "0.5932493209838867"
+},
+{
+"test position": "56.953006744384766",
+"test power": "0.5779595375061035"
+},
+{
+"test position": "59.26275634765625",
+"test power": "0.5627613067626953"
+},
+{
+"test position": "61.38201141357422",
+"test power": "0.5476546287536621"
+},
+{
+"test position": "63.52507781982422",
+"test power": "0.5324259400367737"
+},
+{
+"test position": "65.59671020507812",
+"test power": "0.5173192620277405"
+},
+{
+"test position": "67.5969009399414",
+"test power": "0.5020905137062073"
+},
+{
+"test position": "69.52566528320312",
+"test power": "0.48695334792137146"
+},
+{
+"test position": "71.40679931640625",
+"test power": "0.47175511717796326"
+},
+{
+"test position": "73.24031066894531",
+"test power": "0.45640429854393005"
+},
+{
+"test position": "75.02619934082031",
+"test power": "0.44114506244659424"
+},
+{
+"test position": "76.76446533203125",
+"test power": "0.42600786685943604"
+},
+{
+"test position": "78.38367462158203",
+"test power": "0.4107486307621002"
+},
+{
+"test position": "79.97906494140625",
+"test power": "0.395336776971817"
+},
+{
+"test position": "81.55064392089844",
+"test power": "0.3800469934940338"
+},
+{
+"test position": "82.97935485839844",
+"test power": "0.364848792552948"
+},
+{
+"test position": "84.40806579589844",
+"test power": "0.3495284914970398"
+},
+{
+"test position": "85.76534271240234",
+"test power": "0.3340556025505066"
+},
+{
+"test position": "87.05118560791016",
+"test power": "0.3186742663383484"
+},
+{
+"test position": "88.28939819335938",
+"test power": "0.3034455478191376"
+},
+{
+"test position": "89.47999572753906",
+"test power": "0.28800317645072937"
+},
+{
+"test position": "90.55152893066406",
+"test power": "0.27271339297294617"
+},
+{
+"test position": "91.62291717529297",
+"test power": "0.25720998644828796"
+},
+{
+"test position": "92.62278747558594",
+"test power": "0.24149297177791595"
+},
+{
+"test position": "93.55123901367188",
+"test power": "0.22629474103450775"
+},
+{
+"test position": "94.40827178955078",
+"test power": "0.21085238456726074"
+},
+{
+"test position": "95.24149322509766",
+"test power": "0.19510483741760254"
+},
+{
+"test position": "95.9556884765625",
+"test power": "0.17954039573669434"
+},
+{
+"test position": "96.64607238769531",
+"test power": "0.16415905952453613"
+},
+{
+"test position": "97.28884887695312",
+"test power": "0.14841151237487793"
+},
+{
+"test position": "97.83639526367188",
+"test power": "0.13217566907405853"
+},
+{
+"test position": "98.33633422851562",
+"test power": "0.11676381528377533"
+},
+{
+"test position": "98.76484680175781",
+"test power": "0.10086367279291153"
+},
+{
+"test position": "99.145751953125",
+"test power": "0.08520767837762833"
+},
+{
+"test position": "99.45523071289062",
+"test power": "0.06860560923814774"
+},
+{
+"test position": "99.71710205078125",
+"test power": "0.052003540098667145"
+},
+{
+"test position": "99.90755462646484",
+"test power": "0.022797327488660812"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004730368964374065"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.014374217949807644"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004699850454926491"
+Joystick axis 5 on port 1 not available, check if controller is plugged in
+}Warning at edu.wpi.first.wpilibj.DriverStation.reportJoystickUnpluggedWarning(DriverStation.java:1364): Joystick axis 5 on port 1 not available, check if controller is plugged in
+,
+{
+"test position": "100.00277709960938",
+"test power": "-0.004699850454926491"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004669331945478916"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004669331945478916"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.0046388134360313416"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.0046388134360313416"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.0046388134360313416"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+[CAN SPARK] IDs: 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 13, 15, 16, 17, WPILib or External HAL Error: CAN: Message not found Periodic Status 0
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+Joystick axis 3 on port 1 not available, check if controller is plugged in
+}Warning at edu.wpi.first.wpilibj.DriverStation.reportJoystickUnpluggedWarning(DriverStation.java:1364): Joystick axis 3 on port 1 not available, check if controller is plugged in
+,
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+},
+{
+"test position": "100.00277709960938",
+"test power": "-0.004608294926583767"
+}
+]
 }

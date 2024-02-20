@@ -227,7 +227,7 @@ public final class Constants {
     }
 
     public static final class TestConstants {
-        public static final ControlType kMode = ControlType.kSmartMotion;
+        public static final ControlType kMode = ControlType.kPosition;
     }
 }
 

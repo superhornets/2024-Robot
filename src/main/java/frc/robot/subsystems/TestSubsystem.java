@@ -34,7 +34,7 @@ public class TestSubsystem extends SubsystemBase {
         m_motor.enableSoftLimit(SoftLimitDirection.kForward, false);
         m_motor.enableSoftLimit(SoftLimitDirection.kReverse, false);
 
-        m_pidController.setP(0.00000008);
+        m_pidController.setP(0.008);
 
         m_pidController.setSmartMotionMaxAccel(10000000000.0, 0);
         m_pidController.setSmartMotionMaxVelocity(10000000000.0, 0);

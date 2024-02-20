@@ -109,11 +109,11 @@ public class RobotContainer {
         m_operatorController.povDown().whileTrue(new ShooterLowerCommand(m_angleSubsystem));
         //climber
         m_leftClimber.setDefaultCommand(new RunCommand(() -> {
-            m_leftClimber.set(MathUtil.applyDeadband(m_operatorController.getLeftY(), OIConstants.kClimberDeadband)
+            m_leftClimber.set(MathUtil.applyDeadband(-m_operatorController.getLeftY(), OIConstants.kClimberDeadband)
                     * ClimberConstants.kPower);
         }, m_leftClimber));
         m_rightClimber.setDefaultCommand(new RunCommand(() -> {
-            m_rightClimber.set(MathUtil.applyDeadband(m_operatorController.getRightY(), OIConstants.kClimberDeadband)
+            m_rightClimber.set(MathUtil.applyDeadband(-m_operatorController.getRightY(), OIConstants.kClimberDeadband)
                     * ClimberConstants.kPower);
         }, m_rightClimber));
 

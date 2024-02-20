@@ -20,10 +20,10 @@ public class IndexerSubsystem extends SubsystemBase {
         // Initialize anything else that couldn't be initialized yet
 
         // Configure anything
-        m_motorRight.setInverted(IndexerConstants.kMotorInverted);
-        m_motorLeft.setInverted(IndexerConstants.kMotorInverted);
+        m_motorRight.follow(m_motorLeft, true);
 
-        m_motorRight.follow(m_motorLeft);
+        // m_motorRight.setInverted(IndexerConstants.kMotorRightInverted);
+        m_motorLeft.setInverted(IndexerConstants.kMotorLeftInverted);
 
         this.setDefaultCommand(new RunCommand(() -> {
             m_motorLeft.set(0);
@@ -48,7 +48,7 @@ public class IndexerSubsystem extends SubsystemBase {
     }
 
     public void shoot() {
-        m_motorLeft.set(IndexerConstants.kIntakeSpeed);
+        m_motorLeft.set(IndexerConstants.kFeedSpeed);
     }
 
     public boolean getNoteAcquired() {

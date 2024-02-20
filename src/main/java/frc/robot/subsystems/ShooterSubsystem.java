@@ -6,6 +6,7 @@ import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkPIDController;
 import com.revrobotics.CANSparkBase.ControlType;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ShooterConstants;
 
@@ -58,5 +59,9 @@ public class ShooterSubsystem extends SubsystemBase {
         m_rightPIDController.setReference(speed, ControlType.kVelocity);
     }
    
+    @Override
+    public void periodic() {
+        SmartDashboard.putNumber("velocity", m_leftEncoder.getVelocity());
+    }
 
 }

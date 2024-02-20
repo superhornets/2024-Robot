@@ -35,8 +35,9 @@ public class IntakeSubsystem extends SubsystemBase {
 
     //Run intake
     public void takeInAtSpeed(double speed) {
-        m_motorTop.set(speed);
-        m_motorBottom.set(speed);
+        double motorSpeed = speed * IntakeConstants.kIntakeAtSpeed;
+        m_motorTop.set(motorSpeed);
+        m_motorBottom.set(motorSpeed);
     }
 
     //Run outtake

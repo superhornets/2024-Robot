@@ -19,7 +19,7 @@ public class ResetCommand extends Command {
     public void initialize() {
         firstLine = true;
         System.out.println("{");
-        System.out.println("\t\"" + TestConstants.kMode + "\": [");
+        System.out.println("\t\"" + TestConstants.kMode + "Result\": [");
         m_arm.resetEncoder();
     }
 

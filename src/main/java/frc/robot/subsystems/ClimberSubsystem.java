@@ -15,18 +15,21 @@ public class ClimberSubsystem extends SubsystemBase {
     private CANSparkMax m_motor;
     private RelativeEncoder m_encoder;
     private SparkLimitSwitch m_limitSwitch;
+    //private SparkLimitSwitch m_limitSwitchForward;
 
-    public ClimberSubsystem(int canId) {
+    public ClimberSubsystem(int canId, boolean isInverted) {
         // Initialize anything else that couldn't be initialized yetzz
         m_motor = new CANSparkMax(canId, MotorType.kBrushless);
         m_encoder = m_motor.getEncoder();
         m_limitSwitch = m_motor.getReverseLimitSwitch(SparkLimitSwitch.Type.kNormallyOpen);
+        //m_limitSwitchForward = m_motor.getForwardLimitSwitch(SparkLimitSwitch.Type.kNormallyOpen);
+
         m_motor.getForwardLimitSwitch(SparkLimitSwitch.Type.kNormallyOpen);
         m_motor.setSoftLimit(SoftLimitDirection.kForward, ClimberConstants.kMaxHeight);
         m_motor.enableSoftLimit(SoftLimitDirection.kForward, true);
 
         // Configure anything
-        m_motor.setInverted(ClimberConstants.kMotorInverted);
+        m_motor.setInverted(isInverted);
         m_encoder.setPositionConversionFactor(ClimberConstants.kEncoderDistancePerRevolution);
     }
 
@@ -43,6 +46,7 @@ public class ClimberSubsystem extends SubsystemBase {
 
         if (m_limitSwitch.isPressed()) {
             m_encoder.setPosition(0);
+
         }
 
         String label = "motor value" + m_motor.getDeviceId();

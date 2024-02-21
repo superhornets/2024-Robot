@@ -149,7 +149,7 @@ public final class Constants {
         public static final double kPower = 0.5;
         public static final double kRetractPower = -0.1;
         public static final double kExtendPower = 0.1;
-        public static final float kMaxHeight = 24; // maximum height of climber arms in inches
+        public static final float kMaxHeight = 190; // maximum height of climber arms in inches
         public static final double kEncoderDistancePerRevolution = 1; // moteder ravlosen
     }
 
@@ -197,7 +197,7 @@ public final class Constants {
     }
     public static final class ShooterAngleConstants {
         public static final int kMotorCanId = 15;
-        public static final boolean kMotorInverted = false;
+        public static final boolean kMotorInverted = true;
         public static final double kRaiseSpeed = 0.1;
         public static final double kLowerSpeed = -0.05;
         public static final double kP = 0.000001;

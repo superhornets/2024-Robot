@@ -52,8 +52,8 @@ public class ShooterAngleSubsystem extends SubsystemBase {
     }
 
     public void moveTo(double angle) {
-        // m_pidController.setReference(angle, ControlType.kSmartMotion);
-        m_motor.set(0);
+        m_pidController.setReference(angle, ControlType.kSmartMotion);
+        //m_motor.set(0);
     }
 
     public void moveUp() {

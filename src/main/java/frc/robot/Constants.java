@@ -198,9 +198,9 @@ public final class Constants {
     public static final class ShooterAngleConstants {
         public static final int kMotorCanId = 15;
         public static final boolean kMotorInverted = true;
-        public static final double kRaiseSpeed = 0.1;
+        public static final double kRaiseSpeed = 0.15;
         public static final double kLowerSpeed = -0.05;
-        public static final double kP = 0.000001;
+        public static final double kP = 0.000003;
         public static final double kI = 0;
         public static final double kD = 0;
         public static final double kSubwooferPosition = 5; //degrees

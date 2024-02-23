@@ -33,6 +33,7 @@ import frc.robot.Commands.ShooterAngleCommands.ShooterSubwooferCommand;
 import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.ClimberConstants;
 import frc.robot.Constants.DriveConstants;
+import frc.robot.Constants.ModuleConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
@@ -81,9 +82,11 @@ public class RobotContainer {
                 // Turning is controlled by the X axis of the right stick.
                 new RunCommand(
                         () -> m_robotDrive.drive(
-                                -.5 * MathUtil.applyDeadband(m_driverController.getLeftY(), OIConstants.kDriveDeadband),
-                                .5 * -MathUtil.applyDeadband(m_driverController.getLeftX(), OIConstants.kDriveDeadband),
-                                -.5 * MathUtil.applyDeadband(m_driverController.getRightX(),
+                                ModuleConstants.kDriveSpeedY * MathUtil.applyDeadband(m_driverController.getLeftY(),
+                                        OIConstants.kDriveDeadband),
+                                ModuleConstants.kDriveSpeedX * -MathUtil.applyDeadband(m_driverController.getLeftX(),
+                                        OIConstants.kDriveDeadband),
+                                ModuleConstants.kDriveSpeedRot * MathUtil.applyDeadband(m_driverController.getRightX(),
                                         OIConstants.kDriveDeadband),
                                 true, true),
                         m_robotDrive));
@@ -103,9 +106,9 @@ public class RobotContainer {
         m_driverController.leftBumper().whileTrue(new IndexerRunToSensorCommand(m_indexer));
         m_driverController.leftTrigger(.1).whileTrue(new IndexerRunToSensorCommand(m_indexer));
         //Shooter angle
-        m_operatorController.b().onTrue(new ShooterAngleAmpCommand(m_angleSubsystem));
-        m_operatorController.a().onTrue(new ShooterSubwooferCommand(m_angleSubsystem));
-        m_operatorController.x().onTrue(new ShooterPodiumCommand(m_angleSubsystem));
+        //m_operatorController.b().onTrue(new ShooterAngleAmpCommand(m_angleSubsystem));
+        //m_operatorController.a().onTrue(new ShooterSubwooferCommand(m_angleSubsystem));
+        //m_operatorController.x().onTrue(new ShooterPodiumCommand(m_angleSubsystem));
         m_operatorController.povUp().whileTrue(new ShooterRaiseCommand(m_angleSubsystem));
         m_operatorController.povDown().whileTrue(new ShooterLowerCommand(m_angleSubsystem));
         //climber

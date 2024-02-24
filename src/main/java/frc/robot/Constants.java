@@ -200,8 +200,8 @@ public final class Constants {
         public static final boolean kMotorInverted = true;
         public static final double kRaiseSpeed = 0.15;
         public static final double kLowerSpeed = -0.05;
-        public static final double kP = 0.000003;
-        public static final double kI = 0;
+        public static final double kP = 0.001;
+        public static final double kI = 0.0000001;
         public static final double kD = 0;
         public static final double kSubwooferPosition = 5; //degrees
         public static final double kPodiumPosition = 2.5; //degrees
@@ -210,12 +210,12 @@ public final class Constants {
         public static final double kAbsoluteEncoderConversion = 360; //degrees
         public static final double kAbsoluteEncoderPositionPIDMinInput = 0; // degrees
         public static final double kAbsoluteEncoderPositionPIDMaxInput = kAbsoluteEncoderConversion; // degrees
-        public static final double kMaxVelocity = 18; // degrees/sec
-        public static final double kMinVelocity = -18; // degrees/sec
-        public static final double kMaxAccel = 18; // degrees/sec*sec
+        public static final double kMaxVelocity = 180; // degrees/sec
+        public static final double kMinVelocity = -180; // degrees/sec
+        public static final double kMaxAccel = 180; // degrees/sec*sec
         public static final double kMinOutput = -1;
         public static final double kMaxOutput = 1;
-        public static final boolean kEncoderInverted = false;
+        public static final boolean kEncoderInverted = true;
     }
 
     public static final class ExactGearRatioConstants {

@@ -8,6 +8,7 @@ import com.revrobotics.SparkLimitSwitch;
 import com.revrobotics.SparkPIDController;
 import com.revrobotics.CANSparkBase.ControlType;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ShooterAngleConstants;
 
@@ -41,6 +42,10 @@ public class ShooterAngleSubsystem extends SubsystemBase {
         m_pidController.setSmartMotionMaxVelocity(ShooterAngleConstants.kMaxVelocity, 0);
         m_pidController.setSmartMotionMaxAccel(ShooterAngleConstants.kMaxAccel, 0);
         m_pidController.setOutputRange(ShooterAngleConstants.kMinOutput, ShooterAngleConstants.kMaxOutput);
+
+        this.setDefaultCommand(new RunCommand(() -> {
+            holdPosition();
+        }, this));
     }
 
     public double getPosition() {
@@ -57,11 +62,15 @@ public class ShooterAngleSubsystem extends SubsystemBase {
     }
 
     public void moveUp() {
-        m_pidController.setReference(ShooterAngleConstants.kRaiseSpeed, ControlType.kDutyCycle);
+        m_pidController.setReference((m_encoder.getPosition() + 15), ControlType.kSmartMotion);
     }
 
     public void moveDown() {
-        m_pidController.setReference(ShooterAngleConstants.kLowerSpeed, ControlType.kDutyCycle);
+        m_pidController.setReference((m_encoder.getPosition() - 15), ControlType.kSmartMotion);
+    }
+
+    public void holdPosition() {
+        m_pidController.setReference(m_encoder.getPosition(), ControlType.kSmartMotion);
     }
 
     @Override

@@ -24,8 +24,8 @@ public class ShooterRaiseCommand extends Command {
 
     @Override
     public void end(boolean interrupted) {
-        double position = m_angleSubsystem.getPosition();
-        m_angleSubsystem.moveTo(position);
+        //double position = m_angleSubsystem.getPosition();
+        // m_angleSubsystem.moveTo(position);
     }
 
     @Override

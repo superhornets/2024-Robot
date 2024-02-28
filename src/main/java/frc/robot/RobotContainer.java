@@ -21,11 +21,18 @@ import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.VisionAprilTagSubsystem;
+import frc.robot.subsystems.VisionNoteSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SwerveControllerCommand;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import java.util.List;
+
+import org.photonvision.EstimatedRobotPose;
+
+import frc.robot.Commands.DriveCommands.DriveRotateToNoteCommand;
 import frc.robot.Commands.DriveCommands.GarbageCommand;
 
 import com.pathplanner.lib.auto.AutoBuilder;
@@ -40,9 +47,11 @@ public class RobotContainer {
     private final SendableChooser<Command> autoChooser;
     // The robot's subsystems
     private final DriveSubsystem m_robotDrive = new DriveSubsystem();
+    private final VisionNoteSubsystem m_visionNoteSubsystem = new VisionNoteSubsystem();
+    private final VisionAprilTagSubsystem m_visionAprilTagSubsystem = new VisionAprilTagSubsystem();
 
     // The driver's controller
-    XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);
+    CommandXboxController m_driverController = new CommandXboxController(OIConstants.kDriverControllerPort);
 
     /**
      * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -68,13 +77,19 @@ public class RobotContainer {
                                 true, true),
                         m_robotDrive));
 
-        new JoystickButton(m_driverController, Button.kR1.value)
-                .whileTrue(new GarbageCommand());
-
+        m_driverController.a().whileTrue(new DriveRotateToNoteCommand(m_robotDrive, m_visionNoteSubsystem));
     }
 
     public Command getAutonomousCommand() {
         return autoChooser.getSelected();
+    }
+
+    public void robotPeriodic() {
+        if (m_visionAprilTagSubsystem.getEstimatedGlobalPose(m_robotDrive.getPose()).isPresent()) {
+            EstimatedRobotPose robotPose = m_visionAprilTagSubsystem.getEstimatedGlobalPose(m_robotDrive.getPose())
+                    .orElse(null);
+            m_robotDrive.odometryAddVisionMeasurement(robotPose);
+        }
     }
 
     /**

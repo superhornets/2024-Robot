@@ -63,6 +63,9 @@ public final class Constants {
         public static final int kRearRightTurningCanId = 4;
 
         public static final boolean kGyroReversed = true;
+
+        public static final double kTurnControllerTolerance = 3;//degrees
+        public static final double kTurnControllerToleranceAcc = .5; //degrees/s
     }
 
     public static final class ModuleConstants {
@@ -144,5 +147,15 @@ public final class Constants {
         public static final int kMotorCanId = -123;
         public static final boolean kMotorInverted = false;
         public static final double kMaxExtension = 20.0; // Some unit
+    }
+
+    public static final class VisionAprilTagConstants {
+        public static final double kXOffset = 0;
+        public static final double kYOffset = 0;
+        public static final double kZOffset = 0;
+        public static final double kRollOffset = 0;
+        public static final double kPitchOffset = 0;
+        public static final double kYawOffset = 0;
+
     }
 }

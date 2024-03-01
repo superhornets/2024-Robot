@@ -166,10 +166,10 @@ public final class Constants {
         public static final double kXOffset = -10;
         public static final double kYOffset = 2;
         public static final double kZOffset = 15.25;
-        public static final double kRollOffset = 0;
+        public static final double kRollOffset = 10;
         public static final double kPitchOffset = 0;
         public static final double kYawOffset = 180;
-
+    }
     public static final class IntakeConstants {
         public static final int kMotorTopCanId = 9;
         public static final int kMotorBottomCanId = 10;
@@ -238,4 +238,5 @@ public final class Constants {
         public static final double kNeo500_5 = 5;
     }
 }
+
 

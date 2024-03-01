@@ -119,7 +119,7 @@ public class DriveSubsystem extends SubsystemBase {
                         m_rearRight.getPosition()
                 });
 
-        System.out.println(getRobotRelativeSpeeds());
+        //System.out.println(getRobotRelativeSpeeds());
         m_field.setRobotPose(m_odometry.getEstimatedPosition());
         //System.out.println("fr: " + m_frontRight.getState() + "fl: " + m_frontLeft.getState() + " rr: "
         //+ m_rearRight.getState() + " rl: " + m_rearLeft.getState());

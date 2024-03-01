@@ -150,12 +150,12 @@ public final class Constants {
     }
 
     public static final class VisionAprilTagConstants {
-        public static final double kXOffset = 0;
-        public static final double kYOffset = 0;
-        public static final double kZOffset = 0;
+        public static final double kXOffset = -10;
+        public static final double kYOffset = 2;
+        public static final double kZOffset = 15.25;
         public static final double kRollOffset = 0;
         public static final double kPitchOffset = 0;
-        public static final double kYawOffset = 0;
+        public static final double kYawOffset = 180;
 
     }
 }

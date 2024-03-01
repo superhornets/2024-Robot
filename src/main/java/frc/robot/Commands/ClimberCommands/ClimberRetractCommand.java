@@ -1,18 +1,18 @@
-package frc.robot.Commands;
+package frc.robot.Commands.ClimberCommands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.LegSubsystem;
+import frc.robot.Constants.ClimberConstants;
+import frc.robot.subsystems.ClimberSubsystem;
 
-public class WalkCommand extends Command {
+public class ClimberRetractCommand extends Command {
     // Declare subsystem variables
-    private final LegSubsystem m_leg;
+    private final ClimberSubsystem m_climber;
 
     // Declare subsystem state (i.e. status) and initialize
-    private boolean goodHealth = true;
 
-    public WalkCommand(LegSubsystem leg) {
-        addRequirements(leg);
-        m_leg = leg;
+    public ClimberRetractCommand(ClimberSubsystem climber) {
+        addRequirements(climber);
+        m_climber = climber;
     }
 
     @Override
@@ -22,14 +22,7 @@ public class WalkCommand extends Command {
 
     @Override
     public void execute() {
-        // Continue walking
-        if (goodHealth) {
-            m_leg.extend();
-        }
-
-        if (m_leg.isOverExtended()) {
-            goodHealth = false;
-        }
+        m_climber.set(ClimberConstants.kRetractPower);
     }
 
     @Override

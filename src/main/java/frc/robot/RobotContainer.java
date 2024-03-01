@@ -18,6 +18,7 @@ import frc.robot.Commands.IntakeCommands.IntakeCommand;
 import frc.robot.Commands.IntakeCommands.OuttakeCommand;
 import frc.robot.Commands.ClimberCommands.ClimberExtendCommand;
 import frc.robot.Commands.ClimberCommands.ClimberRetractCommand;
+import frc.robot.Commands.DriveCommands.DriveResetYaw;
 import frc.robot.Commands.DriveCommands.DriveSetXCommand;
 import frc.robot.Commands.IndexerCommands.IndexerRunToSensorCommand;
 import frc.robot.Commands.IndexerCommands.IndexerShootCommand;
@@ -80,15 +81,20 @@ public class RobotContainer {
                 // The left stick controls translation of the robot.
                 // Turning is controlled by the X axis of the right stick.
                 new RunCommand(
-                        () -> m_robotDrive.drive(
-                                -.5 * MathUtil.applyDeadband(m_driverController.getLeftY(), OIConstants.kDriveDeadband),
-                                .5 * -MathUtil.applyDeadband(m_driverController.getLeftX(), OIConstants.kDriveDeadband),
-                                -.5 * MathUtil.applyDeadband(m_driverController.getRightX(),
+                        () -> m_robotDrive.teleOpDrive(
+                                -MathUtil.applyDeadband(m_driverController.getLeftY(), OIConstants.kDriveDeadband),
+                                -MathUtil.applyDeadband(m_driverController.getLeftX(), OIConstants.kDriveDeadband),
+                                -MathUtil.applyDeadband(m_driverController.getRightX(),
                                         OIConstants.kDriveDeadband),
-                                true, true),
+                                m_driverController.b().getAsBoolean(), true,
+                                m_driverController.rightTrigger().getAsBoolean(),
+                                m_driverController.rightBumper().getAsBoolean()),
                         m_robotDrive));
 
         m_driverController.x().whileTrue(new DriveSetXCommand(m_robotDrive));
+
+        // NavX
+        m_driverController.a().onTrue(new DriveResetYaw(m_robotDrive));
 
         // intake
         m_driverController.leftBumper().whileTrue(new IntakeCommand(m_intake));

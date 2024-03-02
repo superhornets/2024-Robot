@@ -214,9 +214,9 @@ public final class Constants {
         public static final boolean kMotorInverted = true;
         public static final double kRaiseSpeed = 0.15;
         public static final double kLowerSpeed = -0.05;
-        public static final double kP = 0.0009;
-        public static final double kI = 0.0000000001;
-        public static final double kD = 0.001;
+        public static final double kP = 0.009;
+        public static final double kI = 0.000002;
+        public static final double kD = 0.00;
         public static final double kSubwooferPosition = 9; //degrees
         public static final double kPodiumPosition = 28; //degrees
         public static final double kAmpPosition = 100; //degrees
@@ -227,7 +227,7 @@ public final class Constants {
         public static final double kMaxVelocity = 180; // degrees/sec
         public static final double kMinVelocity = -180; // degrees/sec
         public static final double kMaxAccel = 180; // degrees/sec*sec
-        public static final double kMinOutput = -1;
+        public static final double kMinOutput = -.25;
         public static final double kMaxOutput = 1;
         public static final boolean kEncoderInverted = true;
     }

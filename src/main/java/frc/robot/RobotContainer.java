@@ -17,6 +17,28 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.PS4Controller.Button;
+<<<<<<< Updated upstream
+=======
+import frc.robot.Commands.IntakeCommands.IntakeAtSpeedCommand;
+import frc.robot.Commands.IntakeCommands.IntakeCommand;
+import frc.robot.Commands.IntakeCommands.OuttakeCommand;
+import frc.robot.Commands.ClimberCommands.ClimberExtendCommand;
+import frc.robot.Commands.ClimberCommands.ClimberRetractCommand;
+import frc.robot.Commands.DriveCommands.DriveResetYaw;
+import frc.robot.Commands.DriveCommands.DriveSetXCommand;
+import frc.robot.Commands.IndexerCommands.IndexerRunToSensorCommand;
+import frc.robot.Commands.IndexerCommands.IndexerShootCommand;
+import frc.robot.Commands.ShooterCommands.ShooterRunAmpCommand;
+import frc.robot.Commands.ShooterCommands.ShooterRunPodiumCommand;
+import frc.robot.Commands.ShooterCommands.ShooterRunSubwooferCommand;
+import frc.robot.Commands.ShooterCommands.ShooterStopCommand;
+import frc.robot.Commands.ShooterAngleCommands.ShooterAngleAmpCommand;
+import frc.robot.Commands.ShooterAngleCommands.ShooterLowerCommand;
+import frc.robot.Commands.ShooterAngleCommands.ShooterPodiumCommand;
+import frc.robot.Commands.ShooterAngleCommands.ShooterRaiseCommand;
+import frc.robot.Commands.ShooterAngleCommands.ShooterSubwooferCommand;
+import frc.robot.Commands.ShooterAngleCommands.ShooterToAngleCommand;
+>>>>>>> Stashed changes
 import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
@@ -29,6 +51,7 @@ import java.util.List;
 import frc.robot.Commands.DriveCommands.GarbageCommand;
 
 import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.auto.NamedCommands;
 
 /*
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -41,6 +64,7 @@ public class RobotContainer {
     // The robot's subsystems
     private final DriveSubsystem m_robotDrive = new DriveSubsystem();
 
+
     // The driver's controller
     XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);
 
@@ -48,6 +72,15 @@ public class RobotContainer {
      * The container for the robot. Contains subsystems, OI devices, and commands.
      */
     public RobotContainer() {
+        NamedCommands.registerCommand("Shoot", new IndexerShootCommand(m_indexer).withTimeout(1));
+        NamedCommands.registerCommand("shooterToSpeedSubwoofer", new ShooterRunSubwooferCommand(m_shooter));
+        NamedCommands.registerCommand("shooterToAngleSubwoofer", new ShooterSubwooferCommand(m_angleSubsystem));
+        NamedCommands.registerCommand("Intake", new IntakeCommand(m_intake));
+        NamedCommands.registerCommand("shooterToAngle2", new ShooterToAngleCommand(m_angleSubsystem, 30));
+        NamedCommands.registerCommand("shooterToSpeed2", new ShooterPodiumCommand(m_angleSubsystem));
+        NamedCommands.registerCommand("shooterToAnglePodium", new ShooterPodiumCommand(m_angleSubsystem));
+        NamedCommands.registerCommand("ShooterToSpeedPodium", new ShooterRunPodiumCommand(m_shooter));
+
         // Build an auto chooser. This will use Commands.none() as the default option.
         autoChooser = AutoBuilder.buildAutoChooser();
 

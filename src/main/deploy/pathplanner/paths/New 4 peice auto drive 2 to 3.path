@@ -1,0 +1,113 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 2.60663136710889,
+        "y": 5.5
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 2.596764424298081,
+        "y": 5.42106445751353
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.2316875402981586,
+        "y": 5.0
+      },
+      "prevControl": {
+        "x": 2.3426591654386706,
+        "y": 5.134751259099193
+      },
+      "nextControl": {
+        "x": 2.093550340946837,
+        "y": 4.832261972216252
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.113284226568455,
+        "y": 4.3
+      },
+      "prevControl": {
+        "x": 2.034946365798742,
+        "y": 4.495844651924282
+      },
+      "nextControl": {
+        "x": 2.1922197690549243,
+        "y": 4.102661143783826
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.60663136710889,
+        "y": 4.0
+      },
+      "prevControl": {
+        "x": 2.290889197163011,
+        "y": 4.207205799026983
+      },
+      "nextControl": {
+        "x": 2.922373537054769,
+        "y": 3.7927942009730167
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.60663136710889,
+        "y": 4.124382094918037
+      },
+      "prevControl": {
+        "x": 2.421242228773592,
+        "y": 4.012989062496904
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 1,
+      "rotationDegrees": 0,
+      "rotateFast": false
+    },
+    {
+      "waypointRelativePos": 4,
+      "rotationDegrees": -25.0,
+      "rotateFast": true
+    },
+    {
+      "waypointRelativePos": 3,
+      "rotationDegrees": 0,
+      "rotateFast": false
+    }
+  ],
+  "constraintZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 4.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": -25.0,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "New 4 piece auto paths",
+  "previewStartingState": null,
+  "useDefaultConstraints": false
+}

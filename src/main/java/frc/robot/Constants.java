@@ -66,9 +66,9 @@ public final class Constants {
 
         public static final double kTurnControllerTolerance = 3;//degrees
         public static final double kTurnControllerToleranceAcc = .5; //degrees/s
-        public static final double kSlowModeMultiplier = 0.4;
-        public static final double kFastModeMultiplier = 0.6;
-        public static final double kNormalModeMultiplier = 0.5;
+        public static final double kSlowModeMultiplier = 0.25;
+        public static final double kFastModeMultiplier = 1;
+        public static final double kNormalModeMultiplier = 0.75;
     }
 
     public static final class ModuleConstants {
@@ -202,7 +202,7 @@ public final class Constants {
         public static final double kShooterSpeedPodium = 5600; //RPM
         public static final double kShooterSpeedAmp = 2000; //RPM
 
-        public static final double kShooterP = .0001;
+        public static final double kShooterP = .0004;
         public static final double kShooterI = 0.0000002;
         public static final double kShooterD = 0;
         public static final double kShooterFF = 0;
@@ -217,9 +217,9 @@ public final class Constants {
         public static final double kP = 0.0009;
         public static final double kI = 0.0000000001;
         public static final double kD = 0.001;
-        public static final double kSubwooferPosition = 7; //degrees
-        public static final double kPodiumPosition = 27; //degrees
-        public static final double kAmpPosition = 45; //degrees
+        public static final double kSubwooferPosition = 9; //degrees
+        public static final double kPodiumPosition = 28; //degrees
+        public static final double kAmpPosition = 100; //degrees
         public static final double kAngle = 0; //degrees
         public static final double kAbsoluteEncoderConversion = 360; //degrees
         public static final double kAbsoluteEncoderPositionPIDMinInput = 0; // degrees

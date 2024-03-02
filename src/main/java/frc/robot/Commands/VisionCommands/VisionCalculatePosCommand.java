@@ -17,7 +17,7 @@ public class VisionCalculatePosCommand extends Command {
 
     @Override
     public void execute() {
-        m_driveSubsystem.odometryAddVisionMeasurement(
-                m_visionAprilTagSubsystem.getEstimatedGlobalPose(m_driveSubsystem.getPose()));
+        //m_driveSubsystem.odometryAddVisionMeasurement(
+          //      m_visionAprilTagSubsystem.getEstimatedGlobalPose(m_driveSubsystem.getPose()));
     }
 }

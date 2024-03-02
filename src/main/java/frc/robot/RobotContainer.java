@@ -110,7 +110,7 @@ public class RobotContainer {
                                 -MathUtil.applyDeadband(m_driverController.getLeftX(), OIConstants.kDriveDeadband),
                                 -MathUtil.applyDeadband(m_driverController.getRightX(),
                                         OIConstants.kDriveDeadband),
-                                !m_driverController.b().getAsBoolean(), true,
+                                !m_driverController.leftTrigger().getAsBoolean(), true,
                                 m_driverController.rightTrigger().getAsBoolean(),
                                 m_driverController.rightBumper().getAsBoolean()),
                         m_robotDrive));
@@ -120,18 +120,18 @@ public class RobotContainer {
         m_driverController.x().whileTrue(new DriveSetXCommand(m_robotDrive));
 
         // NavX
-        m_driverController.a().onTrue(new DriveResetYaw(m_robotDrive));
+        m_driverController.b().onTrue(new DriveResetYaw(m_robotDrive));
 
         // intake
         m_driverController.leftBumper().whileTrue(new IntakeCommand(m_intake));
-        m_driverController.leftTrigger(.1)
+        /*m_driverController.leftTrigger(.1)
                 .whileTrue(new IntakeAtSpeedCommand(m_intake, () -> {
                     return m_driverController.getLeftTriggerAxis();
-                }));
+                }));*/
         m_driverController.y().whileTrue(new OuttakeCommand(m_intake));
 
         //indexer
-        m_operatorController.rightTrigger().whileTrue(new IndexerShootCommand(m_indexer));
+        m_operatorController.rightBumper().whileTrue(new IndexerShootCommand(m_indexer));
         m_driverController.leftBumper().whileTrue(new IndexerRunToSensorCommand(m_indexer));
         m_driverController.leftTrigger(.1).whileTrue(new IndexerRunToSensorCommand(m_indexer));
         //Shooter angle
@@ -164,6 +164,7 @@ public class RobotContainer {
         }
 
         public void robotPeriodic() {
+            System.out.println(m_visionAprilTagSubsystem.getEstimatedGlobalPose(m_robotDrive.getPose()));
             if (m_visionAprilTagSubsystem.getEstimatedGlobalPose(m_robotDrive.getPose()).isPresent()) {
                 EstimatedRobotPose robotPose = m_visionAprilTagSubsystem.getEstimatedGlobalPose(m_robotDrive.getPose())
                         .orElse(null);

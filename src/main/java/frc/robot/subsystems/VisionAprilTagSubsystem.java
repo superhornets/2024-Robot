@@ -31,4 +31,5 @@ public class VisionAprilTagSubsystem extends SubsystemBase {
         photonPoseEstimator.setReferencePose(prevEstimatedRobotPose);
         return photonPoseEstimator.update();
     }
+    
 }

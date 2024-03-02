@@ -15,13 +15,16 @@ public class LegSubsystem extends SubsystemBase {
     private final RelativeEncoder m_encoder = m_motor.getEncoder();
 
     public LegSubsystem() {
+        m_motor.restoreFactoryDefaults();
         // Initialize anything else that couldn't be initialized yet
 
         // Configure anything
         m_motor.setInverted(LegConstants.kMotorInverted);
 
+        m_motor.burnFlash();
+
         // If we're not walking, stop! There are other ways to stop too.
-        this.setDefaultCommand(new RunCommand(() -> m_motor.set(0)));
+        this.setDefaultCommand(new RunCommand(() -> m_motor.set(0), this));
     }
 
     public void extend() {

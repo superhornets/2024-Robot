@@ -66,6 +66,9 @@ public final class Constants {
 
         public static final double kTurnControllerTolerance = 3;//degrees
         public static final double kTurnControllerToleranceAcc = .5; //degrees/s
+        public static final double kSlowModeMultiplier = 0.4;
+        public static final double kFastModeMultiplier = 0.6;
+        public static final double kNormalModeMultiplier = 0.5;
     }
 
     public static final class ModuleConstants {

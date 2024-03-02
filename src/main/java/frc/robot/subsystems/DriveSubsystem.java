@@ -163,6 +163,36 @@ public class DriveSubsystem extends SubsystemBase {
     }
 
     /**
+     * 
+     * @param xSpeed        Speed of the robot in the x direction (forward).
+     * @param ySpeed        Speed of the robot in the y direction (sideways).
+     * @param rot           Angular rate of the robot.
+     * @param fieldRelative Whether the provided x and y speeds are relative to the
+     *                      field.
+     * @param rateLimit     Whether to enable rate limiting for smoother control.
+     * @param slowMode      Whether slow mode is pressed
+     * @param fastMode      Whether fast mode is pressed
+     */
+    public void teleOpDrive(double xSpeed, double ySpeed, double rot, boolean fieldRelative, boolean rateLimit,
+            boolean slowMode, boolean fastMode) {
+        if (slowMode) {
+            xSpeed *= DriveConstants.kSlowModeMultiplier;
+            ySpeed *= DriveConstants.kSlowModeMultiplier;
+            rot *= DriveConstants.kSlowModeMultiplier;
+        } else if (fastMode) {
+            xSpeed *= DriveConstants.kFastModeMultiplier;
+            ySpeed *= DriveConstants.kFastModeMultiplier;
+            rot *= DriveConstants.kFastModeMultiplier;
+        } else {
+            xSpeed *= DriveConstants.kNormalModeMultiplier;
+            ySpeed *= DriveConstants.kNormalModeMultiplier;
+            rot *= DriveConstants.kNormalModeMultiplier;
+        }
+
+        drive(xSpeed, ySpeed, rot, fieldRelative, rateLimit);
+    }
+
+    /**
      * Method to drive the robot using joystick info.
      *
      * @param xSpeed        Speed of the robot in the x direction (forward).
@@ -241,6 +271,10 @@ public class DriveSubsystem extends SubsystemBase {
         m_frontRight.setDesiredState(swerveModuleStates[1]);
         m_rearLeft.setDesiredState(swerveModuleStates[2]);
         m_rearRight.setDesiredState(swerveModuleStates[3]);
+    }
+
+    public void resetYaw() {
+        m_gyro.reset();
     }
 
     /**

@@ -113,18 +113,7 @@ public class RobotContainer {
                         m_robotDrive));
 
         m_driverController.a().whileTrue(new DriveRotateToNoteCommand(m_robotDrive, m_visionNoteSubsystem));
-    }
 
-    public Command getAutonomousCommand() {
-        return autoChooser.getSelected();
-    }
-
-    public void robotPeriodic() {
-        if (m_visionAprilTagSubsystem.getEstimatedGlobalPose(m_robotDrive.getPose()).isPresent()) {
-            EstimatedRobotPose robotPose = m_visionAprilTagSubsystem.getEstimatedGlobalPose(m_robotDrive.getPose())
-                    .orElse(null);
-            m_robotDrive.odometryAddVisionMeasurement(robotPose);
-        }
         m_driverController.x().whileTrue(new DriveSetXCommand(m_robotDrive));
 
         // intake
@@ -161,8 +150,20 @@ public class RobotContainer {
         m_operatorController.b().onTrue(new ShooterRunAmpCommand(m_shooter));
         m_operatorController.start().onTrue(new ShooterStopCommand(m_shooter));
 
+
     }
 
+        public Command getAutonomousCommand() {
+            return autoChooser.getSelected();
+        }
+
+        public void robotPeriodic() {
+            if (m_visionAprilTagSubsystem.getEstimatedGlobalPose(m_robotDrive.getPose()).isPresent()) {
+                EstimatedRobotPose robotPose = m_visionAprilTagSubsystem.getEstimatedGlobalPose(m_robotDrive.getPose())
+                        .orElse(null);
+                m_robotDrive.odometryAddVisionMeasurement(robotPose);
+            }
+        }
     public void teleopInit() {
         m_shooter.stopShooter();
     }

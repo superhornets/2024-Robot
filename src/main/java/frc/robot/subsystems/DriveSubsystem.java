@@ -4,6 +4,8 @@
 
 package frc.robot.subsystems;
 
+import java.util.Optional;
+
 import org.photonvision.EstimatedRobotPose;
 
 import com.kauailabs.navx.frc.AHRS;
@@ -128,8 +130,12 @@ public class DriveSubsystem extends SubsystemBase {
     public void odometryAddVisionMeasurement(EstimatedRobotPose estimatedRobotPose) {
         m_odometry.addVisionMeasurement(estimatedRobotPose.estimatedPose.toPose2d(),
                 estimatedRobotPose.timestampSeconds);
+
     }
 
+    public Pose2d gEstimatedRobotPose() {
+        return m_odometry.getEstimatedPosition();
+    }
     /**
      * Returns the currently-estimated pose of the robot.
      *

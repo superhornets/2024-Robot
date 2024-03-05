@@ -63,6 +63,12 @@ public final class Constants {
         public static final int kRearRightTurningCanId = 4;
 
         public static final boolean kGyroReversed = true;
+
+        public static final double kTurnControllerTolerance = 3;//degrees
+        public static final double kTurnControllerToleranceAcc = .5; //degrees/s
+        public static final double kSlowModeMultiplier = 0.25;
+        public static final double kFastModeMultiplier = 1;
+        public static final double kNormalModeMultiplier = 0.75;
     }
 
     public static final class ModuleConstants {
@@ -144,11 +150,13 @@ public final class Constants {
 
     public static final class ClimberConstants {
         public static final int kMotorRightCanId = 17;
-        public static final int kMotorLeftCanId = 16; // 16
+        public static final int kMotorLeftCanId = 16;
         public static final boolean kMotorInverted = false;
         public static final double kPower = 0.5;
-        public static final double kRetractPower = 0.1;
-        public static final double kExtendPower = -0.1;
+        public static final double kRetractPower = -0.1;
+        public static final double kExtendPower = 0.1;
+        public static final float kMaxHeight = 190; // maximum height of climber arms in inches
+        public static final double kEncoderDistancePerRevolution = 1; // moteder ravlosen
     }
 
     public static final class LegConstants {
@@ -157,20 +165,30 @@ public final class Constants {
         public static final double kMaxExtension = 20.0; // Some unit
     }
 
+    public static final class VisionAprilTagConstants {
+        public static final double kXOffset = -10;
+        public static final double kYOffset = 2;
+        public static final double kZOffset = 15.25;
+        public static final double kRollOffset = 10;
+        public static final double kPitchOffset = 0;
+        public static final double kYawOffset = 180;
+    }
     public static final class IntakeConstants {
         public static final int kMotorTopCanId = 9;
         public static final int kMotorBottomCanId = 10;
-        public static final boolean kMotorInverted = false;
-        public static final double kIntakeSpeed = 0.1;
-        public static final double kIntakeAtSpeed = 0.2;
-        public static final double kOuttakeSpeed = -0.1;
+        public static final boolean kMotorInverted = true;
+        public static final double kIntakeSpeed = 0.5;
+        public static final double kIntakeAtSpeed = 0.5;
+        public static final double kOuttakeSpeed = -0.5;
         public static final double kGearRatio = 1;
     }
     public static final class IndexerConstants {
         public static final int kMotorRightCanId = 12;
         public static final int kMotorLeftCanId = 11;
-        public static final boolean kMotorInverted = false;
+        public static final boolean kMotorLeftInverted = true;
+        public static final boolean kMotorRightInverted = false;
         public static final double kIntakeSpeed = 0.2;
+        public static final double kFeedSpeed = 1;
         public static final double kReverseIntakeSpeed = -0.2;
         public static final double kTime = 5; //sec
     }
@@ -180,12 +198,12 @@ public final class Constants {
         public static final int kMotorLeftCanId = 13;
         public static final boolean kIsLeftMotorInverted = true;
         public static final boolean kIsRightMotorInverted = false;
-        public static final double kShooterSpeedSubwoofer = 900; //RPM
-        public static final double kShooterSpeedPodium = 1500; //RPM
-        public static final double kShooterSpeedAmp = 600; //RPM
+        public static final double kShooterSpeedSubwoofer = 3000; //RPM
+        public static final double kShooterSpeedPodium = 5600; //RPM
+        public static final double kShooterSpeedAmp = 2000; //RPM
 
-        public static final double kShooterP = .00004;
-        public static final double kShooterI = 0;
+        public static final double kShooterP = .0004;
+        public static final double kShooterI = 0.0000002;
         public static final double kShooterD = 0;
         public static final double kShooterFF = 0;
         public static final double kShooterMin = -1;
@@ -193,25 +211,25 @@ public final class Constants {
     }
     public static final class ShooterAngleConstants {
         public static final int kMotorCanId = 15;
-        public static final boolean kMotorInverted = false;
-        public static final double kRaiseSpeed = 0.05;
+        public static final boolean kMotorInverted = true;
+        public static final double kRaiseSpeed = 0.15;
         public static final double kLowerSpeed = -0.05;
-        public static final double kP = 0.001;
-        public static final double kI = 0;
-        public static final double kD = 0;
-        public static final double kSubwooferPosition = 5; //degrees
-        public static final double kPodiumPosition = 2.5; //degrees
-        public static final double kAmpPosition = 90; //degrees
+        public static final double kP = 0.009;
+        public static final double kI = 0.000002;
+        public static final double kD = 0.00;
+        public static final double kSubwooferPosition = 9; //degrees
+        public static final double kPodiumPosition = 28; //degrees
+        public static final double kAmpPosition = 100; //degrees
         public static final double kAngle = 0; //degrees
         public static final double kAbsoluteEncoderConversion = 360; //degrees
         public static final double kAbsoluteEncoderPositionPIDMinInput = 0; // degrees
         public static final double kAbsoluteEncoderPositionPIDMaxInput = kAbsoluteEncoderConversion; // degrees
-        public static final double kMaxVelocity = 18; // degrees/sec
-        public static final double kMinVelocity = -18; // degrees/sec
-        public static final double kMaxAccel = 18; // degrees/sec*sec
-        public static final double kMinOutput = -1;
+        public static final double kMaxVelocity = 180; // degrees/sec
+        public static final double kMinVelocity = -180; // degrees/sec
+        public static final double kMaxAccel = 180; // degrees/sec*sec
+        public static final double kMinOutput = -.25;
         public static final double kMaxOutput = 1;
-        public static final boolean kEncoderInverted = false;
+        public static final boolean kEncoderInverted = true;
     }
 
     public static final class ExactGearRatioConstants {
@@ -223,4 +241,5 @@ public final class Constants {
         public static final double kNeo500_5 = 5;
     }
 }
+
 

@@ -4,12 +4,15 @@
 
 package frc.robot;
 
+import org.opencv.core.Mat;
+
 import com.revrobotics.CANSparkBase.IdleMode;
 
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.math.util.Units;
+import edu.wpi.first.units.Unit;
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide
@@ -166,9 +169,9 @@ public final class Constants {
     }
 
     public static final class VisionAprilTagConstants {
-        public static final double kXOffset = -10;
-        public static final double kYOffset = 2;
-        public static final double kZOffset = 15.25;
+        public static final double kXOffset = Units.inchesToMeters(-10);
+        public static final double kYOffset = Units.inchesToMeters(2);
+        public static final double kZOffset = Units.inchesToMeters(15.25);
         public static final double kRollOffset = 10;
         public static final double kPitchOffset = 0;
         public static final double kYawOffset = 180;
@@ -187,10 +190,10 @@ public final class Constants {
         public static final int kMotorLeftCanId = 11;
         public static final boolean kMotorLeftInverted = true;
         public static final boolean kMotorRightInverted = false;
-        public static final double kIntakeSpeed = 0.2;
+        public static final double kIntakeSpeed = 0.25;
         public static final double kFeedSpeed = 1;
-        public static final double kReverseIntakeSpeed = -0.2;
-        public static final double kTime = 5; //sec
+        public static final double kReverseIntakeSpeed = -0.25;
+        public static final double kTime = .5; //sec
     }
 
     public static final class ShooterConstants {
@@ -214,12 +217,12 @@ public final class Constants {
         public static final boolean kMotorInverted = true;
         public static final double kRaiseSpeed = 0.15;
         public static final double kLowerSpeed = -0.05;
-        public static final double kP = 0.009;
-        public static final double kI = 0.000002;
-        public static final double kD = 0.00;
+        public static final double kP = 0.0085;
+        public static final double kI = 0.0000004;
+        public static final double kD = 0.0005;
         public static final double kSubwooferPosition = 9; //degrees
-        public static final double kPodiumPosition = 28; //degrees
-        public static final double kAmpPosition = 100; //degrees
+        public static final double kPodiumPosition = 30; //degrees
+        public static final double kAmpPosition = 90; //degrees
         public static final double kAngle = 0; //degrees
         public static final double kAbsoluteEncoderConversion = 360; //degrees
         public static final double kAbsoluteEncoderPositionPIDMinInput = 0; // degrees

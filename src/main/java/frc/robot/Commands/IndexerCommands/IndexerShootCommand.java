@@ -29,7 +29,7 @@ public class IndexerShootCommand extends Command {
 
     @Override
     public void end(boolean interrupted) {
-
+        m_indexer.stop();
     }
 
     @Override

@@ -56,6 +56,10 @@ public class IndexerSubsystem extends SubsystemBase {
         return m_switch.isPressed();
     }
 
+    public void stop() {
+        m_motorLeft.set(0);
+    }
+
     public void setSwitchEnabled() {
         m_switch.enableLimitSwitch(true);
     }

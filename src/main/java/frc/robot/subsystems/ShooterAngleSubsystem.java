@@ -27,7 +27,8 @@ public class ShooterAngleSubsystem extends SubsystemBase {
         m_motor.getReverseLimitSwitch(SparkLimitSwitch.Type.kNormallyOpen);
         m_motor.setInverted(ShooterAngleConstants.kMotorInverted);
         m_encoder.setInverted(ShooterAngleConstants.kEncoderInverted);
-        m_motor.setSoftLimit(SoftLimitDirection.kForward, 25);
+        m_encoder.setZeroOffset(120);
+        m_motor.setSoftLimit(SoftLimitDirection.kForward, 95);
         m_motor.enableSoftLimit(SoftLimitDirection.kForward, true);
 
         m_pidController.setP(ShooterAngleConstants.kP);
@@ -63,6 +64,10 @@ public class ShooterAngleSubsystem extends SubsystemBase {
     public void moveTo(double angle) {
         m_pidController.setReference(angle, ControlType.kPosition);
         //m_motor.set(0);
+    }
+
+    public void home() {
+        m_motor.set(0.05);
     }
 
     public void moveUp() {

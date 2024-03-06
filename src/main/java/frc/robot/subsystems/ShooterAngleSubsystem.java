@@ -7,6 +7,8 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.SparkLimitSwitch;
 import com.revrobotics.SparkPIDController;
 import com.revrobotics.CANSparkBase.ControlType;
+import com.revrobotics.CANSparkBase.SoftLimitDirection;
+
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -25,6 +27,8 @@ public class ShooterAngleSubsystem extends SubsystemBase {
         m_motor.getReverseLimitSwitch(SparkLimitSwitch.Type.kNormallyOpen);
         m_motor.setInverted(ShooterAngleConstants.kMotorInverted);
         m_encoder.setInverted(ShooterAngleConstants.kEncoderInverted);
+        m_motor.setSoftLimit(SoftLimitDirection.kForward, 25);
+        m_motor.enableSoftLimit(SoftLimitDirection.kForward, true);
 
         m_pidController.setP(ShooterAngleConstants.kP);
         m_pidController.setI(ShooterAngleConstants.kI);

@@ -73,7 +73,7 @@ public class RobotContainer {
     private final SendableChooser<Command> autoChooser;
     // The robot's subsystems
     private final DriveSubsystem m_robotDrive = new DriveSubsystem();
-    private final VisionNoteSubsystem m_visionNoteSubsystem = new VisionNoteSubsystem();
+    //private final VisionNoteSubsystem m_visionNoteSubsystem = new VisionNoteSubsystem();
     private final VisionAprilTagSubsystem m_visionAprilTagSubsystem = new VisionAprilTagSubsystem();
 
     // private final IndexerSubsystem m_indexer = new IndexerSubsystem();
@@ -117,7 +117,7 @@ public class RobotContainer {
                                 m_driverController.rightBumper().getAsBoolean()),
                         m_robotDrive));
 
-        m_driverController.a().whileTrue(new DriveRotateToNoteCommand(m_robotDrive, m_visionNoteSubsystem));
+        m_driverController.a().whileTrue(new DriveRotateToNoteCommand(m_robotDrive, m_visionAprilTagSubsystem));
 
         m_driverController.x().whileTrue(new DriveSetXCommand(m_robotDrive));
 

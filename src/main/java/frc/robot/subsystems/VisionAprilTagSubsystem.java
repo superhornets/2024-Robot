@@ -19,6 +19,8 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.VisionAprilTagConstants;
 
 public class VisionAprilTagSubsystem extends SubsystemBase {
+
+    //april tag
     PhotonCamera m_AprilTagCamera = new PhotonCamera("AprilTagCamera");
     AprilTagFieldLayout aprilTagFieldLayout = AprilTagFields.k2024Crescendo.loadAprilTagLayoutField();
     Transform3d robotToCamera = new Transform3d(
@@ -29,23 +31,46 @@ public class VisionAprilTagSubsystem extends SubsystemBase {
     PhotonPoseEstimator photonPoseEstimator = new PhotonPoseEstimator(aprilTagFieldLayout,
             PoseStrategy.MULTI_TAG_PNP_ON_COPROCESSOR, m_AprilTagCamera, robotToCamera);
 
+    //Note
+    PhotonCamera m_NoteCamera = new PhotonCamera("Microsoft_LifeCam_HD-3000");
+
+    //April Tag
     public Optional<EstimatedRobotPose> getEstimatedGlobalPose(Pose2d prevEstimatedRobotPose) {
         photonPoseEstimator.setReferencePose(prevEstimatedRobotPose);
         return photonPoseEstimator.update();
     }
 
-    public PhotonPipelineResult getResults() {
+    public PhotonPipelineResult getResultsAprilTag() {
         return m_AprilTagCamera.getLatestResult();
     }
 
-    public boolean hasTargets() {
-        return getResults().hasTargets();
+    public boolean hasTargetsAprilTag() {
+        return getResultsAprilTag().hasTargets();
     }
+
+    //Note
+    public PhotonPipelineResult getResultsNote() {
+        return m_NoteCamera.getLatestResult();
+    }
+
+    public boolean hasTargetsNote() {
+        return getResultsNote().hasTargets();
+    }
+
+    public double getBestResultYaw() {
+        if (hasTargetsNote()) {
+            return getResultsNote().getBestTarget().getYaw();
+        } else {
+            return 0;
+        }
+    }
+
 
     @Override
     public void periodic() {
-        if (hasTargets()) {
-            SmartDashboard.putNumber("distance to targer", getResults().getBestTarget().getBestCameraToTarget().getZ());
+        if (hasTargetsAprilTag()) {
+            SmartDashboard.putNumber("distance to targer",
+                    getResultsAprilTag().getBestTarget().getBestCameraToTarget().getZ());
         }
     }
 

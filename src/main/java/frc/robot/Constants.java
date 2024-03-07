@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import java.awt.geom.Point2D;
+
 import org.opencv.core.Mat;
 
 import com.revrobotics.CANSparkBase.IdleMode;
@@ -13,6 +15,7 @@ import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.units.Unit;
+import frc.utils.LinearInterpolationTable;
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide
@@ -233,6 +236,13 @@ public final class Constants {
         public static final double kMinOutput = -.25;
         public static final double kMaxOutput = 1;
         public static final boolean kEncoderInverted = true;
+
+        private static final Point2D[] kShooterAnglePoints = new Point2D.Double[] {
+                //(meters, degrees)
+                new Point2D.Double(1.0, 80.0)
+        };
+        public static final LinearInterpolationTable kShooterAngleTable = new LinearInterpolationTable(
+                kShooterAnglePoints);
     }
 
     public static final class ExactGearRatioConstants {

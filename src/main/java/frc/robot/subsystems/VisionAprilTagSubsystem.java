@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.photonvision.EstimatedRobotPose;
@@ -7,6 +8,7 @@ import org.photonvision.PhotonCamera;
 import org.photonvision.PhotonPoseEstimator;
 import org.photonvision.PhotonPoseEstimator.PoseStrategy;
 import org.photonvision.targeting.PhotonPipelineResult;
+import org.photonvision.targeting.PhotonTrackedTarget;
 
 import edu.wpi.first.apriltag.AprilTagFieldLayout;
 import edu.wpi.first.apriltag.AprilTagFields;
@@ -30,6 +32,7 @@ public class VisionAprilTagSubsystem extends SubsystemBase {
                     VisionAprilTagConstants.kYawOffset));
     PhotonPoseEstimator photonPoseEstimator = new PhotonPoseEstimator(aprilTagFieldLayout,
             PoseStrategy.MULTI_TAG_PNP_ON_COPROCESSOR, m_AprilTagCamera, robotToCamera);
+
 
     //Note
     PhotonCamera m_NoteCamera = new PhotonCamera("Microsoft_LifeCam_HD-3000");
@@ -65,6 +68,15 @@ public class VisionAprilTagSubsystem extends SubsystemBase {
         }
     }
 
+    public PhotonTrackedTarget getTargetFromList(int ID, List<PhotonTrackedTarget> targetList) {
+        for (int i = 0; i <= targetList.size(); i++) {
+            if (ID == targetList.get(i).getFiducialId()) {
+                return targetList.get(i);
+            }
+        }
+        return new PhotonTrackedTarget(0, 0, 0, 0, -1, robotToCamera, robotToCamera, ID, null, null);
+
+    }
 
     @Override
     public void periodic() {

@@ -135,7 +135,7 @@ public class RobotContainer {
         //indexer
         m_operatorController.rightBumper().onTrue(new ShootAndHomeCommand(m_indexer, m_angleSubsystem, m_shooter));
         m_driverController.leftBumper().whileTrue(new IndexerRunToSensorCommand(m_indexer));
-        m_driverController.leftTrigger(.1).whileTrue(new IndexerRunToSensorCommand(m_indexer));
+        //m_driverController.leftTrigger(.1).whileTrue(new IndexerRunToSensorCommand(m_indexer));
         //Shooter angle
         m_operatorController.b().onTrue(new ShooterAngleAmpCommand(m_angleSubsystem));
         m_operatorController.a().onTrue(new ShooterSubwooferCommand(m_angleSubsystem));

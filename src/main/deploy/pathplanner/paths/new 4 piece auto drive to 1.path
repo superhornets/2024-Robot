@@ -77,11 +77,11 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 30.0,
+    "rotation": 20.0,
     "rotateFast": true
   },
   "reversed": false,
-  "folder": "New 4 piece auto paths",
+  "folder": null,
   "previewStartingState": null,
   "useDefaultConstraints": false
 }

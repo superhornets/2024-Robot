@@ -125,7 +125,7 @@ public class RobotContainer {
         m_driverController.b().onTrue(new DriveResetYaw(m_robotDrive));
 
         // intake
-        m_driverController.leftBumper().whileTrue(new IntakeCommand(m_intake));
+        m_driverController.leftBumper().whileTrue(new IntakeCommand(m_intake, m_indexer, m_angleSubsystem));
         /*m_driverController.leftTrigger(.1)
                 .whileTrue(new IntakeAtSpeedCommand(m_intake, () -> {
                     return m_driverController.getLeftTriggerAxis();

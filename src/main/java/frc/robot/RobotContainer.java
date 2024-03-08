@@ -73,7 +73,7 @@ public class RobotContainer {
     private final SendableChooser<Command> autoChooser;
     // The robot's subsystems
     private final DriveSubsystem m_robotDrive = new DriveSubsystem();
-    private final VisionNoteSubsystem m_visionNoteSubsystem = new VisionNoteSubsystem();
+    //private final VisionNoteSubsystem m_visionNoteSubsystem = new VisionNoteSubsystem();
     private final VisionAprilTagSubsystem m_visionAprilTagSubsystem = new VisionAprilTagSubsystem();
 
     // private final IndexerSubsystem m_indexer = new IndexerSubsystem();
@@ -117,7 +117,7 @@ public class RobotContainer {
                                 m_driverController.rightBumper().getAsBoolean()),
                         m_robotDrive));
 
-        m_driverController.a().whileTrue(new DriveRotateToNoteCommand(m_robotDrive, m_visionNoteSubsystem));
+        m_driverController.a().whileTrue(new DriveRotateToNoteCommand(m_robotDrive, m_visionAprilTagSubsystem));
 
         m_driverController.x().whileTrue(new DriveSetXCommand(m_robotDrive));
 
@@ -125,7 +125,7 @@ public class RobotContainer {
         m_driverController.b().onTrue(new DriveResetYaw(m_robotDrive));
 
         // intake
-        m_driverController.leftBumper().whileTrue(new IntakeCommand(m_intake));
+        m_driverController.leftBumper().whileTrue(new IntakeCommand(m_intake, m_indexer, m_angleSubsystem));
         /*m_driverController.leftTrigger(.1)
                 .whileTrue(new IntakeAtSpeedCommand(m_intake, () -> {
                     return m_driverController.getLeftTriggerAxis();
@@ -135,7 +135,7 @@ public class RobotContainer {
         //indexer
         m_operatorController.rightBumper().onTrue(new ShootAndHomeCommand(m_indexer, m_angleSubsystem, m_shooter));
         m_driverController.leftBumper().whileTrue(new IndexerRunToSensorCommand(m_indexer));
-        m_driverController.leftTrigger(.1).whileTrue(new IndexerRunToSensorCommand(m_indexer));
+        //m_driverController.leftTrigger(.1).whileTrue(new IndexerRunToSensorCommand(m_indexer));
         //Shooter angle
         m_operatorController.b().onTrue(new ShooterAngleAmpCommand(m_angleSubsystem));
         m_operatorController.a().onTrue(new ShooterSubwooferCommand(m_angleSubsystem));

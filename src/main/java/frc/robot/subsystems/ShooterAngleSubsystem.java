@@ -20,6 +20,7 @@ public class ShooterAngleSubsystem extends SubsystemBase {
     private final CANSparkMax m_motor = new CANSparkMax(ShooterAngleConstants.kMotorCanId, MotorType.kBrushless);
     private final SparkPIDController m_pidController = m_motor.getPIDController();
     private final AbsoluteEncoder m_encoder = m_motor.getAbsoluteEncoder(Type.kDutyCycle);
+    private final SparkLimitSwitch m_switch;
 
     public ShooterAngleSubsystem() {
         // Initialize anything else that couldn't be initialized yet
@@ -30,6 +31,7 @@ public class ShooterAngleSubsystem extends SubsystemBase {
         m_encoder.setZeroOffset(120);
         m_motor.setSoftLimit(SoftLimitDirection.kForward, ShooterAngleConstants.kSoftLimit);
         m_motor.enableSoftLimit(SoftLimitDirection.kForward, true);
+        m_switch = m_motor.getForwardLimitSwitch(SparkLimitSwitch.Type.kNormallyOpen);
 
         m_pidController.setP(ShooterAngleConstants.kP);
         m_pidController.setI(ShooterAngleConstants.kI);
@@ -80,6 +82,10 @@ public class ShooterAngleSubsystem extends SubsystemBase {
 
     public void holdPosition() {
         m_pidController.setReference(m_encoder.getPosition(), ControlType.kPosition);
+    }
+
+    public boolean isDown() {
+        return m_switch.isPressed();
     }
 
     @Override

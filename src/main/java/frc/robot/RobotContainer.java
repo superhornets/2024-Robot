@@ -37,8 +37,6 @@ import frc.robot.Commands.ShooterAngleCommands.ShooterLowerCommand;
 import frc.robot.Commands.ShooterAngleCommands.ShooterPodiumCommand;
 import frc.robot.Commands.ShooterAngleCommands.ShooterRaiseCommand;
 import frc.robot.Commands.ShooterAngleCommands.ShooterSubwooferCommand;
-<<<<<<< Updated upstream
-=======
 import frc.robot.Commands.IntakeCommands.IntakeAtSpeedCommand;
 import frc.robot.Commands.IntakeCommands.IntakeCommand;
 import frc.robot.Commands.IntakeCommands.OuttakeCommand;
@@ -58,7 +56,6 @@ import frc.robot.Commands.ShooterAngleCommands.ShooterPodiumCommand;
 import frc.robot.Commands.ShooterAngleCommands.ShooterRaiseCommand;
 import frc.robot.Commands.ShooterAngleCommands.ShooterSubwooferCommand;
 import frc.robot.Commands.ShooterAngleCommands.ShooterToAngleCommand;
->>>>>>> Stashed changes
 import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.ClimberConstants;
 import frc.robot.Constants.DriveConstants;
@@ -119,10 +116,10 @@ public class RobotContainer {
      * The container for the robot. Contains subsystems, OI devices, and commands.
      */
     public RobotContainer() {
-        NamedCommands.registerCommand("Shoot", new IndexerShootCommand(m_indexer).withTimeout(1));
+        NamedCommands.registerCommand("Shoot", new ShootAndHomeCommand(m_indexer, m_angleSubsystem, m_shooter));
         NamedCommands.registerCommand("shooterToSpeedSubwoofer", new ShooterRunSubwooferCommand(m_shooter));
         NamedCommands.registerCommand("shooterToAngleSubwoofer", new ShooterSubwooferCommand(m_angleSubsystem));
-        NamedCommands.registerCommand("Intake", new IntakeCommand(m_intake));
+        NamedCommands.registerCommand("Intake", new IntakeCommand(m_intake, m_indexer, m_angleSubsystem));
         NamedCommands.registerCommand("shooterToAngle2", new ShooterToAngleCommand(m_angleSubsystem, 30));
         NamedCommands.registerCommand("shooterToSpeed2", new ShooterPodiumCommand(m_angleSubsystem));
         NamedCommands.registerCommand("shooterToAnglePodium", new ShooterPodiumCommand(m_angleSubsystem));
@@ -197,9 +194,9 @@ public class RobotContainer {
 
     }
 
-        public Command getAutonomousCommand() {
-            return autoChooser.getSelected();
-        }
+    public Command getAutonomousCommand() {
+        return autoChooser.getSelected();
+    }
 
         public void robotPeriodic() {
             //System.out.println(m_visionAprilTagSubsystem.getEstimatedGlobalPose(m_robotDrive.getPose()));

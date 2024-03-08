@@ -29,7 +29,7 @@ public class IntakeCommand extends Command {
     @Override
     public void execute() {
         //Continue intaking
-        if (!(m_indexerSubsystem.getNoteAcquired() || m_ShooterAngleSubsystem.isDown())) {
+        if (!(m_indexerSubsystem.getNoteAcquired() || !m_ShooterAngleSubsystem.isDown())) {
             m_intakeSubsystem.takeIn();
         } else {
             System.out.println("Not Safe To Intake!");

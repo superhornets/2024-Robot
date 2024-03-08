@@ -20,18 +20,17 @@ public class ShooterAngleSubsystem extends SubsystemBase {
     private final CANSparkMax m_motor = new CANSparkMax(ShooterAngleConstants.kMotorCanId, MotorType.kBrushless);
     private final SparkPIDController m_pidController = m_motor.getPIDController();
     private final AbsoluteEncoder m_encoder = m_motor.getAbsoluteEncoder(Type.kDutyCycle);
-    private final SparkLimitSwitch m_switch;
+    private final SparkLimitSwitch m_switch = m_motor.getReverseLimitSwitch(SparkLimitSwitch.Type.kNormallyOpen);
 
     public ShooterAngleSubsystem() {
         // Initialize anything else that couldn't be initialized yet
         m_motor.getForwardLimitSwitch(SparkLimitSwitch.Type.kNormallyOpen);
-        m_motor.getReverseLimitSwitch(SparkLimitSwitch.Type.kNormallyOpen);
         m_motor.setInverted(ShooterAngleConstants.kMotorInverted);
         m_encoder.setInverted(ShooterAngleConstants.kEncoderInverted);
         m_encoder.setZeroOffset(120);
         m_motor.setSoftLimit(SoftLimitDirection.kForward, ShooterAngleConstants.kSoftLimit);
         m_motor.enableSoftLimit(SoftLimitDirection.kForward, true);
-        m_switch = m_motor.getForwardLimitSwitch(SparkLimitSwitch.Type.kNormallyOpen);
+
 
         m_pidController.setP(ShooterAngleConstants.kP);
         m_pidController.setI(ShooterAngleConstants.kI);

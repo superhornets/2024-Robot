@@ -4,12 +4,17 @@
 
 package frc.robot.subsystems;
 
+import java.util.Optional;
+
+import org.photonvision.EstimatedRobotPose;
+
 import com.kauailabs.navx.frc.AHRS;
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.util.HolonomicPathFollowerConfig;
 import com.pathplanner.lib.util.PIDConstants;
 import com.pathplanner.lib.util.ReplanningConfig;
 
+import edu.wpi.first.math.estimator.SwerveDrivePoseEstimator;
 import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -20,6 +25,7 @@ import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.util.WPIUtilJNI;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants.DriveConstants;
 import frc.utils.SwerveUtils;
@@ -40,12 +46,12 @@ public class DriveSubsystem extends SubsystemBase {
     private final MAXSwerveModule m_rearLeft = new MAXSwerveModule(
             DriveConstants.kRearLeftDrivingCanId,
             DriveConstants.kRearLeftTurningCanId,
-            DriveConstants.kBackLeftChassisAngularOffset);
+            DriveConstants.kRearLeftChassisAngularOffset);
 
     private final MAXSwerveModule m_rearRight = new MAXSwerveModule(
             DriveConstants.kRearRightDrivingCanId,
             DriveConstants.kRearRightTurningCanId,
-            DriveConstants.kBackRightChassisAngularOffset);
+            DriveConstants.kRearRightChassisAngularOffset);
 
     // The gyro sensor
     private final AHRS m_gyro = new AHRS();
@@ -61,7 +67,7 @@ public class DriveSubsystem extends SubsystemBase {
     private double m_prevTime = WPIUtilJNI.now() * 1e-6;
 
     // Odometry class for tracking robot pose
-    SwerveDriveOdometry m_odometry = new SwerveDriveOdometry(
+    SwerveDrivePoseEstimator m_odometry = new SwerveDrivePoseEstimator(
             DriveConstants.kDriveKinematics,
             Rotation2d.fromDegrees(m_gyro.getAngle() * (DriveConstants.kGyroReversed ? -1.0 : 1.0)),
             new SwerveModulePosition[] {
@@ -69,7 +75,9 @@ public class DriveSubsystem extends SubsystemBase {
                     m_frontRight.getPosition(),
                     m_rearLeft.getPosition(),
                     m_rearRight.getPosition()
-            });
+            }, new Pose2d());
+
+    private Field2d m_field = new Field2d();
 
     /** Creates a new DriveSubsystem. */
     public DriveSubsystem() {
@@ -98,6 +106,7 @@ public class DriveSubsystem extends SubsystemBase {
                 },
                 this // Reference to this subsystem to set requirements
         );
+        SmartDashboard.putData("Field", m_field);
     }
 
     @Override
@@ -111,18 +120,29 @@ public class DriveSubsystem extends SubsystemBase {
                         m_rearLeft.getPosition(),
                         m_rearRight.getPosition()
                 });
-        System.out.println(getRobotRelativeSpeeds());
+
+        //System.out.println(getRobotRelativeSpeeds());
+        m_field.setRobotPose(m_odometry.getEstimatedPosition());
         //System.out.println("fr: " + m_frontRight.getState() + "fl: " + m_frontLeft.getState() + " rr: "
         //+ m_rearRight.getState() + " rl: " + m_rearLeft.getState());
     }
 
+    public void odometryAddVisionMeasurement(EstimatedRobotPose estimatedRobotPose) {
+        m_odometry.addVisionMeasurement(estimatedRobotPose.estimatedPose.toPose2d(),
+                estimatedRobotPose.timestampSeconds);
+
+    }
+
+    public Pose2d gEstimatedRobotPose() {
+        return m_odometry.getEstimatedPosition();
+    }
     /**
      * Returns the currently-estimated pose of the robot.
      *
      * @return The pose.
      */
     public Pose2d getPose() {
-        return m_odometry.getPoseMeters();
+        return m_odometry.getEstimatedPosition();
     }
 
     /**
@@ -140,6 +160,36 @@ public class DriveSubsystem extends SubsystemBase {
                         m_rearRight.getPosition()
                 },
                 pose);
+    }
+
+    /**
+     * 
+     * @param xSpeed        Speed of the robot in the x direction (forward).
+     * @param ySpeed        Speed of the robot in the y direction (sideways).
+     * @param rot           Angular rate of the robot.
+     * @param fieldRelative Whether the provided x and y speeds are relative to the
+     *                      field.
+     * @param rateLimit     Whether to enable rate limiting for smoother control.
+     * @param slowMode      Whether slow mode is pressed
+     * @param fastMode      Whether fast mode is pressed
+     */
+    public void teleOpDrive(double xSpeed, double ySpeed, double rot, boolean fieldRelative, boolean rateLimit,
+            boolean slowMode, boolean fastMode) {
+        if (slowMode) {
+            xSpeed *= DriveConstants.kSlowModeMultiplier;
+            ySpeed *= DriveConstants.kSlowModeMultiplier;
+            rot *= DriveConstants.kSlowModeMultiplier;
+        } else if (fastMode) {
+            xSpeed *= DriveConstants.kFastModeMultiplier;
+            ySpeed *= DriveConstants.kFastModeMultiplier;
+            rot *= DriveConstants.kFastModeMultiplier;
+        } else {
+            xSpeed *= DriveConstants.kNormalModeMultiplier;
+            ySpeed *= DriveConstants.kNormalModeMultiplier;
+            rot *= DriveConstants.kNormalModeMultiplier;
+        }
+
+        drive(xSpeed, ySpeed, rot, fieldRelative, rateLimit);
     }
 
     /**
@@ -221,6 +271,10 @@ public class DriveSubsystem extends SubsystemBase {
         m_frontRight.setDesiredState(swerveModuleStates[1]);
         m_rearLeft.setDesiredState(swerveModuleStates[2]);
         m_rearRight.setDesiredState(swerveModuleStates[3]);
+    }
+
+    public void resetYaw() {
+        m_gyro.reset();
     }
 
     /**

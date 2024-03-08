@@ -28,7 +28,7 @@ public class ShooterAngleSubsystem extends SubsystemBase {
         m_motor.setInverted(ShooterAngleConstants.kMotorInverted);
         m_encoder.setInverted(ShooterAngleConstants.kEncoderInverted);
         m_encoder.setZeroOffset(120);
-        m_motor.setSoftLimit(SoftLimitDirection.kForward, 95);
+        m_motor.setSoftLimit(SoftLimitDirection.kForward, ShooterAngleConstants.kSoftLimit);
         m_motor.enableSoftLimit(SoftLimitDirection.kForward, true);
 
         m_pidController.setP(ShooterAngleConstants.kP);

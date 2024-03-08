@@ -233,6 +233,7 @@ public final class Constants {
         public static final double kMinOutput = -.25;
         public static final double kMaxOutput = 1;
         public static final boolean kEncoderInverted = true;
+        public static final float kSoftLimit = 120;
     }
 
     public static final class ExactGearRatioConstants {

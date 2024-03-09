@@ -25,6 +25,7 @@ import frc.robot.Commands.ClimberCommands.ClimberRetractCommand;
 import frc.robot.Commands.CommandGroups.ShootAndHomeCommand;
 import frc.robot.Commands.DriveCommands.DriveResetYaw;
 import frc.robot.Commands.DriveCommands.DriveSetXCommand;
+import frc.robot.Commands.DriveCommands.DriveStopCommand;
 import frc.robot.Commands.IndexerCommands.IndexerRunToSensorCommand;
 import frc.robot.Commands.IndexerCommands.IndexerShootCommand;
 import frc.robot.Commands.ShooterCommands.ShooterRunAmpCommand;
@@ -116,15 +117,17 @@ public class RobotContainer {
      * The container for the robot. Contains subsystems, OI devices, and commands.
      */
     public RobotContainer() {
-        NamedCommands.registerCommand("Shoot", new ShootAndHomeCommand(m_indexer, m_angleSubsystem, m_shooter));
+        NamedCommands.registerCommand("Shoot", new IndexerShootCommand(m_indexer).withTimeout(1));
+        NamedCommands.registerCommand("home", new ShooterAngleHomeCommand(m_angleSubsystem));
         NamedCommands.registerCommand("shooterToSpeedSubwoofer", new ShooterRunSubwooferCommand(m_shooter));
         NamedCommands.registerCommand("shooterToAngleSubwoofer", new ShooterSubwooferCommand(m_angleSubsystem));
         NamedCommands.registerCommand("Intake", new IntakeCommand(m_intake, m_indexer, m_angleSubsystem));
         NamedCommands.registerCommand("shooterToAngle2", new ShooterToAngleCommand(m_angleSubsystem, 30));
-        NamedCommands.registerCommand("shooterToSpeed2", new ShooterPodiumCommand(m_angleSubsystem));
+        NamedCommands.registerCommand("shooterToSpeed2", new ShooterRunPodiumCommand(m_shooter));
         NamedCommands.registerCommand("shooterToAnglePodium", new ShooterPodiumCommand(m_angleSubsystem));
         NamedCommands.registerCommand("ShooterToSpeedPodium", new ShooterRunPodiumCommand(m_shooter));
-
+        NamedCommands.registerCommand("ResetNavX", new DriveResetYaw(m_robotDrive));
+        NamedCommands.registerCommand("stopDrive", new DriveStopCommand(m_robotDrive));
         // Build an auto chooser. This will use Commands.none() as the default option.
         autoChooser = AutoBuilder.buildAutoChooser();
 

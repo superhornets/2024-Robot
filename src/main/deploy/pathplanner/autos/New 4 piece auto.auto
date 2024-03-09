@@ -26,12 +26,6 @@
                 "data": {
                   "name": "shooterToAngleSubwoofer"
                 }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 2.0
-                }
               }
             ]
           }

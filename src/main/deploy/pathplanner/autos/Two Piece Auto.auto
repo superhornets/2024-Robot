@@ -12,6 +12,12 @@
     "data": {
       "commands": [
         {
+          "type": "named",
+          "data": {
+            "name": "ResetNavX"
+          }
+        },
+        {
           "type": "race",
           "data": {
             "commands": [
@@ -26,12 +32,6 @@
                 "data": {
                   "name": "shooterToAngleSubwoofer"
                 }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 2.0
-                }
               }
             ]
           }
@@ -43,7 +43,7 @@
           }
         },
         {
-          "type": "parallel",
+          "type": "race",
           "data": {
             "commands": [
               {
@@ -57,8 +57,20 @@
                 "data": {
                   "pathName": "DriveBackTo2"
                 }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "home"
+                }
               }
             ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "stopDrive"
           }
         },
         {
@@ -68,19 +80,13 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "shooterToAngle2"
+                  "name": "shooterToSpeed2"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "shooterToSpeed2"
-                }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 2.0
+                  "name": "shooterToAngle2"
                 }
               }
             ]
@@ -90,6 +96,12 @@
           "type": "named",
           "data": {
             "name": "Shoot"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "home"
           }
         }
       ]

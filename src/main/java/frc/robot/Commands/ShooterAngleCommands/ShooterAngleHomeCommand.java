@@ -20,7 +20,7 @@ public class ShooterAngleHomeCommand extends Command {
 
     @Override
     public void execute() {
-        m_angleSubsystem.moveTo(0);
+        m_angleSubsystem.home();
     }
 
     @Override

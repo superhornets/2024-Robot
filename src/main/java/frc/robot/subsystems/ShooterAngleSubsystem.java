@@ -21,6 +21,7 @@ public class ShooterAngleSubsystem extends SubsystemBase {
     private final SparkPIDController m_pidController = m_motor.getPIDController();
     private final AbsoluteEncoder m_encoder = m_motor.getAbsoluteEncoder(Type.kDutyCycle);
     private final SparkLimitSwitch m_switch = m_motor.getReverseLimitSwitch(SparkLimitSwitch.Type.kNormallyOpen);
+    private double kSetpoint = 0;
 
     public ShooterAngleSubsystem() {
         // Initialize anything else that couldn't be initialized yet
@@ -64,27 +65,41 @@ public class ShooterAngleSubsystem extends SubsystemBase {
 
     public void moveTo(double angle) {
         m_pidController.setReference(angle, ControlType.kPosition);
+        kSetpoint = angle;
         //m_motor.set(0);
     }
 
     public void home() {
-        m_motor.set(0.05);
+        m_motor.set(-0.05);
+        kSetpoint = 0;
+    }
+
+    public void stop() {
+        m_motor.set(0);
     }
 
     public void moveUp() {
         m_pidController.setReference((m_encoder.getPosition() + 15), ControlType.kPosition);
+        kSetpoint = m_encoder.getPosition() + 15;
     }
 
     public void moveDown() {
         m_pidController.setReference((m_encoder.getPosition() - 15), ControlType.kPosition);
+        kSetpoint = m_encoder.getPosition() - 15;
     }
 
     public void holdPosition() {
-        m_pidController.setReference(m_encoder.getPosition(), ControlType.kPosition);
+        m_pidController.setReference(kSetpoint, ControlType.kPosition);
     }
 
     public boolean isDown() {
         return m_switch.isPressed();
+    }
+
+    public boolean isAtSetpoint() {
+        double upperBound = kSetpoint + 3;
+        double lowerBound = kSetpoint - 3;
+        return (m_encoder.getPosition() > lowerBound) && (m_encoder.getPosition() < upperBound);
     }
 
     @Override

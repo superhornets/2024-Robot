@@ -64,11 +64,15 @@ public class ShooterAngleSubsystem extends SubsystemBase {
 
     public void moveTo(double angle) {
         m_pidController.setReference(angle, ControlType.kPosition);
-        //m_motor.set(0);
     }
 
     public void home() {
-        m_motor.set(0.05);
+        if (m_encoder.getPosition() > 15) {
+            moveTo(ShooterAngleConstants.kHomeAboveTen);
+        } else {
+            m_motor.set(ShooterAngleConstants.kHomeSetDown);
+        }
+
     }
 
     public void moveUp() {

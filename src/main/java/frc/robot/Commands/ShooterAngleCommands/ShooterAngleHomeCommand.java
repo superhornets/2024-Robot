@@ -25,7 +25,7 @@ public class ShooterAngleHomeCommand extends Command {
 
     @Override
     public void end(boolean interrupted) {
-
+        m_angleSubsystem.stop();
     }
 
     @Override

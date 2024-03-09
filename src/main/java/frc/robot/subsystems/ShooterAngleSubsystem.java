@@ -50,9 +50,9 @@ public class ShooterAngleSubsystem extends SubsystemBase {
         m_pidController.setSmartMotionMaxAccel(ShooterAngleConstants.kMaxAccel, 0);
         m_pidController.setOutputRange(ShooterAngleConstants.kMinOutput, ShooterAngleConstants.kMaxOutput);
 
-        this.setDefaultCommand(new RunCommand(() -> {
+        /*this.setDefaultCommand(new RunCommand(() -> {
             holdPosition();
-        }, this));
+        }, this));*/
     }
 
     public double getPosition() {

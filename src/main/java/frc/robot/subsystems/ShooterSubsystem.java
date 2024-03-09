@@ -17,7 +17,7 @@ public class ShooterSubsystem extends SubsystemBase {
     private final SparkPIDController m_rightPIDController = m_rightMotor.getPIDController();
     private final RelativeEncoder m_leftEncoder = m_leftMotor.getEncoder();
     private final RelativeEncoder m_rightEncoder = m_rightMotor.getEncoder();
-    private double setpoint;
+    private double kSetpoint;
 
     public ShooterSubsystem() {
         m_leftMotor.setInverted(ShooterConstants.kIsLeftMotorInverted);
@@ -38,25 +38,25 @@ public class ShooterSubsystem extends SubsystemBase {
     public void runShooterSubwoofer() {
         m_leftPIDController.setReference(ShooterConstants.kShooterSpeedSubwoofer, ControlType.kVelocity);
         m_rightPIDController.setReference(ShooterConstants.kShooterSpeedSubwoofer, ControlType.kVelocity);
-        setpoint = ShooterConstants.kShooterSpeedSubwoofer;
+        kSetpoint = ShooterConstants.kShooterSpeedSubwoofer;
     }
 
     public void runShooterPodium() {
         m_leftPIDController.setReference(ShooterConstants.kShooterSpeedPodium, ControlType.kVelocity);
         m_rightPIDController.setReference(ShooterConstants.kShooterSpeedPodium, ControlType.kVelocity);
-        setpoint = ShooterConstants.kShooterSpeedPodium;
+        kSetpoint = ShooterConstants.kShooterSpeedPodium;
     }
 
     public void runShooterAmp() {
         m_leftPIDController.setReference(ShooterConstants.kShooterSpeedAmp, ControlType.kVelocity);
         m_rightPIDController.setReference(ShooterConstants.kShooterSpeedAmp, ControlType.kVelocity);
-        setpoint = ShooterConstants.kShooterSpeedAmp;
+        kSetpoint = ShooterConstants.kShooterSpeedAmp;
     }
 
     public void stopShooter() {
         m_leftPIDController.setReference(0, ControlType.kVelocity);
         m_rightPIDController.setReference(0, ControlType.kVelocity);
-        setpoint = -99;
+        kSetpoint = -99;
     }
 
     public void runShooterToInput(double speed) {
@@ -65,8 +65,8 @@ public class ShooterSubsystem extends SubsystemBase {
     }
 
     public boolean isAtSpeed() {
-        double lowerBound = setpoint - 100;
-        double upperBound = setpoint + 100;
+        double lowerBound = kSetpoint - 100;
+        double upperBound = kSetpoint + 100;
 
         return ((m_leftEncoder.getVelocity() > lowerBound) && (m_leftEncoder.getVelocity() < upperBound))
                 && ((m_rightEncoder.getVelocity() > lowerBound) && (m_rightEncoder.getVelocity() < upperBound));

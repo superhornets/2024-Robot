@@ -117,7 +117,7 @@ public class RobotContainer {
      * The container for the robot. Contains subsystems, OI devices, and commands.
      */
     public RobotContainer() {
-        NamedCommands.registerCommand("Shoot", new IndexerShootCommand(m_indexer).withTimeout(1));
+        NamedCommands.registerCommand("Shoot", new ShootAndHomeCommand(m_indexer, m_angleSubsystem, m_shooter));
         NamedCommands.registerCommand("home", new ShooterAngleHomeCommand(m_angleSubsystem));
         NamedCommands.registerCommand("shooterToSpeedSubwoofer", new ShooterRunSubwooferCommand(m_shooter));
         NamedCommands.registerCommand("shooterToAngleSubwoofer", new ShooterSubwooferCommand(m_angleSubsystem));

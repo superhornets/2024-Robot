@@ -17,7 +17,7 @@ public class ShooterSubsystem extends SubsystemBase {
     private final SparkPIDController m_rightPIDController = m_rightMotor.getPIDController();
     private final RelativeEncoder m_leftEncoder = m_leftMotor.getEncoder();
     private final RelativeEncoder m_rightEncoder = m_rightMotor.getEncoder();
-    private double kSetpoint;
+    private double kSetpoint = -500;
 
     public ShooterSubsystem() {
         m_leftMotor.setInverted(ShooterConstants.kIsLeftMotorInverted);
@@ -56,7 +56,7 @@ public class ShooterSubsystem extends SubsystemBase {
     public void stopShooter() {
         m_leftPIDController.setReference(0, ControlType.kVelocity);
         m_rightPIDController.setReference(0, ControlType.kVelocity);
-        kSetpoint = -99;
+        kSetpoint = -500;
     }
 
     public void runShooterToInput(double speed) {
@@ -65,8 +65,8 @@ public class ShooterSubsystem extends SubsystemBase {
     }
 
     public boolean isAtSpeed() {
-        double lowerBound = kSetpoint - 100;
-        double upperBound = kSetpoint + 100;
+        double lowerBound = kSetpoint - 500;
+        double upperBound = kSetpoint + 500;
 
         return ((m_leftEncoder.getVelocity() > lowerBound) && (m_leftEncoder.getVelocity() < upperBound))
                 && ((m_rightEncoder.getVelocity() > lowerBound) && (m_rightEncoder.getVelocity() < upperBound));

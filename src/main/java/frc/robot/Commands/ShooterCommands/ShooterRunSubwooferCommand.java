@@ -12,10 +12,19 @@ public class ShooterRunSubwooferCommand extends Command {
     }
 
     @Override
+    public void initialize() {
+        System.out.println("Start shooter to speed subwoofer");
+    }
+
+    @Override
     public void execute() {
         m_ShooterSubsystem.runShooterSubwoofer();
     }
 
+    @Override
+    public void end(boolean interrupted) {
+        System.out.println("stop shooter to Speed");
+    }
     @Override
     public boolean isFinished() {
         //Check if is finished

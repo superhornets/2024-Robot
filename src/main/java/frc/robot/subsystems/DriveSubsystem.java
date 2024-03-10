@@ -18,6 +18,7 @@ import edu.wpi.first.math.estimator.SwerveDrivePoseEstimator;
 import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
@@ -75,7 +76,7 @@ public class DriveSubsystem extends SubsystemBase {
                     m_frontRight.getPosition(),
                     m_rearLeft.getPosition(),
                     m_rearRight.getPosition()
-            }, new Pose2d());
+            }, new Pose2d(new Translation2d(1.35, 5), new Rotation2d(0)));
 
     private Field2d m_field = new Field2d();
 
@@ -120,7 +121,6 @@ public class DriveSubsystem extends SubsystemBase {
                         m_rearLeft.getPosition(),
                         m_rearRight.getPosition()
                 });
-
         //System.out.println(getRobotRelativeSpeeds());
         m_field.setRobotPose(m_odometry.getEstimatedPosition());
         //System.out.println("fr: " + m_frontRight.getState() + "fl: " + m_frontLeft.getState() + " rr: "
@@ -133,6 +133,10 @@ public class DriveSubsystem extends SubsystemBase {
 
     }
 
+    public void resetNavXToPos(double pos) {
+        m_gyro.reset();
+        m_gyro.setAngleAdjustment(pos);
+    }
     public Pose2d gEstimatedRobotPose() {
         return m_odometry.getEstimatedPosition();
     }
@@ -276,6 +280,7 @@ public class DriveSubsystem extends SubsystemBase {
 
     public void resetYaw() {
         m_gyro.reset();
+        m_gyro.setAngleAdjustment(0);
     }
 
     /**

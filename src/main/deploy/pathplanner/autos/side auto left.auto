@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.4028643441902284,
-      "y": 5.525487974052871
+      "x": 0.6628436333795761,
+      "y": 4.380922607999063
     },
-    "rotation": 0.0
+    "rotation": -59.74356283647073
   },
   "command": {
     "type": "sequential",
@@ -14,7 +14,7 @@
         {
           "type": "named",
           "data": {
-            "name": "ResetNavX"
+            "name": "resetNavXLeft"
           }
         },
         {
@@ -24,13 +24,13 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "shooterToSpeedSubwoofer"
+                  "name": "shooterToSpeedPodium"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "shooterToAngleSubwoofer"
+                  "name": "shooterToAnglePodium"
                 }
               }
             ]
@@ -49,7 +49,13 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "DriveBackTo2"
+                  "pathName": "side auto left"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Indexer"
                 }
               },
               {
@@ -62,12 +68,6 @@
                 "type": "named",
                 "data": {
                   "name": "home"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Indexer"
                 }
               }
             ]
@@ -94,8 +94,20 @@
                 "data": {
                   "name": "Indexer"
                 }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "home"
+                }
               }
             ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "side auto left rotation"
           }
         },
         {
@@ -105,13 +117,13 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "shooterToSpeed2"
+                  "name": "shooterToSpeedPodium"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "shooterToAngle2"
+                  "name": "shooterToAnglePodium"
                 }
               }
             ]

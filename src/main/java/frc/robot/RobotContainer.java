@@ -24,6 +24,7 @@ import frc.robot.Commands.ClimberCommands.ClimberExtendCommand;
 import frc.robot.Commands.ClimberCommands.ClimberRetractCommand;
 import frc.robot.Commands.CommandGroups.ShootAndHomeCommand;
 import frc.robot.Commands.DriveCommands.DriveResetYaw;
+import frc.robot.Commands.DriveCommands.DriveResetYawToValue;
 import frc.robot.Commands.DriveCommands.DriveSetXCommand;
 import frc.robot.Commands.DriveCommands.DriveStopCommand;
 import frc.robot.Commands.IndexerCommands.IndexerRunToSensorCommand;
@@ -119,15 +120,21 @@ public class RobotContainer {
     public RobotContainer() {
         NamedCommands.registerCommand("Shoot", new ShootAndHomeCommand(m_indexer, m_angleSubsystem, m_shooter));
         NamedCommands.registerCommand("home", new ShooterAngleHomeCommand(m_angleSubsystem));
-        NamedCommands.registerCommand("shooterToSpeedSubwoofer", new ShooterRunSubwooferCommand(m_shooter));
-        NamedCommands.registerCommand("shooterToAngleSubwoofer", new ShooterSubwooferCommand(m_angleSubsystem));
+        NamedCommands.registerCommand("shooterToSpeedSubwoofer",
+                new ShooterRunSubwooferCommand(m_shooter));
+        NamedCommands.registerCommand("shooterToAngleSubwoofer",
+                new ShooterSubwooferCommand(m_angleSubsystem));
         NamedCommands.registerCommand("Intake", new IntakeCommand(m_intake, m_indexer, m_angleSubsystem));
-        NamedCommands.registerCommand("shooterToAngle2", new ShooterToAngleCommand(m_angleSubsystem, 30));
+        NamedCommands.registerCommand("shooterToAngle2", new ShooterToAngleCommand(m_angleSubsystem, 32));
         NamedCommands.registerCommand("shooterToSpeed2", new ShooterRunPodiumCommand(m_shooter));
         NamedCommands.registerCommand("shooterToAnglePodium", new ShooterPodiumCommand(m_angleSubsystem));
         NamedCommands.registerCommand("ShooterToSpeedPodium", new ShooterRunPodiumCommand(m_shooter));
         NamedCommands.registerCommand("ResetNavX", new DriveResetYaw(m_robotDrive));
         NamedCommands.registerCommand("stopDrive", new DriveStopCommand(m_robotDrive));
+        NamedCommands.registerCommand("Indexer", new IndexerRunToSensorCommand(m_indexer));
+        NamedCommands.registerCommand("resetNavXLeft", new DriveResetYawToValue(m_robotDrive, -60));
+        NamedCommands.registerCommand("resetNavXRight", new DriveResetYawToValue(m_robotDrive, 60));
+
         // Build an auto chooser. This will use Commands.none() as the default option.
         autoChooser = AutoBuilder.buildAutoChooser();
 

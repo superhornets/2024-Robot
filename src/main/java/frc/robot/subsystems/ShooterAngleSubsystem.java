@@ -25,6 +25,7 @@ public class ShooterAngleSubsystem extends SubsystemBase {
 
     public ShooterAngleSubsystem() {
         // Initialize anything else that couldn't be initialized yet
+        m_switch.enableLimitSwitch(false);
         m_motor.getForwardLimitSwitch(SparkLimitSwitch.Type.kNormallyOpen);
         m_motor.setInverted(ShooterAngleConstants.kMotorInverted);
         m_encoder.setInverted(ShooterAngleConstants.kEncoderInverted);

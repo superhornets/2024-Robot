@@ -51,6 +51,49 @@
                 "data": {
                   "name": "Intake"
                 }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "home"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Indexer"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "stopDrive"
+          }
+        },
+        {
+          "type": "deadline",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Indexer"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "home"
+                }
               }
             ]
           }
@@ -101,6 +144,43 @@
                 "data": {
                   "name": "home"
                 }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Indexer"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "stopDrive"
+          }
+        },
+        {
+          "type": "deadline",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Indexer"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "home"
+                }
               }
             ]
           }
@@ -144,6 +224,49 @@
                 "type": "named",
                 "data": {
                   "name": "Intake"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Indexer"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "home"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "stopDrive"
+          }
+        },
+        {
+          "type": "deadline",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Indexer"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "home"
                 }
               }
             ]

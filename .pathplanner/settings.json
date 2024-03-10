@@ -4,13 +4,15 @@
   "holonomicMode": true,
   "pathFolders": [
     "2 piece auto paths",
+    "2 piece leave and come back",
     "4 piece auto paths",
-    "New 4 piece auto paths"
+    "New 4 piece auto paths",
+    "side auto left"
   ],
   "autoFolders": [],
   "defaultMaxVel": 4.0,
   "defaultMaxAccel": 3.0,
-  "defaultMaxAngVel": 180.0,
-  "defaultMaxAngAccel": 360.0,
-  "maxModuleSpeed": 5.0
+  "defaultMaxAngVel": 90.0,
+  "defaultMaxAngAccel": 180.0,
+  "maxModuleSpeed": 4.8
 }

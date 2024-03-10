@@ -23,6 +23,7 @@ public class IndexerShootCommand extends Command {
     public void initialize() {
         m_indexer.setSwitchDisabled();
         timeStamp = Timer.getFPGATimestamp();
+        System.out.println("start Shooting");
     }
 
     @Override
@@ -36,6 +37,7 @@ public class IndexerShootCommand extends Command {
 
     @Override
     public void end(boolean interrupted) {
+        System.out.println("stop shooting");
         m_indexer.stop();
     }
 

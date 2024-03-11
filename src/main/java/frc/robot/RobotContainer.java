@@ -22,6 +22,7 @@ import frc.robot.Commands.IntakeCommands.IntakeCommand;
 import frc.robot.Commands.IntakeCommands.OuttakeCommand;
 import frc.robot.Commands.ClimberCommands.ClimberExtendCommand;
 import frc.robot.Commands.ClimberCommands.ClimberRetractCommand;
+import frc.robot.Commands.CommandGroups.ShootAndHomeCommand;
 import frc.robot.Commands.DriveCommands.DriveResetYaw;
 import frc.robot.Commands.DriveCommands.DriveSetXCommand;
 import frc.robot.Commands.IndexerCommands.IndexerRunToSensorCommand;
@@ -31,6 +32,7 @@ import frc.robot.Commands.ShooterCommands.ShooterRunPodiumCommand;
 import frc.robot.Commands.ShooterCommands.ShooterRunSubwooferCommand;
 import frc.robot.Commands.ShooterCommands.ShooterStopCommand;
 import frc.robot.Commands.ShooterAngleCommands.ShooterAngleAmpCommand;
+import frc.robot.Commands.ShooterAngleCommands.ShooterAngleHomeCommand;
 import frc.robot.Commands.ShooterAngleCommands.ShooterLowerCommand;
 import frc.robot.Commands.ShooterAngleCommands.ShooterPodiumCommand;
 import frc.robot.Commands.ShooterAngleCommands.ShooterRaiseCommand;
@@ -91,7 +93,7 @@ public class RobotContainer {
     private final SendableChooser<Command> autoChooser;
     // The robot's subsystems
     private final DriveSubsystem m_robotDrive = new DriveSubsystem();
-    private final VisionNoteSubsystem m_visionNoteSubsystem = new VisionNoteSubsystem();
+    //private final VisionNoteSubsystem m_visionNoteSubsystem = new VisionNoteSubsystem();
     private final VisionAprilTagSubsystem m_visionAprilTagSubsystem = new VisionAprilTagSubsystem();
 
     // private final IndexerSubsystem m_indexer = new IndexerSubsystem();
@@ -145,7 +147,7 @@ public class RobotContainer {
                                 m_driverController.rightBumper().getAsBoolean()),
                         m_robotDrive));
 
-        m_driverController.a().whileTrue(new DriveRotateToNoteCommand(m_robotDrive, m_visionNoteSubsystem));
+        m_driverController.a().whileTrue(new DriveRotateToNoteCommand(m_robotDrive, m_visionAprilTagSubsystem));
 
         m_driverController.x().whileTrue(new DriveSetXCommand(m_robotDrive));
 
@@ -153,7 +155,7 @@ public class RobotContainer {
         m_driverController.b().onTrue(new DriveResetYaw(m_robotDrive));
 
         // intake
-        m_driverController.leftBumper().whileTrue(new IntakeCommand(m_intake));
+        m_driverController.leftBumper().whileTrue(new IntakeCommand(m_intake, m_indexer, m_angleSubsystem));
         /*m_driverController.leftTrigger(.1)
                 .whileTrue(new IntakeAtSpeedCommand(m_intake, () -> {
                     return m_driverController.getLeftTriggerAxis();
@@ -161,13 +163,15 @@ public class RobotContainer {
         m_driverController.y().whileTrue(new OuttakeCommand(m_intake));
 
         //indexer
-        m_operatorController.rightBumper().whileTrue(new IndexerShootCommand(m_indexer));
+        m_operatorController.rightBumper().onTrue(new ShootAndHomeCommand(m_indexer, m_angleSubsystem, m_shooter));
         m_driverController.leftBumper().whileTrue(new IndexerRunToSensorCommand(m_indexer));
         //m_driverController.leftTrigger(.1).whileTrue(new IndexerRunToSensorCommand(m_indexer));
         //Shooter angle
         m_operatorController.b().onTrue(new ShooterAngleAmpCommand(m_angleSubsystem));
         m_operatorController.a().onTrue(new ShooterSubwooferCommand(m_angleSubsystem));
         m_operatorController.x().onTrue(new ShooterPodiumCommand(m_angleSubsystem));
+        m_operatorController.y().onTrue(new ShooterAngleHomeCommand(m_angleSubsystem));
+
         m_operatorController.povUp().whileTrue(new ShooterRaiseCommand(m_angleSubsystem));
         m_operatorController.povDown().whileTrue(new ShooterLowerCommand(m_angleSubsystem));
         //climber
@@ -184,6 +188,7 @@ public class RobotContainer {
         m_operatorController.x().onTrue(new ShooterRunPodiumCommand(m_shooter));
         m_operatorController.a().onTrue(new ShooterRunSubwooferCommand(m_shooter));
         m_operatorController.b().onTrue(new ShooterRunAmpCommand(m_shooter));
+        m_operatorController.y().onTrue(new ShooterStopCommand(m_shooter));
         m_operatorController.start().onTrue(new ShooterStopCommand(m_shooter));
 
 
@@ -194,12 +199,12 @@ public class RobotContainer {
         }
 
         public void robotPeriodic() {
-            System.out.println(m_visionAprilTagSubsystem.getEstimatedGlobalPose(m_robotDrive.getPose()));
-            if (m_visionAprilTagSubsystem.getEstimatedGlobalPose(m_robotDrive.getPose()).isPresent()) {
+            //System.out.println(m_visionAprilTagSubsystem.getEstimatedGlobalPose(m_robotDrive.getPose()));
+            /*if (m_visionAprilTagSubsystem.getEstimatedGlobalPose(m_robotDrive.getPose()).isPresent()) {
                 EstimatedRobotPose robotPose = m_visionAprilTagSubsystem.getEstimatedGlobalPose(m_robotDrive.getPose())
                         .orElse(null);
                 m_robotDrive.odometryAddVisionMeasurement(robotPose);
-            }
+            }*/
         }
     public void teleopInit() {
         m_shooter.stopShooter();

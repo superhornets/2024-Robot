@@ -7,6 +7,8 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.SparkLimitSwitch;
 import com.revrobotics.SparkPIDController;
 import com.revrobotics.CANSparkBase.ControlType;
+import com.revrobotics.CANSparkBase.SoftLimitDirection;
+
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -18,13 +20,17 @@ public class ShooterAngleSubsystem extends SubsystemBase {
     private final CANSparkMax m_motor = new CANSparkMax(ShooterAngleConstants.kMotorCanId, MotorType.kBrushless);
     private final SparkPIDController m_pidController = m_motor.getPIDController();
     private final AbsoluteEncoder m_encoder = m_motor.getAbsoluteEncoder(Type.kDutyCycle);
+    private final SparkLimitSwitch m_switch = m_motor.getReverseLimitSwitch(SparkLimitSwitch.Type.kNormallyOpen);
 
     public ShooterAngleSubsystem() {
         // Initialize anything else that couldn't be initialized yet
         m_motor.getForwardLimitSwitch(SparkLimitSwitch.Type.kNormallyOpen);
-        m_motor.getReverseLimitSwitch(SparkLimitSwitch.Type.kNormallyOpen);
         m_motor.setInverted(ShooterAngleConstants.kMotorInverted);
         m_encoder.setInverted(ShooterAngleConstants.kEncoderInverted);
+        m_encoder.setZeroOffset(120);
+        m_motor.setSoftLimit(SoftLimitDirection.kForward, ShooterAngleConstants.kSoftLimit);
+        m_motor.enableSoftLimit(SoftLimitDirection.kForward, true);
+
 
         m_pidController.setP(ShooterAngleConstants.kP);
         m_pidController.setI(ShooterAngleConstants.kI);
@@ -57,20 +63,32 @@ public class ShooterAngleSubsystem extends SubsystemBase {
     }
 
     public void moveTo(double angle) {
-        m_pidController.setReference(angle, ControlType.kSmartMotion);
-        //m_motor.set(0);
+        m_pidController.setReference(angle, ControlType.kPosition);
+    }
+
+    public void home() {
+        if (m_encoder.getPosition() > 15) {
+            moveTo(ShooterAngleConstants.kHomeAboveTen);
+        } else {
+            m_motor.set(ShooterAngleConstants.kHomeSetDown);
+        }
+
     }
 
     public void moveUp() {
-        m_pidController.setReference((m_encoder.getPosition() + 15), ControlType.kSmartMotion);
+        m_pidController.setReference((m_encoder.getPosition() + 15), ControlType.kPosition);
     }
 
     public void moveDown() {
-        m_pidController.setReference((m_encoder.getPosition() - 15), ControlType.kSmartMotion);
+        m_pidController.setReference((m_encoder.getPosition() - 15), ControlType.kPosition);
     }
 
     public void holdPosition() {
-        m_pidController.setReference(m_encoder.getPosition(), ControlType.kSmartMotion);
+        m_pidController.setReference(m_encoder.getPosition(), ControlType.kPosition);
+    }
+
+    public boolean isDown() {
+        return m_switch.isPressed();
     }
 
     @Override

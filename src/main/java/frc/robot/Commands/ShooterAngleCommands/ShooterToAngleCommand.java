@@ -33,6 +33,6 @@ public class ShooterToAngleCommand extends Command {
     @Override
     public boolean isFinished() {
         // Have we reached our destination?
-        return false;
+        return m_angleSubsystem.isAtSetpoint();
     }
 }

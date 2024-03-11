@@ -15,6 +15,7 @@ public class ShooterSubwooferCommand extends Command {
 
     @Override
     public void initialize() {
+        System.out.println("Start shooter angle subwoofer");
 
     }
 
@@ -25,12 +26,13 @@ public class ShooterSubwooferCommand extends Command {
 
     @Override
     public void end(boolean interrupted) {
+        System.out.println("Stop shooter to angle subwoofer");
 
     }
 
     @Override
     public boolean isFinished() {
         // Have we reached our destination?
-        return false;
+        return m_angleSubsystem.isAtSetpoint();
     }
 }

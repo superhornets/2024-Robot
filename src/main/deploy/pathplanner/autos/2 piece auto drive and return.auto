@@ -2,21 +2,15 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.4028643441902284,
-      "y": 5.525487974052871
+      "x": 1.383130458568611,
+      "y": 5.574822688106915
     },
-    "rotation": 0.0
+    "rotation": 0
   },
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
-        {
-          "type": "named",
-          "data": {
-            "name": "ResetNavX"
-          }
-        },
         {
           "type": "parallel",
           "data": {
@@ -49,7 +43,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "DriveBackTo2"
+                  "pathName": "2 piece lieave and come back drive to 2"
                 }
               },
               {
@@ -61,13 +55,13 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "home"
+                  "name": "Indexer"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "Indexer"
+                  "name": "home"
                 }
               }
             ]
@@ -103,15 +97,21 @@
           "data": {
             "commands": [
               {
-                "type": "named",
+                "type": "path",
                 "data": {
-                  "name": "shooterToSpeed2"
+                  "pathName": "2 peice auto drive out and return"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "shooterToAngle2"
+                  "name": "shooterToSpeedSubwoofer"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "shooterToAngleSubwoofer"
                 }
               }
             ]

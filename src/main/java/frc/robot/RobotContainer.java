@@ -24,6 +24,27 @@ import frc.robot.Commands.ClimberCommands.ClimberExtendCommand;
 import frc.robot.Commands.ClimberCommands.ClimberRetractCommand;
 import frc.robot.Commands.CommandGroups.ShootAndHomeCommand;
 import frc.robot.Commands.DriveCommands.DriveResetYaw;
+import frc.robot.Commands.DriveCommands.DriveResetYawToValue;
+import frc.robot.Commands.DriveCommands.DriveSetXCommand;
+import frc.robot.Commands.DriveCommands.DriveStopCommand;
+import frc.robot.Commands.IndexerCommands.IndexerRunToSensorCommand;
+import frc.robot.Commands.IndexerCommands.IndexerShootCommand;
+import frc.robot.Commands.ShooterCommands.ShooterRunAmpCommand;
+import frc.robot.Commands.ShooterCommands.ShooterRunPodiumCommand;
+import frc.robot.Commands.ShooterCommands.ShooterRunSubwooferCommand;
+import frc.robot.Commands.ShooterCommands.ShooterStopCommand;
+import frc.robot.Commands.ShooterAngleCommands.ShooterAngleAmpCommand;
+import frc.robot.Commands.ShooterAngleCommands.ShooterAngleHomeCommand;
+import frc.robot.Commands.ShooterAngleCommands.ShooterLowerCommand;
+import frc.robot.Commands.ShooterAngleCommands.ShooterPodiumCommand;
+import frc.robot.Commands.ShooterAngleCommands.ShooterRaiseCommand;
+import frc.robot.Commands.ShooterAngleCommands.ShooterSubwooferCommand;
+import frc.robot.Commands.IntakeCommands.IntakeAtSpeedCommand;
+import frc.robot.Commands.IntakeCommands.IntakeCommand;
+import frc.robot.Commands.IntakeCommands.OuttakeCommand;
+import frc.robot.Commands.ClimberCommands.ClimberExtendCommand;
+import frc.robot.Commands.ClimberCommands.ClimberRetractCommand;
+import frc.robot.Commands.DriveCommands.DriveResetYaw;
 import frc.robot.Commands.DriveCommands.DriveSetXCommand;
 import frc.robot.Commands.IndexerCommands.IndexerRunToSensorCommand;
 import frc.robot.Commands.IndexerCommands.IndexerShootCommand;
@@ -116,14 +137,22 @@ public class RobotContainer {
      * The container for the robot. Contains subsystems, OI devices, and commands.
      */
     public RobotContainer() {
-        NamedCommands.registerCommand("Shoot", new IndexerShootCommand(m_indexer).withTimeout(1));
-        NamedCommands.registerCommand("shooterToSpeedSubwoofer", new ShooterRunSubwooferCommand(m_shooter));
-        NamedCommands.registerCommand("shooterToAngleSubwoofer", new ShooterSubwooferCommand(m_angleSubsystem));
-        NamedCommands.registerCommand("Intake", new IntakeCommand(m_intake));
-        NamedCommands.registerCommand("shooterToAngle2", new ShooterToAngleCommand(m_angleSubsystem, 30));
-        NamedCommands.registerCommand("shooterToSpeed2", new ShooterPodiumCommand(m_angleSubsystem));
+        NamedCommands.registerCommand("Shoot", new ShootAndHomeCommand(m_indexer, m_angleSubsystem, m_shooter));
+        NamedCommands.registerCommand("home", new ShooterAngleHomeCommand(m_angleSubsystem));
+        NamedCommands.registerCommand("shooterToSpeedSubwoofer",
+                new ShooterRunSubwooferCommand(m_shooter));
+        NamedCommands.registerCommand("shooterToAngleSubwoofer",
+                new ShooterSubwooferCommand(m_angleSubsystem));
+        NamedCommands.registerCommand("Intake", new IntakeCommand(m_intake, m_indexer, m_angleSubsystem));
+        NamedCommands.registerCommand("shooterToAngle2", new ShooterToAngleCommand(m_angleSubsystem, 32));
+        NamedCommands.registerCommand("shooterToSpeed2", new ShooterRunPodiumCommand(m_shooter));
         NamedCommands.registerCommand("shooterToAnglePodium", new ShooterPodiumCommand(m_angleSubsystem));
         NamedCommands.registerCommand("ShooterToSpeedPodium", new ShooterRunPodiumCommand(m_shooter));
+        NamedCommands.registerCommand("ResetNavX", new DriveResetYaw(m_robotDrive));
+        NamedCommands.registerCommand("stopDrive", new DriveStopCommand(m_robotDrive));
+        NamedCommands.registerCommand("Indexer", new IndexerRunToSensorCommand(m_indexer));
+        NamedCommands.registerCommand("resetNavXLeft", new DriveResetYawToValue(m_robotDrive, -60));
+        NamedCommands.registerCommand("resetNavXRight", new DriveResetYawToValue(m_robotDrive, 60));
 
         // Build an auto chooser. This will use Commands.none() as the default option.
         autoChooser = AutoBuilder.buildAutoChooser();
@@ -194,9 +223,9 @@ public class RobotContainer {
 
     }
 
-        public Command getAutonomousCommand() {
-            return autoChooser.getSelected();
-        }
+    public Command getAutonomousCommand() {
+        return autoChooser.getSelected();
+    }
 
         public void robotPeriodic() {
             //System.out.println(m_visionAprilTagSubsystem.getEstimatedGlobalPose(m_robotDrive.getPose()));

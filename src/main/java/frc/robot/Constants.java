@@ -175,7 +175,7 @@ public final class Constants {
         public static final double kXOffset = Units.inchesToMeters(-10);
         public static final double kYOffset = Units.inchesToMeters(2);
         public static final double kZOffset = Units.inchesToMeters(15.25);
-        public static final double kRollOffset = 10;
+        public static final double kRollOffset = 0;
         public static final double kPitchOffset = 0;
         public static final double kYawOffset = 180;
     }
@@ -223,7 +223,7 @@ public final class Constants {
         public static final double kP = 0.0085;
         public static final double kI = 0.0000004;
         public static final double kD = 0.0005;
-        public static final double kSubwooferPosition = 9; //degrees
+        public static final double kSubwooferPosition = 11; //degrees
         public static final double kPodiumPosition = 30; //degrees
         public static final double kAmpPosition = 90; //degrees
         public static final double kAngle = 0; //degrees

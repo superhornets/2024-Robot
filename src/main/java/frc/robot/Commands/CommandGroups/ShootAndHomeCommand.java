@@ -12,7 +12,7 @@ public class ShootAndHomeCommand extends SequentialCommandGroup {
 
     public ShootAndHomeCommand(IndexerSubsystem indexerSubsystem, ShooterAngleSubsystem shooterAngleSubsystem,
             ShooterSubsystem shooterSubsystem) {
-        addCommands(new IndexerShootCommand(indexerSubsystem).withTimeout(IndexerConstants.kTime),
+        addCommands(new IndexerShootCommand(indexerSubsystem, shooterSubsystem).withTimeout(IndexerConstants.kTime),
                 new ShooterAngleHomeCommand(shooterAngleSubsystem));
     }
 

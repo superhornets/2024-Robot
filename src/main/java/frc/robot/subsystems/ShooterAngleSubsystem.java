@@ -82,8 +82,6 @@ public class ShooterAngleSubsystem extends SubsystemBase {
         m_motor.set(0);
     }
 
-    }
-
     public void moveUp() {
         m_pidController.setReference((m_encoder.getPosition() + 15), ControlType.kPosition);
         kSetpoint = m_encoder.getPosition() + 15;

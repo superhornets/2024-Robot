@@ -33,7 +33,6 @@ public class ShooterAngleSubsystem extends SubsystemBase {
         m_motor.setSoftLimit(SoftLimitDirection.kForward, ShooterAngleConstants.kSoftLimit);
         m_motor.enableSoftLimit(SoftLimitDirection.kForward, true);
 
-
         m_pidController.setP(ShooterAngleConstants.kP);
         m_pidController.setI(ShooterAngleConstants.kI);
         m_pidController.setD(ShooterAngleConstants.kD);
@@ -67,16 +66,22 @@ public class ShooterAngleSubsystem extends SubsystemBase {
     public void moveTo(double angle) {
         m_pidController.setReference(angle, ControlType.kPosition);
         kSetpoint = angle;
-        //m_motor.set(0);
     }
 
     public void home() {
-        m_motor.set(-0.05);
-        kSetpoint = 0;
+        if (m_encoder.getPosition() > 15) {
+            moveTo(ShooterAngleConstants.kHomeAboveTen);
+            kSetpoint = ShooterAngleConstants.kHomeAboveTen;
+        } else {
+            m_motor.set(ShooterAngleConstants.kHomeSetDown);
+            kSetpoint = Double.NaN;
+        }
     }
 
     public void stop() {
         m_motor.set(0);
+    }
+
     }
 
     public void moveUp() {

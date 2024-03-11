@@ -1,7 +1,6 @@
 package frc.robot.Commands.ShooterAngleCommands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.Constants.ShooterAngleConstants;
 import frc.robot.subsystems.ShooterAngleSubsystem;
 
 public class ShooterAngleHomeCommand extends Command {

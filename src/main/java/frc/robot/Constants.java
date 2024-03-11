@@ -196,7 +196,7 @@ public final class Constants {
         public static final double kIntakeSpeed = 0.25;
         public static final double kFeedSpeed = 1;
         public static final double kReverseIntakeSpeed = -0.25;
-        public static final double kTime = .5; //sec
+        public static final double kTime = .4; //sec
     }
 
     public static final class ShooterConstants {
@@ -237,6 +237,8 @@ public final class Constants {
         public static final double kMaxOutput = 1;
         public static final boolean kEncoderInverted = true;
         public static final float kSoftLimit = 120;
+        public static final double kHomeSetDown = -0.05;
+        public static final double kHomeAboveTen = 10;
 
         private static final Point2D[] kShooterAnglePoints = new Point2D.Double[] {
                 //(meters, degrees)

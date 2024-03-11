@@ -21,7 +21,7 @@ public class ShooterAngleSubsystem extends SubsystemBase {
     private final SparkPIDController m_pidController = m_motor.getPIDController();
     private final AbsoluteEncoder m_encoder = m_motor.getAbsoluteEncoder(Type.kDutyCycle);
     private final SparkLimitSwitch m_switch = m_motor.getReverseLimitSwitch(SparkLimitSwitch.Type.kNormallyOpen);
-    private double kSetpoint = 0;
+    private double goal = Double.NaN;
 
     public ShooterAngleSubsystem() {
         // Initialize anything else that couldn't be initialized yet
@@ -65,16 +65,16 @@ public class ShooterAngleSubsystem extends SubsystemBase {
 
     public void moveTo(double angle) {
         m_pidController.setReference(angle, ControlType.kPosition);
-        kSetpoint = angle;
+        goal = angle;
     }
 
     public void home() {
         if (m_encoder.getPosition() > 15) {
             moveTo(ShooterAngleConstants.kHomeAboveTen);
-            kSetpoint = ShooterAngleConstants.kHomeAboveTen;
+            goal = ShooterAngleConstants.kHomeAboveTen;
         } else {
             m_motor.set(ShooterAngleConstants.kHomeSetDown);
-            kSetpoint = Double.NaN;
+            goal = Double.NaN;
         }
     }
 
@@ -84,16 +84,16 @@ public class ShooterAngleSubsystem extends SubsystemBase {
 
     public void moveUp() {
         m_pidController.setReference((m_encoder.getPosition() + 15), ControlType.kPosition);
-        kSetpoint = m_encoder.getPosition() + 15;
+        goal = m_encoder.getPosition() + 15;
     }
 
     public void moveDown() {
         m_pidController.setReference((m_encoder.getPosition() - 15), ControlType.kPosition);
-        kSetpoint = m_encoder.getPosition() - 15;
+        goal = m_encoder.getPosition() - 15;
     }
 
     public void holdPosition() {
-        m_pidController.setReference(kSetpoint, ControlType.kPosition);
+        m_pidController.setReference(goal, ControlType.kPosition);
     }
 
     public boolean isDown() {
@@ -101,8 +101,8 @@ public class ShooterAngleSubsystem extends SubsystemBase {
     }
 
     public boolean isAtSetpoint() {
-        double upperBound = kSetpoint + 3;
-        double lowerBound = kSetpoint - 3;
+        double upperBound = goal + 3;
+        double lowerBound = goal - 3;
         return (m_encoder.getPosition() > lowerBound) && (m_encoder.getPosition() < upperBound);
     }
 

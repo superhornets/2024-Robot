@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj.PS4Controller.Button;
 import frc.robot.Commands.IntakeCommands.IntakeAtSpeedCommand;
 import frc.robot.Commands.IntakeCommands.IntakeCommand;
 import frc.robot.Commands.IntakeCommands.OuttakeCommand;
+import frc.robot.Commands.LightCommands.LightCommand;
 import frc.robot.Commands.ClimberCommands.ClimberExtendCommand;
 import frc.robot.Commands.ClimberCommands.ClimberRetractCommand;
 import frc.robot.Commands.CommandGroups.ShootAndHomeCommand;
@@ -68,6 +69,7 @@ import frc.robot.subsystems.VisionAprilTagSubsystem;
 import frc.robot.subsystems.VisionNoteSubsystem;
 import frc.robot.subsystems.IndexerSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.LightSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.ShooterAngleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -106,6 +108,7 @@ public class RobotContainer {
     private final IntakeSubsystem m_intake = new IntakeSubsystem();
     private final ShooterSubsystem m_shooter = new ShooterSubsystem();
     private final ShooterAngleSubsystem m_angleSubsystem = new ShooterAngleSubsystem();
+    private final LightSubsystem m_Lights = new LightSubsystem();
 
 
     // The driver's controller
@@ -157,6 +160,7 @@ public class RobotContainer {
                                 m_driverController.rightBumper().getAsBoolean()),
                         m_robotDrive));
 
+        m_Lights.setDefaultCommand(new LightCommand(m_Lights, m_shooter.atSpeed, () -> false, m_indexer.hasNote));
         m_driverController.a().whileTrue(new DriveRotateToNoteCommand(m_robotDrive, m_visionAprilTagSubsystem));
 
         m_driverController.x().whileTrue(new DriveSetXCommand(m_robotDrive));

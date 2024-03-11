@@ -108,7 +108,7 @@ public class RobotContainer {
     private final IntakeSubsystem m_intake = new IntakeSubsystem();
     private final ShooterSubsystem m_shooter = new ShooterSubsystem();
     private final ShooterAngleSubsystem m_angleSubsystem = new ShooterAngleSubsystem();
-    private final LightSubsystem m_Lights = new LightSubsystem();
+    private final LightSubsystem m_lights = new LightSubsystem();
 
 
     // The driver's controller
@@ -160,7 +160,8 @@ public class RobotContainer {
                                 m_driverController.rightBumper().getAsBoolean()),
                         m_robotDrive));
 
-        m_Lights.setDefaultCommand(new LightCommand(m_Lights, m_shooter.atSpeed, () -> false, m_indexer.hasNote));
+        m_lights.setDefaultCommand(
+                new LightCommand(m_lights, m_shooter::isAtSpeed, () -> false, m_indexer::getNoteAcquired));
         m_driverController.a().whileTrue(new DriveRotateToNoteCommand(m_robotDrive, m_visionAprilTagSubsystem));
 
         m_driverController.x().whileTrue(new DriveSetXCommand(m_robotDrive));

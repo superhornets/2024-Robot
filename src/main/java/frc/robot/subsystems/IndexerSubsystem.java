@@ -35,12 +35,8 @@ public class IndexerSubsystem extends SubsystemBase {
 
     }
 
-    public boolean isTriggered() {
-        return m_switch.isPressed();
-    }
-
     public void intake() {
-        if (isTriggered()) {
+        if (getNoteAcquired()) {
             m_motorLeft.set(0);
         } else {
             m_motorLeft.set(IndexerConstants.kIntakeSpeed);
@@ -58,8 +54,6 @@ public class IndexerSubsystem extends SubsystemBase {
     public boolean getNoteAcquired() {
         return m_switch.isPressed();
     }
-
-    BooleanSupplier hasNote = () -> getNoteAcquired();
 
     public void stop() {
         m_motorLeft.set(0);

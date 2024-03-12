@@ -54,20 +54,20 @@ public class DriveAutoTarget extends PIDCommand {
         if (m_visionAprilTagSubsystem.hasTargetsAprilTag()) {
             if (m_visionAprilTagSubsystem.isTargetingSpeaker()) {
                 if (m_visionAprilTagSubsystem.getDistanceToSpeaker() < 4) {
-                    m_driveSubsystem.drive(-leftStickY.getAsDouble(), leftStickX.getAsDouble(),
+                    m_driveSubsystem.drive(leftStickY.getAsDouble(), leftStickX.getAsDouble(),
                             turningSpeed.getAsDouble(), true, true);
                 } else {
-                    m_driveSubsystem.teleOpDrive(-leftStickY.getAsDouble(), leftStickX.getAsDouble(),
+                    m_driveSubsystem.teleOpDrive(leftStickY.getAsDouble(), leftStickX.getAsDouble(),
                             rightStickX.getAsDouble(), !fieldRelativeOff.getAsBoolean(), true, slowMode.getAsBoolean(),
                             fastMode.getAsBoolean());
                 }
             } else {
-                m_driveSubsystem.teleOpDrive(-leftStickY.getAsDouble(), leftStickX.getAsDouble(),
+                m_driveSubsystem.teleOpDrive(leftStickY.getAsDouble(), leftStickX.getAsDouble(),
                         rightStickX.getAsDouble(), !fieldRelativeOff.getAsBoolean(), true, slowMode.getAsBoolean(),
                         fastMode.getAsBoolean());
             }
         } else {
-            m_driveSubsystem.teleOpDrive(-leftStickY.getAsDouble(), leftStickX.getAsDouble(),
+            m_driveSubsystem.teleOpDrive(leftStickY.getAsDouble(), leftStickX.getAsDouble(),
                     rightStickX.getAsDouble(), !fieldRelativeOff.getAsBoolean(), true, slowMode.getAsBoolean(),
                     fastMode.getAsBoolean());
         }

@@ -14,6 +14,7 @@ import frc.robot.Commands.IntakeCommands.OuttakeCommand;
 import frc.robot.Commands.ClimberCommands.ClimberExtendCommand;
 import frc.robot.Commands.ClimberCommands.ClimberRetractCommand;
 import frc.robot.Commands.CommandGroups.ShootAndHomeCommand;
+import frc.robot.Commands.DriveCommands.DriveAutoTarget;
 import frc.robot.Commands.DriveCommands.DriveResetYaw;
 import frc.robot.Commands.DriveCommands.DriveResetYawToValue;
 import frc.robot.Commands.DriveCommands.DriveSetXCommand;
@@ -128,6 +129,8 @@ public class RobotContainer {
                                 m_driverController.rightTrigger().getAsBoolean(),
                                 m_driverController.rightBumper().getAsBoolean()),
                         m_robotDrive));
+
+        //m_driverController.povDown().onTrue(new DriveAutoTarget(m_robotDrive, m_visionAprilTagSubsystem, ()->-MathUtil.applyDeadband(m_driverController.getLeftX(),OIConstants.kDriveDeadband), ()->-MathUtil.applyDeadband(m_driverController.getLeftY(), OIConstants.kDriveDeadband), ()->-MathUtil.applyDeadband(m_driverController.getRightX(), OIConstants.kDriveDeadband), ()->m_driverController.povUp().getAsBoolean(), ()->m_driverController.rightTrigger().getAsBoolean(), ()->m_driverController.rightBumper().getAsBoolean(), ()->m_driverController.leftTrigger().getAsBoolean()));
 
         m_driverController.a().whileTrue(new DriveRotateToNoteCommand(m_robotDrive, m_visionAprilTagSubsystem));
 

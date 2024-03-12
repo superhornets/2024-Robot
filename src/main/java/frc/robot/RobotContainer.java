@@ -156,6 +156,7 @@ public class RobotContainer {
         m_operatorController.a().onTrue(new ShooterSubwooferCommand(m_angleSubsystem));
         m_operatorController.x().onTrue(new ShooterPodiumCommand(m_angleSubsystem));
         m_operatorController.y().onTrue(new ShooterAngleHomeCommand(m_angleSubsystem));
+        m_operatorController.leftBumper().onTrue(new ShooterToAngleCommand(m_angleSubsystem, 40));
 
         m_operatorController.povUp().whileTrue(new ShooterRaiseCommand(m_angleSubsystem));
         m_operatorController.povDown().whileTrue(new ShooterLowerCommand(m_angleSubsystem));
@@ -175,6 +176,7 @@ public class RobotContainer {
         m_operatorController.b().onTrue(new ShooterRunAmpCommand(m_shooter));
         m_operatorController.y().onTrue(new ShooterStopCommand(m_shooter));
         m_operatorController.start().onTrue(new ShooterStopCommand(m_shooter));
+        m_operatorController.leftBumper().onTrue(new ShooterRunPodiumCommand(m_shooter));
 
 
     }
@@ -185,11 +187,11 @@ public class RobotContainer {
 
         public void robotPeriodic() {
             //System.out.println(m_visionAprilTagSubsystem.getEstimatedGlobalPose(m_robotDrive.getPose()));
-            /*if (m_visionAprilTagSubsystem.getEstimatedGlobalPose(m_robotDrive.getPose()).isPresent()) {
+            if (m_visionAprilTagSubsystem.getEstimatedGlobalPose(m_robotDrive.getPose()).isPresent()) {
                 EstimatedRobotPose robotPose = m_visionAprilTagSubsystem.getEstimatedGlobalPose(m_robotDrive.getPose())
                         .orElse(null);
                 m_robotDrive.odometryAddVisionMeasurement(robotPose);
-            }*/
+            }
         }
     public void teleopInit() {
         m_shooter.stopShooter();

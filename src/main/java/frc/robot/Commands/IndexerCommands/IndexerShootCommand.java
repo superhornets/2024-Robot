@@ -12,6 +12,7 @@ public class IndexerShootCommand extends Command {
     private final ShooterSubsystem m_shooter;
 
     private double timeStamp;
+    private boolean hasStartedShooting = false;
 
     public IndexerShootCommand(IndexerSubsystem indexer, ShooterSubsystem shooter) {
         addRequirements(indexer);
@@ -24,13 +25,16 @@ public class IndexerShootCommand extends Command {
         m_indexer.setSwitchDisabled();
         timeStamp = Timer.getFPGATimestamp();
         System.out.println("start Shooting");
+        hasStartedShooting = false;
     }
 
     @Override
     public void execute() {
-        if (m_shooter.isAtSpeed()) {
+        if (m_shooter.isAtSpeed() || hasStartedShooting) {
             m_indexer.shoot();
+            hasStartedShooting = true;
         } else {
+            timeStamp = Timer.getFPGATimestamp();
             System.out.println("Not At Speed!");
         }
     }
@@ -43,6 +47,9 @@ public class IndexerShootCommand extends Command {
 
     @Override
     public boolean isFinished() {
+        if ((Timer.getFPGATimestamp() - timeStamp) >= IndexerConstants.kTime) {
+            return true;
+        }
         return false;
     }
 }

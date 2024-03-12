@@ -135,8 +135,12 @@ public class VisionAprilTagSubsystem extends SubsystemBase {
         if (hasTargetsAprilTag()) {
             SmartDashboard.putNumber("distance to targer",
                     getResultsAprilTag().getBestTarget().getBestCameraToTarget().getZ());
+            SmartDashboard.putBoolean("Targeting Speaker", isTargetingSpeaker());
+            if (isTargetingSpeaker()) {
+                SmartDashboard.putNumber("distance to speaker", getDistanceToSpeaker());
+            }
         }
-        SmartDashboard.putBoolean("Targeting Speaker", isTargetingSpeaker());
+
     }
 
 }

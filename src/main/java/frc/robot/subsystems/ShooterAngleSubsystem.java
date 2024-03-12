@@ -10,7 +10,6 @@ import com.revrobotics.CANSparkBase.ControlType;
 import com.revrobotics.CANSparkBase.SoftLimitDirection;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ShooterAngleConstants;
 
@@ -50,6 +49,8 @@ public class ShooterAngleSubsystem extends SubsystemBase {
         m_pidController.setSmartMotionMaxAccel(ShooterAngleConstants.kMaxAccel, 0);
         m_pidController.setOutputRange(ShooterAngleConstants.kMinOutput, ShooterAngleConstants.kMaxOutput);
 
+        m_encoder.setZeroOffset(110);
+
         /*this.setDefaultCommand(new RunCommand(() -> {
             holdPosition();
         }, this));*/
@@ -68,14 +69,18 @@ public class ShooterAngleSubsystem extends SubsystemBase {
         goal = angle;
     }
 
-    public void home() {
+    public boolean home() {
+
         if (m_encoder.getPosition() > 15) {
             moveTo(ShooterAngleConstants.kHomeAboveTen);
-            goal = ShooterAngleConstants.kHomeAboveTen;
         } else {
             m_motor.set(ShooterAngleConstants.kHomeSetDown);
             goal = Double.NaN;
+
+            return isDown();
         }
+
+        return false;
     }
 
     public void stop() {

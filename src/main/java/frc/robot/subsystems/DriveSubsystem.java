@@ -210,7 +210,6 @@ public class DriveSubsystem extends SubsystemBase {
 
         double xSpeedCommanded;
         double ySpeedCommanded;
-        System.out.println("HELLO!!!!!!!!");
 
         if (rateLimit) {
             // Convert XY to polar for rate limiting

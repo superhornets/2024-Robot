@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ShooterAngleConstants;
+import frc.robot.Constants.ShooterConstants;
 
 public class ShooterAngleSubsystem extends SubsystemBase {
     // Initialize motors and sensors
@@ -76,6 +77,10 @@ public class ShooterAngleSubsystem extends SubsystemBase {
             m_motor.set(ShooterAngleConstants.kHomeSetDown);
             goal = Double.NaN;
         }
+    }
+
+    public double getShooterSetpointFromTable(double distance) {
+        return ShooterAngleConstants.kShooterAngleTable.getOutput(distance);
     }
 
     public void stop() {

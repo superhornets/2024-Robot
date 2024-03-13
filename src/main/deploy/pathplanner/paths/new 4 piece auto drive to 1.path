@@ -39,22 +39,6 @@
         "x": 2.0047478556495593,
         "y": 6.9956624528633675
       },
-      "nextControl": {
-        "x": 3.180610489595743,
-        "y": 6.952158579593458
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 3.5242570485140985,
-        "y": 7.074597995349838
-      },
-      "prevControl": {
-        "x": 3.435452006828196,
-        "y": 7.045004837187444
-      },
       "nextControl": null,
       "isLocked": false,
       "linkedName": null
@@ -70,18 +54,18 @@
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 4.0,
+    "maxVelocity": 4.8,
     "maxAcceleration": 3.0,
     "maxAngularVelocity": 90.0,
     "maxAngularAcceleration": 180.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 22.0,
+    "rotation": 0.0,
     "rotateFast": true
   },
   "reversed": false,
-  "folder": null,
+  "folder": "New 4 piece auto paths",
   "previewStartingState": null,
   "useDefaultConstraints": true
 }

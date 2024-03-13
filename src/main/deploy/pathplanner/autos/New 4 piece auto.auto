@@ -99,19 +99,31 @@
           }
         },
         {
+          "type": "path",
+          "data": {
+            "pathName": "new 4 piece auto drive to home"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "stopDrive"
+          }
+        },
+        {
           "type": "parallel",
           "data": {
             "commands": [
               {
                 "type": "named",
                 "data": {
-                  "name": "shooterToSpeedPodium"
+                  "name": "shooterToSpeedSubwoofer"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "shooterToAnglePodium"
+                  "name": "shooterToAngleSubwoofer"
                 }
               }
             ]
@@ -130,7 +142,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "New 4 peice auto drive 1 to 2"
+                  "pathName": "2 piece lieave and come back drive to 2"
                 }
               },
               {
@@ -186,19 +198,31 @@
           }
         },
         {
+          "type": "path",
+          "data": {
+            "pathName": "2 peice auto drive out and return"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "stopDrive"
+          }
+        },
+        {
           "type": "parallel",
           "data": {
             "commands": [
               {
                 "type": "named",
                 "data": {
-                  "name": "shooterToAngle2"
+                  "name": "shooterToAngleSubwoofer"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "shooterToSpeed2"
+                  "name": "shooterToSpeedSubwoofer"
                 }
               }
             ]

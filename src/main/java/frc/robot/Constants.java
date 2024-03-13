@@ -256,6 +256,12 @@ public final class Constants {
         public static final double kNeo500_4 = 4;
         public static final double kNeo500_5 = 5;
     }
+
+    public static final class LightConstants {
+        public static final int kLength = 60;
+        public static final int kSplitLength = 30;
+        public static final int kPort = 9;
+    }
 }
 
 

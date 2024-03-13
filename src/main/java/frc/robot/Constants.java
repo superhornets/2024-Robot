@@ -175,7 +175,7 @@ public final class Constants {
         public static final double kXOffset = Units.inchesToMeters(-10);
         public static final double kYOffset = Units.inchesToMeters(2);
         public static final double kZOffset = Units.inchesToMeters(15.25);
-        public static final double kRollOffset = 10;
+        public static final double kRollOffset = 0;
         public static final double kPitchOffset = 0;
         public static final double kYawOffset = 180;
     }
@@ -206,7 +206,7 @@ public final class Constants {
         public static final boolean kIsRightMotorInverted = false;
         public static final double kShooterSpeedSubwoofer = 3000; //RPM
         public static final double kShooterSpeedPodium = 5600; //RPM
-        public static final double kShooterSpeedAmp = 2000; //RPM
+        public static final double kShooterSpeedAmp = 1500; //RPM
 
         public static final double kShooterP = .0004;
         public static final double kShooterI = 0.0000002;
@@ -223,9 +223,9 @@ public final class Constants {
         public static final double kP = 0.0085;
         public static final double kI = 0.0000004;
         public static final double kD = 0.0005;
-        public static final double kSubwooferPosition = 9; //degrees
-        public static final double kPodiumPosition = 30; //degrees
-        public static final double kAmpPosition = 90; //degrees
+        public static final double kSubwooferPosition = 21; //degrees
+        public static final double kPodiumPosition = 40; //degrees
+        public static final double kAmpPosition = 120; //degrees
         public static final double kAngle = 0; //degrees
         public static final double kAbsoluteEncoderConversion = 360; //degrees
         public static final double kAbsoluteEncoderPositionPIDMinInput = 0; // degrees
@@ -236,7 +236,7 @@ public final class Constants {
         public static final double kMinOutput = -.25;
         public static final double kMaxOutput = 1;
         public static final boolean kEncoderInverted = true;
-        public static final float kSoftLimit = 120;
+        public static final float kSoftLimit = 130;
         public static final double kHomeSetDown = -0.05;
         public static final double kHomeAboveTen = 10;
 

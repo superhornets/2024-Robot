@@ -1,0 +1,131 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 1.383130458568611,
+      "y": 5.574822688106915
+    },
+    "rotation": 0
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "shooterToSpeedSubwoofer"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "shooterToAngleSubwoofer"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Shoot"
+          }
+        },
+        {
+          "type": "deadline",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "2 piece lieave and come back drive to 2"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Indexer"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "home"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "stopDrive"
+          }
+        },
+        {
+          "type": "deadline",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Indexer"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "2 peice auto drive out and return"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "shooterToSpeedSubwoofer"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "shooterToAngleSubwoofer"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Shoot"
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": false
+}

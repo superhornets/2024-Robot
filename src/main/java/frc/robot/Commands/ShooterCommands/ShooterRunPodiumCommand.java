@@ -19,6 +19,6 @@ public class ShooterRunPodiumCommand extends Command {
     @Override
     public boolean isFinished() {
         //Check if is finished
-        return true;
+        return m_ShooterSubsystem.isAtSpeed();
     }
 }

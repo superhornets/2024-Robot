@@ -10,7 +10,6 @@ import com.revrobotics.CANSparkBase.ControlType;
 import com.revrobotics.CANSparkBase.SoftLimitDirection;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ShooterAngleConstants;
 
@@ -21,16 +20,17 @@ public class ShooterAngleSubsystem extends SubsystemBase {
     private final SparkPIDController m_pidController = m_motor.getPIDController();
     private final AbsoluteEncoder m_encoder = m_motor.getAbsoluteEncoder(Type.kDutyCycle);
     private final SparkLimitSwitch m_switch = m_motor.getReverseLimitSwitch(SparkLimitSwitch.Type.kNormallyOpen);
+    private double goal = Double.NaN;
 
     public ShooterAngleSubsystem() {
         // Initialize anything else that couldn't be initialized yet
+        m_switch.enableLimitSwitch(false);
         m_motor.getForwardLimitSwitch(SparkLimitSwitch.Type.kNormallyOpen);
         m_motor.setInverted(ShooterAngleConstants.kMotorInverted);
         m_encoder.setInverted(ShooterAngleConstants.kEncoderInverted);
         m_encoder.setZeroOffset(120);
         m_motor.setSoftLimit(SoftLimitDirection.kForward, ShooterAngleConstants.kSoftLimit);
         m_motor.enableSoftLimit(SoftLimitDirection.kForward, true);
-
 
         m_pidController.setP(ShooterAngleConstants.kP);
         m_pidController.setI(ShooterAngleConstants.kI);
@@ -49,9 +49,11 @@ public class ShooterAngleSubsystem extends SubsystemBase {
         m_pidController.setSmartMotionMaxAccel(ShooterAngleConstants.kMaxAccel, 0);
         m_pidController.setOutputRange(ShooterAngleConstants.kMinOutput, ShooterAngleConstants.kMaxOutput);
 
-        this.setDefaultCommand(new RunCommand(() -> {
+        m_encoder.setZeroOffset(110);
+
+        /*this.setDefaultCommand(new RunCommand(() -> {
             holdPosition();
-        }, this));
+        }, this));*/
     }
 
     public double getPosition() {
@@ -64,31 +66,49 @@ public class ShooterAngleSubsystem extends SubsystemBase {
 
     public void moveTo(double angle) {
         m_pidController.setReference(angle, ControlType.kPosition);
+        goal = angle;
     }
 
-    public void home() {
+    public boolean home() {
+
         if (m_encoder.getPosition() > 15) {
             moveTo(ShooterAngleConstants.kHomeAboveTen);
         } else {
             m_motor.set(ShooterAngleConstants.kHomeSetDown);
+            goal = Double.NaN;
+
+            return isDown();
         }
 
+        return false;
+    }
+
+    public void stop() {
+        m_motor.set(0);
     }
 
     public void moveUp() {
         m_pidController.setReference((m_encoder.getPosition() + 15), ControlType.kPosition);
+        goal = m_encoder.getPosition() + 15;
     }
 
     public void moveDown() {
         m_pidController.setReference((m_encoder.getPosition() - 15), ControlType.kPosition);
+        goal = m_encoder.getPosition() - 15;
     }
 
     public void holdPosition() {
-        m_pidController.setReference(m_encoder.getPosition(), ControlType.kPosition);
+        m_pidController.setReference(goal, ControlType.kPosition);
     }
 
     public boolean isDown() {
         return m_switch.isPressed();
+    }
+
+    public boolean isAtSetpoint() {
+        double upperBound = goal + 3;
+        double lowerBound = goal - 3;
+        return (m_encoder.getPosition() > lowerBound) && (m_encoder.getPosition() < upperBound);
     }
 
     @Override

@@ -7,6 +7,8 @@ public class ShooterAngleHomeCommand extends Command {
     // Declare subsystem variables
     private final ShooterAngleSubsystem m_angleSubsystem;
 
+    private boolean finish = false;
+
     public ShooterAngleHomeCommand(ShooterAngleSubsystem angleSubsystem) {
         addRequirements(angleSubsystem);
         m_angleSubsystem = angleSubsystem;
@@ -19,7 +21,7 @@ public class ShooterAngleHomeCommand extends Command {
 
     @Override
     public void execute() {
-        m_angleSubsystem.home();
+        finish = m_angleSubsystem.home();
     }
 
     @Override
@@ -30,6 +32,6 @@ public class ShooterAngleHomeCommand extends Command {
     @Override
     public boolean isFinished() {
         // Have we reached our destination?
-        return false;
+        return finish;
     }
 }

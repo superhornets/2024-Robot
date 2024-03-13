@@ -4,29 +4,29 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.ShooterAngleConstants;
 import frc.robot.subsystems.ShooterAngleSubsystem;
 
-public class ShooterSubwooferCommand extends Command {
-
+public class ShooterToAngleCommand extends Command {
+    // Declare subsystem variables
     private final ShooterAngleSubsystem m_angleSubsystem;
+    private final double kAngle;
 
-    public ShooterSubwooferCommand(ShooterAngleSubsystem angleSubsystem) {
+    public ShooterToAngleCommand(ShooterAngleSubsystem angleSubsystem, double angle) {
         addRequirements(angleSubsystem);
         m_angleSubsystem = angleSubsystem;
+        kAngle = angle;
     }
 
     @Override
     public void initialize() {
-        System.out.println("Start shooter angle subwoofer");
 
     }
 
     @Override
     public void execute() {
-        m_angleSubsystem.moveTo(ShooterAngleConstants.kSubwooferPosition);
+        m_angleSubsystem.moveTo(kAngle);
     }
 
     @Override
     public void end(boolean interrupted) {
-        System.out.println("Stop shooter to angle subwoofer");
 
     }
 

@@ -346,9 +346,6 @@ public class DriveSubsystem extends SubsystemBase {
         double x = chassisSpeeds.vxMetersPerSecond / DriveConstants.kMaxSpeedMetersPerSecond;
         double y = chassisSpeeds.vyMetersPerSecond / DriveConstants.kMaxSpeedMetersPerSecond;
         double omega = chassisSpeeds.omegaRadiansPerSecond / (Math.PI * 2);
-        SmartDashboard.putNumber("x", x);
-        SmartDashboard.putNumber("y", y);
-        SmartDashboard.putNumber("omega", omega);
         drive(x, y, omega, false, true);
     }
 

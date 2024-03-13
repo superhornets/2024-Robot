@@ -187,10 +187,12 @@ public class RobotContainer {
 
         public void robotPeriodic() {
             //System.out.println(m_visionAprilTagSubsystem.getEstimatedGlobalPose(m_robotDrive.getPose()));
-            if (m_visionAprilTagSubsystem.getEstimatedGlobalPose(m_robotDrive.getPose()).isPresent()) {
+            if (m_visionAprilTagSubsystem.getEstimatedGlobalPose(m_robotDrive.getPose()) != null) {
                 EstimatedRobotPose robotPose = m_visionAprilTagSubsystem.getEstimatedGlobalPose(m_robotDrive.getPose())
                         .orElse(null);
-                m_robotDrive.odometryAddVisionMeasurement(robotPose);
+                if (robotPose != null) {
+                    m_robotDrive.odometryAddVisionMeasurement(robotPose);
+                }
             }
         }
     public void teleopInit() {

@@ -173,11 +173,11 @@ public final class Constants {
 
     public static final class VisionAprilTagConstants {
         public static final double kXOffset = Units.inchesToMeters(-10);
-        public static final double kYOffset = Units.inchesToMeters(-2);
+        public static final double kYOffset = Units.inchesToMeters(2);
         public static final double kZOffset = Units.inchesToMeters(15.25);
         public static final double kRollOffset = 0;
-        public static final double kPitchOffset = 34;
-        public static final double kYawOffset = 180;
+        public static final double kPitchOffset = Units.degreesToRadians(-34);
+        public static final double kYawOffset = Units.degreesToRadians(180);
     }
     public static final class IntakeConstants {
         public static final int kMotorTopCanId = 9;

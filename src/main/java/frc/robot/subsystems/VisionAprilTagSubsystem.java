@@ -16,6 +16,7 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation3d;
 import edu.wpi.first.math.geometry.Transform3d;
 import edu.wpi.first.math.geometry.Translation3d;
+import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -112,8 +113,9 @@ public class VisionAprilTagSubsystem extends SubsystemBase {
     }
 
     public boolean isTargetingSpeaker() {
-        if (hasTargetsAprilTag()) {
-            if (getSpeakerTarget().getYaw() > 175 || getSpeakerTarget().getYaw() < -175) {
+        if (hasTargetsAprilTag() && getSpeakerTargetVisibleAprilTag()) {
+            if (getSpeakerTarget().getBestCameraToTarget().getZ() > Units.degreesToRadians(175)
+                    || getSpeakerTarget().getBestCameraToTarget().getZ() < Units.degreesToRadians(175)) {
                 return true;
             }
         }
@@ -133,12 +135,15 @@ public class VisionAprilTagSubsystem extends SubsystemBase {
     @Override
     public void periodic() {
         if (hasTargetsAprilTag()) {
-            SmartDashboard.putNumber("distance to targer",
-                    getResultsAprilTag().getBestTarget().getBestCameraToTarget().getZ());
-            SmartDashboard.putBoolean("Targeting Speaker", isTargetingSpeaker());
-            if (isTargetingSpeaker()) {
+            SmartDashboard.putBoolean("Targeting Speaker", getSpeakerTargetVisibleAprilTag());
+            if (getSpeakerTargetVisibleAprilTag()) {
                 SmartDashboard.putNumber("distance to speaker", getDistanceToSpeaker());
+                SmartDashboard.putBoolean("facing toward speaker", isTargetingSpeaker());
+                if (isTargetingSpeaker()) {
+                    System.out.println("targeting");
+                }
             }
+
         }
 
     }

@@ -139,9 +139,6 @@ public class VisionAprilTagSubsystem extends SubsystemBase {
             if (getSpeakerTargetVisibleAprilTag()) {
                 SmartDashboard.putNumber("distance to speaker", getDistanceToSpeaker());
                 SmartDashboard.putBoolean("facing toward speaker", isTargetingSpeaker());
-                if (isTargetingSpeaker()) {
-                    System.out.println("targeting");
-                }
             }
 
         }

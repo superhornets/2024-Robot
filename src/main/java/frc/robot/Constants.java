@@ -175,7 +175,7 @@ public final class Constants {
         public static final double kXOffset = Units.inchesToMeters(-10);
         public static final double kYOffset = Units.inchesToMeters(2);
         public static final double kZOffset = Units.inchesToMeters(15.25);
-        public static final double kRollOffset = 0;
+        public static final double kRollOffset = Units.degreesToRadians(0);
         public static final double kPitchOffset = Units.degreesToRadians(-34);
         public static final double kYawOffset = Units.degreesToRadians(180);
     }
@@ -210,7 +210,7 @@ public final class Constants {
 
         public static final double kShooterP = .0004;
         public static final double kShooterI = 0.0000002;
-        public static final double kShooterD = 0;
+        public static final double kShooterD = 0.0001;
         public static final double kShooterFF = 0;
         public static final double kShooterMin = -1;
         public static final double kShooterMax = 1;
@@ -220,7 +220,7 @@ public final class Constants {
         public static final boolean kMotorInverted = true;
         public static final double kRaiseSpeed = 0.15;
         public static final double kLowerSpeed = -0.05;
-        public static final double kP = 0.0085;
+        public static final double kP = 0.012;
         public static final double kI = 0.0000004;
         public static final double kD = 0.0005;
         public static final double kSubwooferPosition = 21; //degrees
@@ -258,8 +258,8 @@ public final class Constants {
     }
 
     public static final class LightConstants {
-        public static final int kLength = 60;
-        public static final int kSplitLength = 30;
+        public static final int kLength = 40;
+        public static final int kSplitLength = 20;
         public static final int kPort = 9;
     }
 }

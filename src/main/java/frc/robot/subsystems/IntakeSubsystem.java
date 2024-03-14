@@ -29,7 +29,7 @@ public class IntakeSubsystem extends SubsystemBase {
 
     //Run intake
     public void takeIn() {
-        m_motorTop.set(IntakeConstants.kIntakeSpeed);
+        m_motorTop.set(IntakeConstants.kIntakeSpeed - .1);
         m_motorBottom.set(IntakeConstants.kIntakeSpeed);
     }
 

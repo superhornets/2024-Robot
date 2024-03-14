@@ -36,6 +36,7 @@ public class ShooterAngleSubsystem extends SubsystemBase {
         m_pidController.setP(ShooterAngleConstants.kP);
         m_pidController.setI(ShooterAngleConstants.kI);
         m_pidController.setD(ShooterAngleConstants.kD);
+        m_pidController.setIZone(20);
 
         m_pidController.setFeedbackDevice(m_encoder);
         m_encoder.setPositionConversionFactor(ShooterAngleConstants.kAbsoluteEncoderConversion);

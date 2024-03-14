@@ -109,13 +109,28 @@ public class VisionAprilTagSubsystem extends SubsystemBase {
 
     public double getDistanceToSpeaker() {
         PhotonTrackedTarget target = getSpeakerTarget();
-        return target.getBestCameraToTarget().getTranslation().toTranslation2d().getNorm();
+        double distance;
+        try {
+            distance = target.getBestCameraToTarget().getTranslation().toTranslation2d().getNorm();
+        } catch (Exception e) {
+            // TODO: handle exception
+            distance = 0;
+        }
+        return distance;
     }
 
     public boolean isTargetingSpeaker() {
         if (hasTargetsAprilTag() && getSpeakerTargetVisibleAprilTag()) {
-            if (getSpeakerTarget().getBestCameraToTarget().getZ() > Units.degreesToRadians(175)
-                    || getSpeakerTarget().getBestCameraToTarget().getZ() < Units.degreesToRadians(175)) {
+            boolean targeting;
+            try {
+                targeting = getSpeakerTarget().getYaw() > 20
+                        && getSpeakerTarget().getYaw() < 30;
+            } catch (Exception e) {
+                // TODO: handle exception
+                targeting = false;
+            }
+            if (targeting) {
+                System.out.println(getSpeakerTarget().getYaw());
                 return true;
             }
         }
@@ -138,10 +153,10 @@ public class VisionAprilTagSubsystem extends SubsystemBase {
             SmartDashboard.putBoolean("Targeting Speaker", getSpeakerTargetVisibleAprilTag());
             if (getSpeakerTargetVisibleAprilTag()) {
                 SmartDashboard.putNumber("distance to speaker", getDistanceToSpeaker());
-                SmartDashboard.putBoolean("facing toward speaker", isTargetingSpeaker());
             }
 
         }
+        SmartDashboard.putBoolean("facing toward speaker", isTargetingSpeaker());
 
     }
 

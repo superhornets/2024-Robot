@@ -156,7 +156,7 @@ public class RobotContainer {
 
         m_lights.setDefaultCommand(
                 new LightCommand(m_lights, m_shooter::isAtSpeed, m_visionAprilTagSubsystem::isTargetingSpeaker,
-                        m_indexer::getNoteAcquired));
+                        m_indexer::getNoteAcquired, m_angleSubsystem::isAtSetpoint));
         m_driverController.a().whileTrue(new DriveRotateToNoteCommand(m_robotDrive, m_visionAprilTagSubsystem));
 
         m_driverController.x().whileTrue(new DriveSetXCommand(m_robotDrive));

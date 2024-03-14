@@ -110,6 +110,7 @@ public class RobotContainer {
         NamedCommands.registerCommand("Indexer", new IndexerRunToSensorCommand(m_indexer));
         NamedCommands.registerCommand("resetNavXLeft", new DriveResetYawToValue(m_robotDrive, -60));
         NamedCommands.registerCommand("resetNavXRight", new DriveResetYawToValue(m_robotDrive, 60));
+        NamedCommands.registerCommand("ShootWithoutHoming", new IndexerShootCommand(m_indexer, m_shooter));
 
         // Build an auto chooser. This will use Commands.none() as the default option.
         autoChooser = AutoBuilder.buildAutoChooser();

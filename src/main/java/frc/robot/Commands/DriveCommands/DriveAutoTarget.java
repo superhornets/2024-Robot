@@ -21,12 +21,12 @@ public class DriveAutoTarget extends PIDCommand {
     private static DoubleSupplier turningSpeed;
     private final BooleanSupplier slowMode;
     private final BooleanSupplier fastMode;
-    private final BooleanSupplier fieldRelativeOff;
+    private final BooleanSupplier robotRelative;
 
     public DriveAutoTarget(DriveSubsystem drive, VisionAprilTagSubsystem visionAprilTagSubsystem,
             DoubleSupplier leftStickX, DoubleSupplier leftStickY, DoubleSupplier rightStickX,
             BooleanSupplier isCanceled, BooleanSupplier slowMode, BooleanSupplier fastMode,
-            BooleanSupplier fieldRelativeOff) {
+            BooleanSupplier robotRelative) {
         //m_driveSubsystem = driveSubsystem;
         //m_visionNoteSubsystem = visionNoteSubsystem;
         //addRequirements(driveSubsystem);
@@ -41,7 +41,7 @@ public class DriveAutoTarget extends PIDCommand {
         this.rightStickX = rightStickX;
         this.slowMode = slowMode;
         this.fastMode = fastMode;
-        this.fieldRelativeOff = fieldRelativeOff;
+        this.robotRelative = robotRelative;
         m_driveSubsystem = drive;
         m_visionAprilTagSubsystem = visionAprilTagSubsystem;
 
@@ -58,17 +58,17 @@ public class DriveAutoTarget extends PIDCommand {
                             turningSpeed.getAsDouble(), true, true);
                 } else {
                     m_driveSubsystem.teleOpDrive(leftStickY.getAsDouble(), leftStickX.getAsDouble(),
-                            rightStickX.getAsDouble(), !fieldRelativeOff.getAsBoolean(), true, slowMode.getAsBoolean(),
+                            rightStickX.getAsDouble(), !robotRelative.getAsBoolean(), true, slowMode.getAsBoolean(),
                             fastMode.getAsBoolean());
                 }
             } else {
                 m_driveSubsystem.teleOpDrive(leftStickY.getAsDouble(), leftStickX.getAsDouble(),
-                        rightStickX.getAsDouble(), !fieldRelativeOff.getAsBoolean(), true, slowMode.getAsBoolean(),
+                        rightStickX.getAsDouble(), !robotRelative.getAsBoolean(), true, slowMode.getAsBoolean(),
                         fastMode.getAsBoolean());
             }
         } else {
             m_driveSubsystem.teleOpDrive(leftStickY.getAsDouble(), leftStickX.getAsDouble(),
-                    rightStickX.getAsDouble(), !fieldRelativeOff.getAsBoolean(), true, slowMode.getAsBoolean(),
+                    rightStickX.getAsDouble(), !robotRelative.getAsBoolean(), true, slowMode.getAsBoolean(),
                     fastMode.getAsBoolean());
         }
     }

@@ -50,6 +50,8 @@ import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SwerveControllerCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
+
 import java.util.List;
 
 import org.photonvision.EstimatedRobotPose;
@@ -118,6 +120,13 @@ public class RobotContainer {
         // autoChooser = AutoBuilder.buildAutoChooser("My Default Auto");
 
         SmartDashboard.putData("Auto Chooser", autoChooser);
+
+        Trigger robotRelative = m_driverController.leftTrigger();
+        Trigger slowMode = m_driverController.rightTrigger();
+        Trigger fastMode = m_driverController.rightBumper();
+        Trigger startAutoTurn = m_driverController.povDown();
+        Trigger cancelAutoTurn = m_driverController.povUp();
+
         // Configure default commands
         m_robotDrive.setDefaultCommand(
                 // The left stick controls translation of the robot.
@@ -128,12 +137,19 @@ public class RobotContainer {
                                 -MathUtil.applyDeadband(m_driverController.getLeftX(), OIConstants.kDriveDeadband),
                                 -MathUtil.applyDeadband(m_driverController.getRightX(),
                                         OIConstants.kDriveDeadband),
-                                !m_driverController.leftTrigger().getAsBoolean(), true,
-                                m_driverController.rightTrigger().getAsBoolean(),
-                                m_driverController.rightBumper().getAsBoolean()),
+                                !robotRelative.getAsBoolean(), true,
+                                slowMode.getAsBoolean(),
+                                fastMode.getAsBoolean()),
                         m_robotDrive));
 
-        //m_driverController.povDown().onTrue(new DriveAutoTarget(m_robotDrive, m_visionAprilTagSubsystem, ()->-MathUtil.applyDeadband(m_driverController.getLeftX(),OIConstants.kDriveDeadband), ()->-MathUtil.applyDeadband(m_driverController.getLeftY(), OIConstants.kDriveDeadband), ()->-MathUtil.applyDeadband(m_driverController.getRightX(), OIConstants.kDriveDeadband), ()->m_driverController.povUp().getAsBoolean(), ()->m_driverController.rightTrigger().getAsBoolean(), ()->m_driverController.rightBumper().getAsBoolean(), ()->m_driverController.leftTrigger().getAsBoolean()));
+        startAutoTurn.onTrue(new DriveAutoTarget(m_robotDrive, m_visionAprilTagSubsystem,
+                () -> -MathUtil.applyDeadband(m_driverController.getLeftX(), OIConstants.kDriveDeadband),
+                () -> -MathUtil.applyDeadband(m_driverController.getLeftY(), OIConstants.kDriveDeadband),
+                () -> -MathUtil.applyDeadband(m_driverController.getRightX(), OIConstants.kDriveDeadband),
+                () -> cancelAutoTurn.getAsBoolean(),
+                () -> slowMode.getAsBoolean(),
+                () -> fastMode.getAsBoolean(),
+                () -> robotRelative.getAsBoolean()));
 
         m_lights.setDefaultCommand(
                 new LightCommand(m_lights, m_shooter::isAtSpeed, m_visionAprilTagSubsystem::isTargetingSpeaker,

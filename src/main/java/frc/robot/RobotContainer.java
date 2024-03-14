@@ -142,6 +142,7 @@ public class RobotContainer {
                                 fastMode.getAsBoolean()),
                         m_robotDrive));
 
+        /*
         startAutoTurn.onTrue(new DriveAutoTarget(m_robotDrive, m_visionAprilTagSubsystem,
                 () -> -MathUtil.applyDeadband(m_driverController.getLeftX(), OIConstants.kDriveDeadband),
                 () -> -MathUtil.applyDeadband(m_driverController.getLeftY(), OIConstants.kDriveDeadband),
@@ -150,6 +151,7 @@ public class RobotContainer {
                 () -> slowMode.getAsBoolean(),
                 () -> fastMode.getAsBoolean(),
                 () -> robotRelative.getAsBoolean()));
+        */
 
         m_lights.setDefaultCommand(
                 new LightCommand(m_lights, m_shooter::isAtSpeed, m_visionAprilTagSubsystem::isTargetingSpeaker,

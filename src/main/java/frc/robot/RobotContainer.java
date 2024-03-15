@@ -46,6 +46,7 @@ import frc.robot.subsystems.LightSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.ShooterAngleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SwerveControllerCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -113,6 +114,8 @@ public class RobotContainer {
         NamedCommands.registerCommand("resetNavXLeft", new DriveResetYawToValue(m_robotDrive, -60));
         NamedCommands.registerCommand("resetNavXRight", new DriveResetYawToValue(m_robotDrive, 60));
         NamedCommands.registerCommand("ShootWithoutHoming", new IndexerShootCommand(m_indexer, m_shooter));
+        NamedCommands.registerCommand("retractClimbers", new ParallelCommandGroup(
+                new ClimberRetractCommand(m_leftClimber), new ClimberRetractCommand(m_rightClimber)));
 
         // Build an auto chooser. This will use Commands.none() as the default option.
         autoChooser = AutoBuilder.buildAutoChooser();

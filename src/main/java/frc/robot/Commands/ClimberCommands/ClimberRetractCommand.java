@@ -33,6 +33,6 @@ public class ClimberRetractCommand extends Command {
     @Override
     public boolean isFinished() {
         // Have we reached our destination?
-        return false;
+        return m_climber.isDown();
     }
 }

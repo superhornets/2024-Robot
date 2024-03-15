@@ -26,8 +26,20 @@
                 "data": {
                   "name": "shooterToSpeedSubwoofer"
                 }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "retractClimbers"
+                }
               }
             ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "retractClimbers"
           }
         },
         {

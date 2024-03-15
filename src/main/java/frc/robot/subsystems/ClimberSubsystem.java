@@ -37,6 +37,10 @@ public class ClimberSubsystem extends SubsystemBase {
         m_motor.set(speed);
     }
 
+    public boolean isDown() {
+        return m_limitSwitch.isPressed();
+    }
+
     @Override
     public void periodic() {
         // Send sensor values and any other telemetry to the Smart Dashboard

@@ -1,5 +1,7 @@
 package frc.robot.Commands.ShooterAngleCommands;
 
+import java.util.function.BooleanSupplier;
+
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.ShooterAngleSubsystem;
 import frc.robot.subsystems.VisionAprilTagSubsystem;
@@ -8,7 +10,8 @@ public class ShooterVisionAngleCommand extends Command {
     private final ShooterAngleSubsystem m_angleSubsystem;
     private final VisionAprilTagSubsystem m_visionAprilTagSubsystem;
 
-    private double m_angle;
+    private double kdistance;
+    private boolean hadTarget;
 
     public ShooterVisionAngleCommand(VisionAprilTagSubsystem visionAprilTagSubsystem,
             ShooterAngleSubsystem angleSubsystem) {
@@ -19,12 +22,26 @@ public class ShooterVisionAngleCommand extends Command {
 
     @Override
     public void initialize() {
+        if (m_visionAprilTagSubsystem.hasTargetsAprilTag()) {
+            kdistance = m_visionAprilTagSubsystem.getDistanceToSpeaker();
+            hadTarget = true;
+        } else {
+            hadTarget = false;
+            System.out.println("Cannot See Speaker Target. Did Not Start Command");
+        }
 
     }
 
     @Override
     public void execute() {
-        m_angleSubsystem.moveTo(m_angle);
+        if (hadTarget)
+            if (m_visionAprilTagSubsystem.hasTargetsAprilTag()) {
+                kdistance = m_visionAprilTagSubsystem.getDistanceToSpeaker();
+            } else {
+                System.out.println("No Target! Not Updating Shooter Angle!");
+            }
+        m_angleSubsystem.moveTo(m_angleSubsystem.getShooterSetpointFromTable(kdistance));
+
     }
 
     @Override
@@ -34,6 +51,6 @@ public class ShooterVisionAngleCommand extends Command {
 
     @Override
     public boolean isFinished() {
-        return false;
+        return !hadTarget;
     }
 }

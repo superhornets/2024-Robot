@@ -12,6 +12,7 @@ import com.revrobotics.CANSparkBase.SoftLimitDirection;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ShooterAngleConstants;
+import frc.robot.Constants.ShooterConstants;
 
 public class ShooterAngleSubsystem extends SubsystemBase {
     // Initialize motors and sensors
@@ -35,6 +36,7 @@ public class ShooterAngleSubsystem extends SubsystemBase {
         m_pidController.setP(ShooterAngleConstants.kP);
         m_pidController.setI(ShooterAngleConstants.kI);
         m_pidController.setD(ShooterAngleConstants.kD);
+        m_pidController.setIZone(20);
 
         m_pidController.setFeedbackDevice(m_encoder);
         m_encoder.setPositionConversionFactor(ShooterAngleConstants.kAbsoluteEncoderConversion);
@@ -83,6 +85,10 @@ public class ShooterAngleSubsystem extends SubsystemBase {
         return false;
     }
 
+    public double getShooterSetpointFromTable(double distance) {
+        return ShooterAngleConstants.kShooterAngleTable.getOutput(distance);
+    }
+
     public void stop() {
         m_motor.set(0);
     }
@@ -106,8 +112,8 @@ public class ShooterAngleSubsystem extends SubsystemBase {
     }
 
     public boolean isAtSetpoint() {
-        double upperBound = goal + 3;
-        double lowerBound = goal - 3;
+        double upperBound = goal + 1.5;
+        double lowerBound = goal - 1.5;
         return (m_encoder.getPosition() > lowerBound) && (m_encoder.getPosition() < upperBound);
     }
 

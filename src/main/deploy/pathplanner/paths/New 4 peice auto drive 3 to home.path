@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.504523162892481,
-        "y": 5.61429045935015
+        "x": 2.67569996678455,
+        "y": 4.124382094918037
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.434258143617793,
-        "y": 5.60257962280437
+        "x": 2.172485883433306,
+        "y": 4.755866434809793
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.3725738150477713,
-        "y": 5.550936522700434
+        "x": 1.4916668294875064,
+        "y": 5.525487974052871
       },
       "prevControl": {
-        "x": 1.454549670868242,
-        "y": 5.562647359246215
+        "x": 1.7580742853793419,
+        "y": 5.249213575350229
       },
       "nextControl": null,
       "isLocked": false,
@@ -32,10 +32,10 @@
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 4.0,
+    "maxVelocity": 4.8,
     "maxAcceleration": 3.0,
-    "maxAngularVelocity": 180.0,
-    "maxAngularAcceleration": 360.0
+    "maxAngularVelocity": 90.0,
+    "maxAngularAcceleration": 180.0
   },
   "goalEndState": {
     "velocity": 0,
@@ -43,7 +43,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "2 piece leave and come back",
+  "folder": "New 4 piece auto paths",
   "previewStartingState": null,
-  "useDefaultConstraints": false
+  "useDefaultConstraints": true
 }

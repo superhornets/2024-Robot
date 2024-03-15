@@ -1,6 +1,9 @@
 package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkLowLevel.MotorType;
+
+import java.util.function.BooleanSupplier;
+
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.SparkLimitSwitch;
 
@@ -32,12 +35,8 @@ public class IndexerSubsystem extends SubsystemBase {
 
     }
 
-    public boolean isTriggered() {
-        return m_switch.isPressed();
-    }
-
     public void intake() {
-        if (isTriggered()) {
+        if (getNoteAcquired()) {
             m_motorLeft.set(0);
         } else {
             m_motorLeft.set(IndexerConstants.kIntakeSpeed);

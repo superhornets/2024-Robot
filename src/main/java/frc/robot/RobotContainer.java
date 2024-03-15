@@ -5,24 +5,17 @@
 package frc.robot;
 
 import edu.wpi.first.math.MathUtil;
-import edu.wpi.first.math.controller.PIDController;
-import edu.wpi.first.math.controller.ProfiledPIDController;
-import edu.wpi.first.math.geometry.Pose2d;
-import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.math.geometry.Translation2d;
-import edu.wpi.first.math.trajectory.Trajectory;
-import edu.wpi.first.math.trajectory.TrajectoryConfig;
-import edu.wpi.first.math.trajectory.TrajectoryGenerator;
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.PS4Controller.Button;
 import frc.robot.Commands.IntakeCommands.IntakeAtSpeedCommand;
 import frc.robot.Commands.IntakeCommands.IntakeCommand;
 import frc.robot.Commands.IntakeCommands.OuttakeCommand;
+import frc.robot.Commands.LightCommands.LightCommand;
 import frc.robot.Commands.ClimberCommands.ClimberExtendCommand;
 import frc.robot.Commands.ClimberCommands.ClimberRetractCommand;
 import frc.robot.Commands.CommandGroups.ShootAndHomeCommand;
+import frc.robot.Commands.DriveCommands.DriveAutoTarget;
 import frc.robot.Commands.DriveCommands.DriveResetYaw;
 import frc.robot.Commands.DriveCommands.DriveResetYawToValue;
 import frc.robot.Commands.DriveCommands.DriveSetXCommand;
@@ -39,26 +32,7 @@ import frc.robot.Commands.ShooterAngleCommands.ShooterLowerCommand;
 import frc.robot.Commands.ShooterAngleCommands.ShooterPodiumCommand;
 import frc.robot.Commands.ShooterAngleCommands.ShooterRaiseCommand;
 import frc.robot.Commands.ShooterAngleCommands.ShooterSubwooferCommand;
-import frc.robot.Commands.IntakeCommands.IntakeAtSpeedCommand;
-import frc.robot.Commands.IntakeCommands.IntakeCommand;
-import frc.robot.Commands.IntakeCommands.OuttakeCommand;
-import frc.robot.Commands.ClimberCommands.ClimberExtendCommand;
-import frc.robot.Commands.ClimberCommands.ClimberRetractCommand;
-import frc.robot.Commands.DriveCommands.DriveResetYaw;
-import frc.robot.Commands.DriveCommands.DriveSetXCommand;
-import frc.robot.Commands.IndexerCommands.IndexerRunToSensorCommand;
-import frc.robot.Commands.IndexerCommands.IndexerShootCommand;
-import frc.robot.Commands.ShooterCommands.ShooterRunAmpCommand;
-import frc.robot.Commands.ShooterCommands.ShooterRunPodiumCommand;
-import frc.robot.Commands.ShooterCommands.ShooterRunSubwooferCommand;
-import frc.robot.Commands.ShooterCommands.ShooterStopCommand;
-import frc.robot.Commands.ShooterAngleCommands.ShooterAngleAmpCommand;
-import frc.robot.Commands.ShooterAngleCommands.ShooterLowerCommand;
-import frc.robot.Commands.ShooterAngleCommands.ShooterPodiumCommand;
-import frc.robot.Commands.ShooterAngleCommands.ShooterRaiseCommand;
-import frc.robot.Commands.ShooterAngleCommands.ShooterSubwooferCommand;
 import frc.robot.Commands.ShooterAngleCommands.ShooterToAngleCommand;
-import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.ClimberConstants;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
@@ -68,6 +42,7 @@ import frc.robot.subsystems.VisionAprilTagSubsystem;
 import frc.robot.subsystems.VisionNoteSubsystem;
 import frc.robot.subsystems.IndexerSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.LightSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.ShooterAngleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -75,6 +50,8 @@ import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SwerveControllerCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
+
 import java.util.List;
 
 import org.photonvision.EstimatedRobotPose;
@@ -106,6 +83,7 @@ public class RobotContainer {
     private final IntakeSubsystem m_intake = new IntakeSubsystem();
     private final ShooterSubsystem m_shooter = new ShooterSubsystem();
     private final ShooterAngleSubsystem m_angleSubsystem = new ShooterAngleSubsystem();
+    private final LightSubsystem m_lights = new LightSubsystem();
 
 
     // The driver's controller
@@ -134,6 +112,7 @@ public class RobotContainer {
         NamedCommands.registerCommand("Indexer", new IndexerRunToSensorCommand(m_indexer));
         NamedCommands.registerCommand("resetNavXLeft", new DriveResetYawToValue(m_robotDrive, -60));
         NamedCommands.registerCommand("resetNavXRight", new DriveResetYawToValue(m_robotDrive, 60));
+        NamedCommands.registerCommand("ShootWithoutHoming", new IndexerShootCommand(m_indexer, m_shooter));
 
         // Build an auto chooser. This will use Commands.none() as the default option.
         autoChooser = AutoBuilder.buildAutoChooser();
@@ -142,6 +121,13 @@ public class RobotContainer {
         // autoChooser = AutoBuilder.buildAutoChooser("My Default Auto");
 
         SmartDashboard.putData("Auto Chooser", autoChooser);
+
+        Trigger robotRelative = m_driverController.leftTrigger();
+        Trigger slowMode = m_driverController.rightTrigger();
+        Trigger fastMode = m_driverController.rightBumper();
+        Trigger startAutoTurn = m_driverController.povDown();
+        Trigger cancelAutoTurn = m_driverController.povUp();
+
         // Configure default commands
         m_robotDrive.setDefaultCommand(
                 // The left stick controls translation of the robot.
@@ -152,11 +138,25 @@ public class RobotContainer {
                                 -MathUtil.applyDeadband(m_driverController.getLeftX(), OIConstants.kDriveDeadband),
                                 -MathUtil.applyDeadband(m_driverController.getRightX(),
                                         OIConstants.kDriveDeadband),
-                                !m_driverController.leftTrigger().getAsBoolean(), true,
-                                m_driverController.rightTrigger().getAsBoolean(),
-                                m_driverController.rightBumper().getAsBoolean()),
+                                !robotRelative.getAsBoolean(), true,
+                                slowMode.getAsBoolean(),
+                                fastMode.getAsBoolean()),
                         m_robotDrive));
 
+        /*
+        startAutoTurn.onTrue(new DriveAutoTarget(m_robotDrive, m_visionAprilTagSubsystem,
+                () -> -MathUtil.applyDeadband(m_driverController.getLeftX(), OIConstants.kDriveDeadband),
+                () -> -MathUtil.applyDeadband(m_driverController.getLeftY(), OIConstants.kDriveDeadband),
+                () -> -MathUtil.applyDeadband(m_driverController.getRightX(), OIConstants.kDriveDeadband),
+                () -> cancelAutoTurn.getAsBoolean(),
+                () -> slowMode.getAsBoolean(),
+                () -> fastMode.getAsBoolean(),
+                () -> robotRelative.getAsBoolean()));
+        */
+
+        m_lights.setDefaultCommand(
+                new LightCommand(m_lights, m_shooter::isAtSpeed, m_visionAprilTagSubsystem::isTargetingSpeaker,
+                        m_indexer::getNoteAcquired, m_angleSubsystem::isAtSetpoint));
         m_driverController.a().whileTrue(new DriveRotateToNoteCommand(m_robotDrive, m_visionAprilTagSubsystem));
 
         m_driverController.x().whileTrue(new DriveSetXCommand(m_robotDrive));
@@ -181,6 +181,7 @@ public class RobotContainer {
         m_operatorController.a().onTrue(new ShooterSubwooferCommand(m_angleSubsystem));
         m_operatorController.x().onTrue(new ShooterPodiumCommand(m_angleSubsystem));
         m_operatorController.y().onTrue(new ShooterAngleHomeCommand(m_angleSubsystem));
+        m_operatorController.leftBumper().onTrue(new ShooterToAngleCommand(m_angleSubsystem, 40));
 
         m_operatorController.povUp().whileTrue(new ShooterRaiseCommand(m_angleSubsystem));
         m_operatorController.povDown().whileTrue(new ShooterLowerCommand(m_angleSubsystem));
@@ -200,6 +201,7 @@ public class RobotContainer {
         m_operatorController.b().onTrue(new ShooterRunAmpCommand(m_shooter));
         m_operatorController.y().onTrue(new ShooterStopCommand(m_shooter));
         m_operatorController.start().onTrue(new ShooterStopCommand(m_shooter));
+        m_operatorController.leftBumper().onTrue(new ShooterRunPodiumCommand(m_shooter));
 
 
     }
@@ -210,11 +212,13 @@ public class RobotContainer {
 
         public void robotPeriodic() {
             //System.out.println(m_visionAprilTagSubsystem.getEstimatedGlobalPose(m_robotDrive.getPose()));
-            /*if (m_visionAprilTagSubsystem.getEstimatedGlobalPose(m_robotDrive.getPose()).isPresent()) {
+            if (m_visionAprilTagSubsystem.getEstimatedGlobalPose(m_robotDrive.getPose()) != null) {
                 EstimatedRobotPose robotPose = m_visionAprilTagSubsystem.getEstimatedGlobalPose(m_robotDrive.getPose())
                         .orElse(null);
-                m_robotDrive.odometryAddVisionMeasurement(robotPose);
-            }*/
+                if (robotPose != null) {
+                    m_robotDrive.odometryAddVisionMeasurement(robotPose);
+                }
+            }
         }
     public void teleopInit() {
         m_shooter.stopShooter();

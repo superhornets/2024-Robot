@@ -159,8 +159,8 @@ public final class Constants {
         public static final int kMotorLeftCanId = 16;
         public static final boolean kMotorInverted = false;
         public static final double kPower = 0.5;
-        public static final double kRetractPower = -0.1;
-        public static final double kExtendPower = 0.1;
+        public static final double kRetractPower = -0.8;
+        public static final double kExtendPower = 0.8;
         public static final float kMaxHeight = 190; // maximum height of climber arms in inches
         public static final double kEncoderDistancePerRevolution = 1; // moteder ravlosen
     }
@@ -175,9 +175,9 @@ public final class Constants {
         public static final double kXOffset = Units.inchesToMeters(-10);
         public static final double kYOffset = Units.inchesToMeters(2);
         public static final double kZOffset = Units.inchesToMeters(15.25);
-        public static final double kRollOffset = 0;
-        public static final double kPitchOffset = 0;
-        public static final double kYawOffset = 180;
+        public static final double kRollOffset = Units.degreesToRadians(0);
+        public static final double kPitchOffset = Units.degreesToRadians(-34);
+        public static final double kYawOffset = Units.degreesToRadians(180);
     }
     public static final class IntakeConstants {
         public static final int kMotorTopCanId = 9;
@@ -208,10 +208,10 @@ public final class Constants {
         public static final double kShooterSpeedPodium = 5600; //RPM
         public static final double kShooterSpeedAmp = 1500; //RPM
 
-        public static final double kShooterP = .0004;
-        public static final double kShooterI = 0.0000002;
-        public static final double kShooterD = 0;
-        public static final double kShooterFF = 0;
+        public static final double kShooterP = .0001;
+        public static final double kShooterI = 0.000000;
+        public static final double kShooterD = 0.000;
+        public static final double kShooterFF = .01;
         public static final double kShooterMin = -1;
         public static final double kShooterMax = 1;
     }
@@ -220,7 +220,7 @@ public final class Constants {
         public static final boolean kMotorInverted = true;
         public static final double kRaiseSpeed = 0.15;
         public static final double kLowerSpeed = -0.05;
-        public static final double kP = 0.0085;
+        public static final double kP = 0.012;
         public static final double kI = 0.0000004;
         public static final double kD = 0.0005;
         public static final double kSubwooferPosition = 21; //degrees
@@ -255,6 +255,12 @@ public final class Constants {
         public static final double kNeo500_3 = 3;
         public static final double kNeo500_4 = 4;
         public static final double kNeo500_5 = 5;
+    }
+
+    public static final class LightConstants {
+        public static final int kLength = 40;
+        public static final int kSplitLength = 20;
+        public static final int kPort = 9;
     }
 }
 

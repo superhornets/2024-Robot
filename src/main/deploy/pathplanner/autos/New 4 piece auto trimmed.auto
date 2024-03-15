@@ -33,7 +33,7 @@
         {
           "type": "named",
           "data": {
-            "name": "Shoot"
+            "name": "ShootWithoutHoming"
           }
         },
         {
@@ -47,21 +47,41 @@
                 }
               },
               {
-                "type": "named",
+                "type": "sequential",
                 "data": {
-                  "name": "Intake"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "home"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Indexer"
+                  "commands": [
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "home"
+                      }
+                    },
+                    {
+                      "type": "parallel",
+                      "data": {
+                        "commands": [
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "Intake"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "Indexer"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "home"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
                 }
               }
             ]
@@ -132,13 +152,7 @@
         {
           "type": "named",
           "data": {
-            "name": "stopDrive"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Shoot"
+            "name": "ShootWithoutHoming"
           }
         },
         {
@@ -152,21 +166,41 @@
                 }
               },
               {
-                "type": "named",
+                "type": "sequential",
                 "data": {
-                  "name": "Intake"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "home"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Indexer"
+                  "commands": [
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "home"
+                      }
+                    },
+                    {
+                      "type": "parallel",
+                      "data": {
+                        "commands": [
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "Intake"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "Indexer"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "home"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
                 }
               }
             ]
@@ -201,12 +235,6 @@
                 }
               }
             ]
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "stopDrive"
           }
         },
         {
@@ -243,7 +271,7 @@
         {
           "type": "named",
           "data": {
-            "name": "Shoot"
+            "name": "ShootWithoutHoming"
           }
         },
         {
@@ -257,21 +285,41 @@
                 }
               },
               {
-                "type": "named",
+                "type": "sequential",
                 "data": {
-                  "name": "Intake"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Indexer"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "home"
+                  "commands": [
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "home"
+                      }
+                    },
+                    {
+                      "type": "parallel",
+                      "data": {
+                        "commands": [
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "Indexer"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "Intake"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "home"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
                 }
               }
             ]

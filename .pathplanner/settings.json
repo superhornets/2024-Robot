@@ -7,10 +7,12 @@
     "2 piece leave and come back",
     "4 piece auto paths",
     "New 4 piece auto paths",
+    "New Folder",
+    "New New Folder",
     "side auto left"
   ],
   "autoFolders": [],
-  "defaultMaxVel": 4.0,
+  "defaultMaxVel": 4.8,
   "defaultMaxAccel": 3.0,
   "defaultMaxAngVel": 90.0,
   "defaultMaxAngAccel": 180.0,

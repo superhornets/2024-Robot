@@ -16,6 +16,8 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation3d;
 import edu.wpi.first.math.geometry.Transform3d;
 import edu.wpi.first.math.geometry.Translation3d;
+import edu.wpi.first.math.util.Units;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.VisionAprilTagConstants;
@@ -51,6 +53,43 @@ public class VisionAprilTagSubsystem extends SubsystemBase {
         return getResultsAprilTag().hasTargets();
     }
 
+    public boolean getTargetVisibleAprilTag(int id) {
+        for (PhotonTrackedTarget p : getResultsAprilTag().targets) {
+            if (p.getFiducialId() == id)
+                return true;
+        }
+        return false;
+    }
+
+    public double getSpeakerYaw() {
+        if (hasTargetsAprilTag()) {
+            return getSpeakerTarget().getYaw();
+        }
+        return 180;
+    }
+
+    public int getAprilTagSpeakerIDAprilTagIDSpeaker() {
+
+        if (DriverStation.Alliance.Red.equals(DriverStation.getAlliance().get()))
+            return 4;
+        return 7;
+    }
+
+    public boolean getSpeakerTargetVisibleAprilTag() {
+        return (getTargetVisibleAprilTag(getAprilTagSpeakerIDAprilTagIDSpeaker()));
+    }
+
+    public PhotonTrackedTarget getSpeakerTarget() {
+        return getFiducial(getAprilTagSpeakerIDAprilTagIDSpeaker());
+    }
+
+    public PhotonTrackedTarget getFiducial(int id) {
+        for (PhotonTrackedTarget p : getResultsAprilTag().targets) {
+            if (p.getFiducialId() == id)
+                return p;
+        }
+        return null;
+    }
     //Note
     public PhotonPipelineResult getResultsNote() {
         return m_NoteCamera.getLatestResult();
@@ -68,6 +107,36 @@ public class VisionAprilTagSubsystem extends SubsystemBase {
         }
     }
 
+    public double getDistanceToSpeaker() {
+        PhotonTrackedTarget target = getSpeakerTarget();
+        double distance;
+        try {
+            distance = target.getBestCameraToTarget().getTranslation().toTranslation2d().getNorm();
+        } catch (Exception e) {
+            // TODO: handle exception
+            distance = 0;
+        }
+        return distance;
+    }
+
+    public boolean isTargetingSpeaker() {
+        if (hasTargetsAprilTag() && getSpeakerTargetVisibleAprilTag()) {
+            boolean targeting;
+            try {
+                targeting = getSpeakerTarget().getYaw() > 20
+                        && getSpeakerTarget().getYaw() < 30;
+            } catch (Exception e) {
+                // TODO: handle exception
+                targeting = false;
+            }
+            if (targeting) {
+                //System.out.println(getSpeakerTarget().getYaw());
+                return true;
+            }
+        }
+        return false;
+    }
+
     public PhotonTrackedTarget getTargetFromList(int ID, List<PhotonTrackedTarget> targetList) {
         for (int i = 0; i <= targetList.size(); i++) {
             if (ID == targetList.get(i).getFiducialId()) {
@@ -81,9 +150,14 @@ public class VisionAprilTagSubsystem extends SubsystemBase {
     @Override
     public void periodic() {
         if (hasTargetsAprilTag()) {
-            SmartDashboard.putNumber("distance to targer",
-                    getResultsAprilTag().getBestTarget().getBestCameraToTarget().getZ());
+            SmartDashboard.putBoolean("Targeting Speaker", getSpeakerTargetVisibleAprilTag());
+            if (getSpeakerTargetVisibleAprilTag()) {
+                SmartDashboard.putNumber("distance to speaker", getDistanceToSpeaker());
+            }
+
         }
+        SmartDashboard.putBoolean("facing toward speaker", isTargetingSpeaker());
+
     }
 
 }

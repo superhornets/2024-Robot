@@ -159,8 +159,8 @@ public final class Constants {
         public static final int kMotorLeftCanId = 16;
         public static final boolean kMotorInverted = false;
         public static final double kPower = 0.5;
-        public static final double kRetractPower = -0.1;
-        public static final double kExtendPower = 0.1;
+        public static final double kRetractPower = -0.8;
+        public static final double kExtendPower = 0.8;
         public static final float kMaxHeight = 190; // maximum height of climber arms in inches
         public static final double kEncoderDistancePerRevolution = 1; // moteder ravlosen
     }
@@ -208,10 +208,10 @@ public final class Constants {
         public static final double kShooterSpeedPodium = 5600; //RPM
         public static final double kShooterSpeedAmp = 1500; //RPM
 
-        public static final double kShooterP = .0004;
-        public static final double kShooterI = 0.0000002;
-        public static final double kShooterD = 0.0001;
-        public static final double kShooterFF = 0;
+        public static final double kShooterP = .0001;
+        public static final double kShooterI = 0.000000;
+        public static final double kShooterD = 0.000;
+        public static final double kShooterFF = .01;
         public static final double kShooterMin = -1;
         public static final double kShooterMax = 1;
     }

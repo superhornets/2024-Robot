@@ -52,6 +52,17 @@ public class LightSubsystem extends SubsystemBase {
         }
     }
 
+    public void setNoteAndTargetingLightsOn() {
+        for (var i = LightConstants.kSplitLength; i < LightConstants.kLength; i++) {
+            if (i < LightConstants.kSplitLength / 2 + LightConstants.kSplitLength) {
+                m_ledBuffer.setRGB(i, 0, 255, 0);
+            } else {
+                m_ledBuffer.setRGB(i, 255, 0, 100);
+            }
+
+        }
+    }
+
     public void setTargetLightsOn() {
         for (var i = LightConstants.kSplitLength; i < LightConstants.kLength; i++) {
             m_ledBuffer.setRGB(i, 0, 255, 0);
@@ -61,10 +72,11 @@ public class LightSubsystem extends SubsystemBase {
 
     public void setNoteLightsOn() {
         for (var i = LightConstants.kSplitLength; i < LightConstants.kLength; i++) {
-            m_ledBuffer.setRGB(i, 255, 255, 0);
+            m_ledBuffer.setRGB(i, 255, 0, 100);
         }
 
     }
+
 
     public void setTargetLightsOff() {
         for (var i = LightConstants.kSplitLength; i < LightConstants.kLength; i++) {

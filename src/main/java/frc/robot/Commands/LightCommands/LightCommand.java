@@ -49,11 +49,13 @@ public class LightCommand extends Command {
                 m_lights.setSpeedLightsOff();
             }
 
-            if (isAtTarget.getAsBoolean()) {
-                m_lights.setTargetLightsOn();
+            if (isAtTarget.getAsBoolean() && hasNote.getAsBoolean()) {
+                m_lights.setNoteAndTargetingLightsOn();
 
             } else if (hasNote.getAsBoolean()) {
                 m_lights.setNoteLightsOn();
+            } else if (isAtTarget.getAsBoolean()) {
+                m_lights.setTargetLightsOn();
             } else {
                 m_lights.setTargetLightsOff();
             }

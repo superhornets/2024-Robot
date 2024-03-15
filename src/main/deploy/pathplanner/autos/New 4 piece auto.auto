@@ -132,6 +132,12 @@
         {
           "type": "named",
           "data": {
+            "name": "stopDrive"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
             "name": "Shoot"
           }
         },
@@ -226,6 +232,12 @@
                 }
               }
             ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "stopDrive"
           }
         },
         {

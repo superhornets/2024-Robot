@@ -66,9 +66,9 @@ public class ShooterSubsystem extends SubsystemBase {
 
     public boolean isAtSpeed() {
         double lowerBound = goal - 300;
-        double upperBound = goal + 300;
+        //double upperBound = goal + 300;
 
-        return ((m_leftEncoder.getVelocity() > lowerBound) && (m_leftEncoder.getVelocity() < upperBound))
+        return ((m_leftEncoder.getVelocity() > lowerBound) /*&& (m_leftEncoder.getVelocity() < upperBound)*/)
         /*&& ((m_rightEncoder.getVelocity() > lowerBound) && (m_rightEncoder.getVelocity() < upperBound))*/;
     }
     @Override

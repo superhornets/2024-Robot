@@ -130,7 +130,7 @@ public class VisionAprilTagSubsystem extends SubsystemBase {
                 targeting = false;
             }
             if (targeting) {
-                System.out.println(getSpeakerTarget().getYaw());
+                //System.out.println(getSpeakerTarget().getYaw());
                 return true;
             }
         }

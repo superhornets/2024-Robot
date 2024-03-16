@@ -174,7 +174,7 @@ public final class Constants {
     public static final class VisionAprilTagConstants {
         public static final double kXOffset = Units.inchesToMeters(-10);
         public static final double kYOffset = Units.inchesToMeters(2);
-        public static final double kZOffset = Units.inchesToMeters(15.25);
+        public static final double kZOffset = Units.inchesToMeters(15.75);
         public static final double kRollOffset = Units.degreesToRadians(0);
         public static final double kPitchOffset = Units.degreesToRadians(-34);
         public static final double kYawOffset = Units.degreesToRadians(180);
@@ -223,7 +223,7 @@ public final class Constants {
         public static final double kP = 0.012;
         public static final double kI = 0.0000004;
         public static final double kD = 0.0005;
-        public static final double kSubwooferPosition = 21; //degrees
+        public static final double kSubwooferPosition = 24; //degrees
         public static final double kPodiumPosition = 40; //degrees
         public static final double kAmpPosition = 120; //degrees
         public static final double kAngle = 0; //degrees

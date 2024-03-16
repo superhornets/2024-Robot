@@ -84,6 +84,11 @@ public class LightSubsystem extends SubsystemBase {
         }
 
     }
+    public void setDownLightsOn(){
+        for (var i = 0; i < LightConstants.kSplitLength; i++) {
+            m_ledBuffer.setRGB(i, 255, 0, 255);
+        }
+    }
 
     public void updateLights() {
         m_led.setData(m_ledBuffer);

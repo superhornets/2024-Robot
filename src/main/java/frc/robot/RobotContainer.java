@@ -5,6 +5,7 @@
 package frc.robot;
 
 import edu.wpi.first.math.MathUtil;
+import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.PS4Controller.Button;
@@ -16,6 +17,7 @@ import frc.robot.Commands.ClimberCommands.ClimberExtendCommand;
 import frc.robot.Commands.ClimberCommands.ClimberRetractCommand;
 import frc.robot.Commands.CommandGroups.ShootAndHomeCommand;
 import frc.robot.Commands.DriveCommands.DriveAutoTarget;
+import frc.robot.Commands.DriveCommands.DrivePathPlanner;
 import frc.robot.Commands.DriveCommands.DriveResetYaw;
 import frc.robot.Commands.DriveCommands.DriveResetYawToValue;
 import frc.robot.Commands.DriveCommands.DriveSetXCommand;
@@ -62,6 +64,8 @@ import frc.robot.Commands.DriveCommands.GarbageCommand;
 
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
+import com.pathplanner.lib.path.PathConstraints;
+import com.pathplanner.lib.path.PathPlannerPath;
 
 /*
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -145,6 +149,7 @@ public class RobotContainer {
                                 slowMode.getAsBoolean(),
                                 fastMode.getAsBoolean()),
                         m_robotDrive));
+        //m_driverController.povDown().onTrue(m_robotDrive.driveToAmp());
 
         /*
         startAutoTurn.onTrue(new DriveAutoTarget(m_robotDrive, m_visionAprilTagSubsystem,
@@ -159,7 +164,7 @@ public class RobotContainer {
 
         m_lights.setDefaultCommand(
                 new LightCommand(m_lights, m_shooter::isAtSpeed, m_visionAprilTagSubsystem::isTargetingSpeaker,
-                        m_indexer::getNoteAcquired, m_angleSubsystem::isAtSetpoint));
+                        m_indexer::getNoteAcquired, m_angleSubsystem::isAtSetpoint, m_angleSubsystem::isDown));
         m_driverController.a().whileTrue(new DriveRotateToNoteCommand(m_robotDrive, m_visionAprilTagSubsystem));
 
         m_driverController.x().whileTrue(new DriveSetXCommand(m_robotDrive));

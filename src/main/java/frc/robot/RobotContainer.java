@@ -58,7 +58,6 @@ import java.util.List;
 import org.photonvision.EstimatedRobotPose;
 
 import frc.robot.Commands.DriveCommands.DriveRotateToNoteCommand;
-import frc.robot.Commands.DriveCommands.GarbageCommand;
 
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;

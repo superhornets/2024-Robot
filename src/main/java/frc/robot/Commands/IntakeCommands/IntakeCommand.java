@@ -45,6 +45,6 @@ public class IntakeCommand extends Command {
     @Override
     public boolean isFinished() {
         //Check if is finished
-        return (m_indexerSubsystem.getNoteAcquired() || !m_ShooterAngleSubsystem.isDown());
+        return (m_indexerSubsystem.getNoteAcquired() /*|| !m_ShooterAngleSubsystem.isDown()*/);
     }
 }

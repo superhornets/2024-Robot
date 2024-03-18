@@ -73,7 +73,7 @@ public class ShooterAngleSubsystem extends SubsystemBase {
 
     public boolean home() {
 
-        if (m_encoder.getPosition() > 15) {
+        if (m_encoder.getPosition() > 20) {
             moveTo(ShooterAngleConstants.kHomeAboveTen);
         } else {
             m_motor.set(ShooterAngleConstants.kHomeSetDown);

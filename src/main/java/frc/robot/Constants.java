@@ -237,8 +237,8 @@ public final class Constants {
         public static final double kMaxOutput = 1;
         public static final boolean kEncoderInverted = true;
         public static final float kSoftLimit = 130;
-        public static final double kHomeSetDown = -0.05;
-        public static final double kHomeAboveTen = 10;
+        public static final double kHomeSetDown = -0.07;
+        public static final double kHomeAboveTen = 15;
 
         private static final Point2D[] kShooterAnglePoints = new Point2D.Double[] {
                 //(meters, degrees)

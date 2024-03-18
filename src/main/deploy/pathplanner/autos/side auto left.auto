@@ -12,25 +12,19 @@
     "data": {
       "commands": [
         {
-          "type": "named",
-          "data": {
-            "name": "resetNavXLeft"
-          }
-        },
-        {
           "type": "parallel",
           "data": {
             "commands": [
               {
                 "type": "named",
                 "data": {
-                  "name": "shooterToSpeedPodium"
+                  "name": "shooterToSpeedSubwoofer"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "shooterToAnglePodium"
+                  "name": "shooterToAngleSubwoofer"
                 }
               }
             ]
@@ -117,13 +111,13 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "shooterToSpeedPodium"
+                  "name": "shooterToSpeedSubwoofer"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "shooterToAnglePodium"
+                  "name": "shooterToAngleSubwoofer"
                 }
               }
             ]

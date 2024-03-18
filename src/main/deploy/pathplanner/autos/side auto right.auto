@@ -12,12 +12,6 @@
     "data": {
       "commands": [
         {
-          "type": "named",
-          "data": {
-            "name": "resetNavXRight"
-          }
-        },
-        {
           "type": "parallel",
           "data": {
             "commands": [
@@ -111,19 +105,19 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "shooterToSpeedPodium"
+                  "name": "shooterToSpeedSubwoofer"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "shooterToAnglePodium"
+                  "name": "shooterToAngleSubwoofer"
                 }
               },
               {
                 "type": "path",
                 "data": {
-                  "pathName": "side auto right rotation"
+                  "pathName": "side auto right return"
                 }
               }
             ]

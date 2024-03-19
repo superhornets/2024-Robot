@@ -18,13 +18,13 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "shooterToAngleSubwoofer"
+                  "name": "shooterToSpeedSubwoofer"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "shooterToSpeedSubwoofer"
+                  "name": "shooterToAngleSubwoofer"
                 }
               },
               {
@@ -150,7 +150,7 @@
         {
           "type": "named",
           "data": {
-            "name": "ShootFromLine"
+            "name": "Shoot"
           }
         },
         {
@@ -255,7 +255,7 @@
         {
           "type": "named",
           "data": {
-            "name": "ShootFromLine"
+            "name": "Shoot"
           }
         },
         {

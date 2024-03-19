@@ -105,12 +105,6 @@
           }
         },
         {
-          "type": "path",
-          "data": {
-            "pathName": "New New New New Path"
-          }
-        },
-        {
           "type": "parallel",
           "data": {
             "commands": [
@@ -125,8 +119,20 @@
                 "data": {
                   "name": "shooterToAngleSubwoofer"
                 }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "New New New New Path"
+                }
               }
             ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "stopDrive"
           }
         },
         {

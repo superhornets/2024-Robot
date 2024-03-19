@@ -121,6 +121,7 @@ public class RobotContainer {
         NamedCommands.registerCommand("ShootWithoutHoming", new IndexerShootCommand(m_indexer, m_shooter));
         NamedCommands.registerCommand("retractClimbers", new ParallelCommandGroup(
                 new ClimberRetractCommand(m_leftClimber), new ClimberRetractCommand(m_rightClimber)));
+        NamedCommands.registerCommand("ShooterToAngleLine", new ShooterLineAngleCommand(m_angleSubsystem));
 
         // Build an auto chooser. This will use Commands.none() as the default option.
         autoChooser = AutoBuilder.buildAutoChooser();

@@ -2,15 +2,21 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.6628436333795761,
-      "y": 4.380922607999063
+      "x": 0.8807186801249481,
+      "y": 6.698598504187022
     },
-    "rotation": -59.74356283647073
+    "rotation": 60.0
   },
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "retractClimbers"
+          }
+        },
         {
           "type": "parallel",
           "data": {
@@ -43,13 +49,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "side auto left"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Indexer"
+                  "pathName": "side auto right"
                 }
               },
               {
@@ -62,6 +62,12 @@
                 "type": "named",
                 "data": {
                   "name": "home"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Indexer"
                 }
               }
             ]
@@ -99,12 +105,6 @@
           }
         },
         {
-          "type": "path",
-          "data": {
-            "pathName": "New New New New Path"
-          }
-        },
-        {
           "type": "parallel",
           "data": {
             "commands": [
@@ -119,6 +119,12 @@
                 "data": {
                   "name": "shooterToAngleSubwoofer"
                 }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "side auto right return"
+                }
               }
             ]
           }
@@ -126,7 +132,31 @@
         {
           "type": "named",
           "data": {
+            "name": "stopDrive"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
             "name": "Shoot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Rotate To Zero"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "stopDrive"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "ResetNavX"
           }
         }
       ]

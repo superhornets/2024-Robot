@@ -224,6 +224,7 @@ public final class Constants {
         public static final double kI = 0.0000004;
         public static final double kD = 0.0005;
         public static final double kSubwooferPosition = 24; //degrees
+        public static final double kLinePosition = 36;//degrees
         public static final double kPodiumPosition = 40; //degrees
         public static final double kAmpPosition = 120; //degrees
         public static final double kAngle = 0; //degrees

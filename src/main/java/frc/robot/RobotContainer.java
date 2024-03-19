@@ -30,6 +30,7 @@ import frc.robot.Commands.ShooterCommands.ShooterRunSubwooferCommand;
 import frc.robot.Commands.ShooterCommands.ShooterStopCommand;
 import frc.robot.Commands.ShooterAngleCommands.ShooterAngleAmpCommand;
 import frc.robot.Commands.ShooterAngleCommands.ShooterAngleHomeCommand;
+import frc.robot.Commands.ShooterAngleCommands.ShooterLineAngleCommand;
 import frc.robot.Commands.ShooterAngleCommands.ShooterLowerCommand;
 import frc.robot.Commands.ShooterAngleCommands.ShooterPodiumCommand;
 import frc.robot.Commands.ShooterAngleCommands.ShooterRaiseCommand;
@@ -165,7 +166,7 @@ public class RobotContainer {
         m_lights.setDefaultCommand(
                 new LightCommand(m_lights, m_shooter::isAtSpeed, m_visionAprilTagSubsystem::isTargetingSpeaker,
                         m_indexer::getNoteAcquired, m_angleSubsystem::isAtSetpoint, m_angleSubsystem::isDown));
-        m_driverController.a().whileTrue(new DriveRotateToNoteCommand(m_robotDrive, m_visionAprilTagSubsystem));
+        //m_driverController.a().whileTrue(new DriveRotateToNoteCommand(m_robotDrive, m_visionAprilTagSubsystem));
 
         m_driverController.x().whileTrue(new DriveSetXCommand(m_robotDrive));
 
@@ -187,7 +188,7 @@ public class RobotContainer {
         //Shooter angle
         m_operatorController.b().onTrue(new ShooterAngleAmpCommand(m_angleSubsystem));
         m_operatorController.a().onTrue(new ShooterSubwooferCommand(m_angleSubsystem));
-        m_operatorController.x().onTrue(new ShooterPodiumCommand(m_angleSubsystem));
+        m_operatorController.x().onTrue(new ShooterLineAngleCommand(m_angleSubsystem));
         m_operatorController.y().onTrue(new ShooterAngleHomeCommand(m_angleSubsystem));
         m_operatorController.leftBumper().onTrue(new ShooterToAngleCommand(m_angleSubsystem, 40));
 

@@ -2,16 +2,22 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.7417791758660457,
-      "y": 6.670053340106681
+      "x": 0.6628436333795761,
+      "y": 4.380922607999063
     },
-    "rotation": 60.0
+    "rotation": -59.74356283647073
   },
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
         {
+          "type": "named",
+          "data": {
+            "name": "retractClimbers"
+          }
+        },
+        {
           "type": "parallel",
           "data": {
             "commands": [
@@ -43,7 +49,13 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "side auto right"
+                  "pathName": "side auto left"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Indexer"
                 }
               },
               {
@@ -56,12 +68,6 @@
                 "type": "named",
                 "data": {
                   "name": "home"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Indexer"
                 }
               }
             ]
@@ -99,6 +105,12 @@
           }
         },
         {
+          "type": "path",
+          "data": {
+            "pathName": "New New New New Path"
+          }
+        },
+        {
           "type": "parallel",
           "data": {
             "commands": [
@@ -113,14 +125,20 @@
                 "data": {
                   "name": "shooterToAngleSubwoofer"
                 }
-              },
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "side auto right return"
-                }
               }
             ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Shoot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Side auto left Rotate to Zero"
           }
         },
         {
@@ -132,7 +150,7 @@
         {
           "type": "named",
           "data": {
-            "name": "Shoot"
+            "name": "ResetNavX"
           }
         }
       ]

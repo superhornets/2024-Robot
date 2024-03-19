@@ -1,7 +1,4 @@
 package frc.robot.Commands.ShooterAngleCommands;
-
-import java.util.function.BooleanSupplier;
-
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.ShooterAngleSubsystem;
 import frc.robot.subsystems.VisionAprilTagSubsystem;

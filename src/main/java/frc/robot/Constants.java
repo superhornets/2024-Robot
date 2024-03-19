@@ -5,16 +5,11 @@
 package frc.robot;
 
 import java.awt.geom.Point2D;
-
-import org.opencv.core.Mat;
-
 import com.revrobotics.CANSparkBase.IdleMode;
-
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.math.util.Units;
-import edu.wpi.first.units.Unit;
 import frc.utils.LinearInterpolationTable;
 
 /**

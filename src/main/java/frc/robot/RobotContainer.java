@@ -8,12 +8,10 @@ import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.PS4Controller.Button;
 import frc.robot.Commands.IntakeCommands.IntakeAtSpeedCommand;
 import frc.robot.Commands.IntakeCommands.IntakeCommand;
 import frc.robot.Commands.IntakeCommands.OuttakeCommand;
 import frc.robot.Commands.LightCommands.LightCommand;
-import frc.robot.Commands.ClimberCommands.ClimberExtendCommand;
 import frc.robot.Commands.ClimberCommands.ClimberRetractCommand;
 import frc.robot.Commands.CommandGroups.ShootAndHomeCommand;
 import frc.robot.Commands.DriveCommands.DriveAutoTarget;
@@ -53,7 +51,6 @@ import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SwerveControllerCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 import java.util.List;
@@ -61,7 +58,6 @@ import java.util.List;
 import org.photonvision.EstimatedRobotPose;
 
 import frc.robot.Commands.DriveCommands.DriveRotateToNoteCommand;
-import frc.robot.Commands.DriveCommands.GarbageCommand;
 
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;

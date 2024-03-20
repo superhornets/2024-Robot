@@ -57,7 +57,7 @@ public class LightSubsystem extends SubsystemBase {
             if (i < LightConstants.kSplitLength / 2 + LightConstants.kSplitLength) {
                 m_ledBuffer.setRGB(i, 0, 255, 0);
             } else {
-                m_ledBuffer.setRGB(i, 255, 166, 0);
+                m_ledBuffer.setRGB(i, 255, 100, 0);
             }
 
         }
@@ -72,7 +72,7 @@ public class LightSubsystem extends SubsystemBase {
 
     public void setNoteLightsOn() {
         for (var i = LightConstants.kSplitLength; i < LightConstants.kLength; i++) {
-            m_ledBuffer.setRGB(i, 255, 166, 0);
+            m_ledBuffer.setRGB(i, 255, 100, 0);
         }
 
     }

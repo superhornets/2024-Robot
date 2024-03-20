@@ -2,15 +2,27 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.383130458568611,
-      "y": 5.574822688106915
+      "x": 0.6628436333795761,
+      "y": 4.380922607999063
     },
-    "rotation": 0
+    "rotation": -59.74356283647073
   },
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "retractClimbers"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 1.5
+          }
+        },
         {
           "type": "parallel",
           "data": {
@@ -25,12 +37,6 @@
                 "type": "named",
                 "data": {
                   "name": "shooterToAngleSubwoofer"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "retractClimbers"
                 }
               }
             ]
@@ -49,19 +55,19 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "2 piece lieave and come back drive to 2"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Intake"
+                  "pathName": "side auto left"
                 }
               },
               {
                 "type": "named",
                 "data": {
                   "name": "Indexer"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake"
                 }
               },
               {
@@ -94,6 +100,12 @@
                 "data": {
                   "name": "Indexer"
                 }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "home"
+                }
               }
             ]
           }
@@ -102,12 +114,6 @@
           "type": "parallel",
           "data": {
             "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "2 peice auto drive out and return"
-                }
-              },
               {
                 "type": "named",
                 "data": {
@@ -119,6 +125,12 @@
                 "data": {
                   "name": "shooterToAngleSubwoofer"
                 }
+              },
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "New New New New Path"
+                }
               }
             ]
           }
@@ -126,7 +138,31 @@
         {
           "type": "named",
           "data": {
+            "name": "stopDrive"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
             "name": "Shoot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Side auto left Rotate to Zero"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "stopDrive"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "ResetNavX"
           }
         }
       ]

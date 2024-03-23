@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Commands.IntakeCommands.IntakeAtSpeedCommand;
 import frc.robot.Commands.IntakeCommands.IntakeCommand;
+import frc.robot.Commands.IntakeCommands.IntakeSlowCommand;
 import frc.robot.Commands.IntakeCommands.OuttakeCommand;
 import frc.robot.Commands.LightCommands.LightCommand;
 import frc.robot.Commands.ClimberCommands.ClimberRetractCommand;
@@ -118,6 +119,7 @@ public class RobotContainer {
         NamedCommands.registerCommand("retractClimbers", new ParallelCommandGroup(
                 new ClimberRetractCommand(m_leftClimber), new ClimberRetractCommand(m_rightClimber)));
         NamedCommands.registerCommand("shooterToAngleLine", new ShooterLineAngleCommand(m_angleSubsystem));
+        NamedCommands.registerCommand("IntakeSlow", new IntakeSlowCommand(m_intake, m_indexer, m_angleSubsystem));
 
         // Build an auto chooser. This will use Commands.none() as the default option.
         autoChooser = AutoBuilder.buildAutoChooser();

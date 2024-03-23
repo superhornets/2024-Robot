@@ -166,7 +166,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Intake"
+                  "name": "IntakeSlow"
                 }
               },
               {
@@ -197,7 +197,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Intake"
+                  "name": "IntakeSlow"
                 }
               },
               {

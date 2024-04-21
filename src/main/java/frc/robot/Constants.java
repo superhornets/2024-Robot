@@ -178,7 +178,11 @@ public final class Constants {
         public static final int kMotorTopCanId = 9;
         public static final int kMotorBottomCanId = 10;
         public static final boolean kMotorInverted = true;
-        public static final double kIntakeSpeed = 0.5;
+        private static final double kTopRollerReductionFactor = 0.8;
+        public static final double kBottomRollerSpeed = 0.5;
+        public static final double kTopRollerSpeed = kBottomRollerSpeed * kTopRollerReductionFactor;
+        public static final double kAutoBottomRollerSpeed = kBottomRollerSpeed * 0.9;
+        public static final double kAutoTopRollerSpeed = kBottomRollerSpeed * 0.8; // If retuning, try using kAutoCottomRollerSpeed * kIntakeSpeedReductionFactor
         public static final double kIntakeAtSpeed = 0.5;
         public static final double kOuttakeSpeed = -0.5;
         public static final double kGearRatio = 1;

@@ -29,13 +29,13 @@ public class IntakeSubsystem extends SubsystemBase {
 
     //Run intake
     public void takeIn() {
-        m_motorTop.set(IntakeConstants.kIntakeSpeed - .1);
-        m_motorBottom.set(IntakeConstants.kIntakeSpeed);
+        m_motorTop.set(IntakeConstants.kTopRollerSpeed);
+        m_motorBottom.set(IntakeConstants.kBottomRollerSpeed);
     }
 
     public void takeInSlow() {
-        m_motorTop.set(IntakeConstants.kIntakeSpeed - .1);
-        m_motorBottom.set(IntakeConstants.kIntakeSpeed - .05);
+        m_motorTop.set(IntakeConstants.kAutoTopRollerSpeed);
+        m_motorBottom.set(IntakeConstants.kAutoBottomRollerSpeed);
     }
 
     //Run intake

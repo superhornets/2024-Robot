@@ -17,6 +17,8 @@ public class IndexerSubsystem extends SubsystemBase {
 
     private final SparkLimitSwitch m_switch = m_motorLeft.getForwardLimitSwitch(SparkLimitSwitch.Type.kNormallyClosed);
 
+    private boolean m_lastSwitchValue = false;
+
     public IndexerSubsystem() {
         // Initialize anything else that couldn't be initialized yet
 
@@ -71,5 +73,10 @@ public class IndexerSubsystem extends SubsystemBase {
         // If there were actually 2 of the same subsystems, take care to differentiate each instance by name.
         // Otherwise, they will fight over the same Smart Dashboard key/name.
         SmartDashboard.putBoolean("Have Note", getNoteAcquired());
+        boolean switchValue = m_switch.isPressed();
+        if (switchValue && !m_lastSwitchValue) {
+
+        }
+        m_lastSwitchValue = switchValue;
     }
 }

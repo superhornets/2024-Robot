@@ -6,6 +6,7 @@ package frc.robot;
 
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.util.Units;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Commands.IntakeCommands.IntakeAtSpeedCommand;
@@ -82,7 +83,7 @@ public class RobotContainer {
     //private final IntakeSubsystem m_intake = new IntakeSubsystem();
     private final ClimberSubsystem m_rightClimber = new ClimberSubsystem(ClimberConstants.kMotorRightCanId, true);
     private final ClimberSubsystem m_leftClimber = new ClimberSubsystem(ClimberConstants.kMotorLeftCanId, false);
-    private final IndexerSubsystem m_indexer = new IndexerSubsystem();
+    private final IndexerSubsystem m_indexer = new IndexerSubsystem(m_driverControllerHID::setRumble);
     private final IntakeSubsystem m_intake = new IntakeSubsystem();
     private final ShooterSubsystem m_shooter = new ShooterSubsystem();
     private final ShooterAngleSubsystem m_angleSubsystem = new ShooterAngleSubsystem();
@@ -91,6 +92,7 @@ public class RobotContainer {
 
     // The driver's controller
     CommandXboxController m_driverController = new CommandXboxController(OIConstants.kDriverControllerPort);
+    XboxController m_driverControllerHID = m_driverController.getHID();
 
     //The operater's controller
     CommandXboxController m_operatorController = new CommandXboxController(OIConstants.kOperatorControllerPort);

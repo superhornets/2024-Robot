@@ -6,6 +6,8 @@ package frc.robot;
 
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.util.Units;
+import edu.wpi.first.wpilibj.DataLogManager;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Commands.IntakeCommands.IntakeAtSpeedCommand;
@@ -126,6 +128,10 @@ public class RobotContainer {
 
         // Another option that allows you to specify the default auto by its name
         // autoChooser = AutoBuilder.buildAutoChooser("My Default Auto");
+
+        // logs data
+        DataLogManager.start();
+        DriverStation.startDataLog(DataLogManager.getLog());
 
         SmartDashboard.putData("Auto Chooser", autoChooser);
 

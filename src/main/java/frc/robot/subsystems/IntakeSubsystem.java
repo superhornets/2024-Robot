@@ -42,7 +42,7 @@ public class IntakeSubsystem extends SubsystemBase {
     public void takeInAtSpeed(double speed) {
         double motorSpeed = speed * IntakeConstants.kIntakeAtSpeed;
         m_motorTop.set(motorSpeed);
-        m_motorBottom.set(motorSpeed);
+        m_motorBottom.set(motorSpeed); // TODO: Andrew Maxwell was here
     }
 
     //Run outtake

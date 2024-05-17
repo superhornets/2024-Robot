@@ -68,10 +68,14 @@ public class VisionAprilTagSubsystem extends SubsystemBase {
     }
 
     public int getAprilTagSpeakerIDAprilTagIDSpeaker() {
+        try {
+            if (DriverStation.Alliance.Red.equals(DriverStation.getAlliance().get()))
+                return 4;
+            return 7;
+        } catch (Exception e) {
+            return 7;
+        }
 
-        if (DriverStation.Alliance.Red.equals(DriverStation.getAlliance().get()))
-            return 4;
-        return 7;
     }
 
     public boolean getSpeakerTargetVisibleAprilTag() {

@@ -71,5 +71,7 @@ public class IndexerSubsystem extends SubsystemBase {
         // If there were actually 2 of the same subsystems, take care to differentiate each instance by name.
         // Otherwise, they will fight over the same Smart Dashboard key/name.
         SmartDashboard.putBoolean("Have Note", getNoteAcquired());
+        SmartDashboard.putNumber("Indexer Voltage", m_motorLeft.getAppliedOutput() * m_motorLeft.getBusVoltage());
+        SmartDashboard.putNumber("Indexer output current", m_motorLeft.getOutputCurrent());
     }
 }

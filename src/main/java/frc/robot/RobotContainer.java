@@ -24,6 +24,7 @@ import frc.robot.Commands.DriveCommands.DriveSetXCommand;
 import frc.robot.Commands.DriveCommands.DriveStopCommand;
 import frc.robot.Commands.IndexerCommands.IndexerRunToSensorCommand;
 import frc.robot.Commands.IndexerCommands.IndexerShootCommand;
+import frc.robot.Commands.IndexerCommands.RumbleCommand;
 import frc.robot.Commands.ShooterCommands.ShooterRunAmpCommand;
 import frc.robot.Commands.ShooterCommands.ShooterRunPodiumCommand;
 import frc.robot.Commands.ShooterCommands.ShooterRunSubwooferCommand;
@@ -83,7 +84,7 @@ public class RobotContainer {
     //private final IntakeSubsystem m_intake = new IntakeSubsystem();
     private final ClimberSubsystem m_rightClimber = new ClimberSubsystem(ClimberConstants.kMotorRightCanId, true);
     private final ClimberSubsystem m_leftClimber = new ClimberSubsystem(ClimberConstants.kMotorLeftCanId, false);
-    private final IndexerSubsystem m_indexer = new IndexerSubsystem(m_driverControllerHID::setRumble);
+    private final IndexerSubsystem m_indexer = new IndexerSubsystem();
     private final IntakeSubsystem m_intake = new IntakeSubsystem();
     private final ShooterSubsystem m_shooter = new ShooterSubsystem();
     private final ShooterAngleSubsystem m_angleSubsystem = new ShooterAngleSubsystem();
@@ -92,7 +93,7 @@ public class RobotContainer {
 
     // The driver's controller
     CommandXboxController m_driverController = new CommandXboxController(OIConstants.kDriverControllerPort);
-    XboxController m_driverControllerHID = m_driverController.getHID();
+    XboxController m_rumbleDriverController = new XboxController(OIConstants.kRumbleDriverControllerPort);
 
     //The operater's controller
     CommandXboxController m_operatorController = new CommandXboxController(OIConstants.kOperatorControllerPort);
@@ -136,6 +137,8 @@ public class RobotContainer {
         Trigger fastMode = m_driverController.rightBumper();
         Trigger startAutoTurn = m_driverController.povDown();
         Trigger cancelAutoTurn = m_driverController.povUp();
+
+        Trigger gotNote = new Trigger(m_indexer::getNoteAcquired);
 
         // Configure default commands
         m_robotDrive.setDefaultCommand(
@@ -185,6 +188,7 @@ public class RobotContainer {
         //indexer
         m_operatorController.rightBumper().onTrue(new ShootAndHomeCommand(m_indexer, m_angleSubsystem, m_shooter));
         m_driverController.leftBumper().whileTrue(new IndexerRunToSensorCommand(m_indexer));
+        gotNote.onTrue(new RumbleCommand(m_rumbleDriverController));
         //m_driverController.leftTrigger(.1).whileTrue(new IndexerRunToSensorCommand(m_indexer));
         //Shooter angle
         m_operatorController.b().onTrue(new ShooterAngleAmpCommand(m_angleSubsystem));

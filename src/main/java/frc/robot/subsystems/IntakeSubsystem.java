@@ -54,6 +54,11 @@ public class IntakeSubsystem extends SubsystemBase {
     @Override
     public void periodic() {
         SmartDashboard.putNumber("IntakeRPM", m_encoder.getVelocity());
+        SmartDashboard.putNumber("Intake Top Voltage", m_motorTop.getAppliedOutput() * m_motorTop.getBusVoltage());
+        SmartDashboard.putNumber("Intake Top output current", m_motorTop.getOutputCurrent());
+        SmartDashboard.putNumber("Intake Bottom Voltage",
+                m_motorBottom.getAppliedOutput() * m_motorBottom.getBusVoltage());
+        SmartDashboard.putNumber("Intake Bottom output current", m_motorBottom.getOutputCurrent());
     }
 
 }

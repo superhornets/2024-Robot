@@ -7,6 +7,8 @@ package frc.robot;
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.DataLogManager;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Commands.IntakeCommands.IntakeAtSpeedCommand;
@@ -90,7 +92,6 @@ public class RobotContainer {
     private final ShooterAngleSubsystem m_angleSubsystem = new ShooterAngleSubsystem();
     private final LightSubsystem m_lights = new LightSubsystem();
 
-
     // The driver's controller
     CommandXboxController m_driverController = new CommandXboxController(OIConstants.kDriverControllerPort);
     XboxController m_rumbleDriverController = new XboxController(OIConstants.kRumbleDriverControllerPort);
@@ -129,6 +130,10 @@ public class RobotContainer {
 
         // Another option that allows you to specify the default auto by its name
         // autoChooser = AutoBuilder.buildAutoChooser("My Default Auto");
+
+        // logs data
+        DataLogManager.start();
+        DriverStation.startDataLog(DataLogManager.getLog());
 
         SmartDashboard.putData("Auto Chooser", autoChooser);
 
@@ -217,23 +222,23 @@ public class RobotContainer {
         m_operatorController.start().onTrue(new ShooterStopCommand(m_shooter));
         m_operatorController.leftBumper().onTrue(new ShooterRunPodiumCommand(m_shooter));
 
-
     }
 
     public Command getAutonomousCommand() {
         return autoChooser.getSelected();
     }
 
-        public void robotPeriodic() {
-            //System.out.println(m_visionAprilTagSubsystem.getEstimatedGlobalPose(m_robotDrive.getPose()));
-            if (m_visionAprilTagSubsystem.getEstimatedGlobalPose(m_robotDrive.getPose()) != null) {
-                EstimatedRobotPose robotPose = m_visionAprilTagSubsystem.getEstimatedGlobalPose(m_robotDrive.getPose())
-                        .orElse(null);
-                if (robotPose != null) {
-                    m_robotDrive.odometryAddVisionMeasurement(robotPose);
-                }
+    public void robotPeriodic() {
+        //System.out.println(m_visionAprilTagSubsystem.getEstimatedGlobalPose(m_robotDrive.getPose()));
+        if (m_visionAprilTagSubsystem.getEstimatedGlobalPose(m_robotDrive.getPose()) != null) {
+            EstimatedRobotPose robotPose = m_visionAprilTagSubsystem.getEstimatedGlobalPose(m_robotDrive.getPose())
+                    .orElse(null);
+            if (robotPose != null) {
+                m_robotDrive.odometryAddVisionMeasurement(robotPose);
             }
         }
+    }
+
     public void teleopInit() {
         m_shooter.stopShooter();
     }

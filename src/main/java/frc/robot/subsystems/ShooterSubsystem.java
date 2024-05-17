@@ -75,6 +75,11 @@ public class ShooterSubsystem extends SubsystemBase {
     public void periodic() {
         SmartDashboard.putNumber("velocity", m_leftEncoder.getVelocity());
         SmartDashboard.putBoolean("is at speed", isAtSpeed());
+        SmartDashboard.putNumber("Shooter left Voltage", m_leftMotor.getAppliedOutput() * m_leftMotor.getBusVoltage());
+        SmartDashboard.putNumber("Shooter left output current", m_leftMotor.getOutputCurrent());
+        SmartDashboard.putNumber("Shooter right Voltage",
+                m_rightMotor.getAppliedOutput() * m_rightMotor.getBusVoltage());
+        SmartDashboard.putNumber("Shooter right output current", m_rightMotor.getOutputCurrent());
 
     }
 

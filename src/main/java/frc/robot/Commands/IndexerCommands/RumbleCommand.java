@@ -19,18 +19,20 @@ public class RumbleCommand extends Command {
 
     @Override
     public void initialize() {
+        System.out.println("Initialize rumble");
         m_startTime = Timer.getFPGATimestamp();
         m_rumble.setRumble(RumbleType.kBothRumble, 1.0);
     }
 
     @Override
     public void end(boolean interrupted) {
+        System.out.println("Rumble end");
         m_rumble.setRumble(RumbleType.kBothRumble, 0);
     }
 
     @Override
     public boolean isFinished() {
-
+        System.out.println("Finish rumble");
         return Timer.getFPGATimestamp() - m_startTime >= OIConstants.kRumbleTime;
     }
 

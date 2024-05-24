@@ -19,7 +19,7 @@ public class IndexerSubsystem extends SubsystemBase {
     private final SparkLimitSwitch m_switchUp = m_motorLeft
             .getForwardLimitSwitch(SparkLimitSwitch.Type.kNormallyClosed);
     private final SparkLimitSwitch m_switchDown = m_motorRight
-            .getForwardLimitSwitch(SparkLimitSwitch.Type.kNormallyClosed);
+            .getReverseLimitSwitch(SparkLimitSwitch.Type.kNormallyClosed);
 
     public IndexerSubsystem() {
         // Initialize anything else that couldn't be initialized yet

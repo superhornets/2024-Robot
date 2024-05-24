@@ -129,6 +129,7 @@ public final class Constants {
         public static final int kRumbleDriverControllerPort = 2;
         public static final double kDriveDeadband = 0.05;
         public static final double kClimberDeadband = 0.15;
+        public static final double kRumbleTime = 1;
     }
 
     public static final class AutoConstants {

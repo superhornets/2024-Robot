@@ -143,7 +143,8 @@ public class RobotContainer {
         Trigger startAutoTurn = m_driverController.povDown();
         Trigger cancelAutoTurn = m_driverController.povUp();
 
-        Trigger gotNote = new Trigger(m_indexer::getNoteRumble);
+        Trigger gotNoteDown = new Trigger(m_indexer::getNoteRumble);
+        Trigger gotNoteUp = new Trigger(m_indexer::getNoteAcquired);
 
         // Configure default commands
         m_robotDrive.setDefaultCommand(
@@ -193,7 +194,8 @@ public class RobotContainer {
         //indexer
         m_operatorController.rightBumper().onTrue(new ShootAndHomeCommand(m_indexer, m_angleSubsystem, m_shooter));
         m_driverController.leftBumper().whileTrue(new IndexerRunToSensorCommand(m_indexer));
-        gotNote.onTrue(new RumbleCommand(m_rumbleDriverController));
+        gotNoteDown.onTrue(new RumbleCommand(m_rumbleDriverController));
+        gotNoteUp.onTrue(new RumbleCommand(m_rumbleDriverController));
         //m_driverController.leftTrigger(.1).whileTrue(new IndexerRunToSensorCommand(m_indexer));
         //Shooter angle
         m_operatorController.b().onTrue(new ShooterAngleAmpCommand(m_angleSubsystem));

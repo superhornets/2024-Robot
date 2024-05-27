@@ -67,11 +67,18 @@ public class VisionAprilTagSubsystem extends SubsystemBase {
         return 180;
     }
 
+    /**
+     * If the alliance information is not available, defaults to the ID of the blue alliance speaker.
+     */
     public int getAprilTagSpeakerIDAprilTagIDSpeaker() {
+        try {
+            if (DriverStation.Alliance.Red.equals(DriverStation.getAlliance().get()))
+                return 4;
+            return 7;
+        } catch (Exception e) {
+            return 7;
+        }
 
-        if (DriverStation.Alliance.Red.equals(DriverStation.getAlliance().get()))
-            return 4;
-        return 7;
     }
 
     public boolean getSpeakerTargetVisibleAprilTag() {

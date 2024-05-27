@@ -58,5 +58,8 @@ public class ClimberSubsystem extends SubsystemBase {
             label = "Right climbed height (Inches)";
         }
         SmartDashboard.putNumber(label, m_encoder.getPosition());
+
+        SmartDashboard.putNumber("Climber Voltage", m_motor.getAppliedOutput() * m_motor.getBusVoltage());
+        SmartDashboard.putNumber("Climber output current", m_motor.getOutputCurrent());
     }
 }

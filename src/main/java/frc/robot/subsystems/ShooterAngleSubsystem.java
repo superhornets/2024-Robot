@@ -111,8 +111,8 @@ public class ShooterAngleSubsystem extends SubsystemBase {
     }
 
     public boolean isAtSetpoint() {
-        double upperBound = goal + 1.5;
-        double lowerBound = goal - 1.5;
+        double upperBound = goal + 2;
+        double lowerBound = goal - 2;
         return (m_encoder.getPosition() > lowerBound) && (m_encoder.getPosition() < upperBound);
     }
 
@@ -122,5 +122,7 @@ public class ShooterAngleSubsystem extends SubsystemBase {
         SmartDashboard.putNumber("Shooter angle velocity (deg/sec)", getVelocity());
         SmartDashboard.putNumber("Shooter angle I accumulated", m_pidController.getIAccum());
         SmartDashboard.putNumber("shooter angle output", m_motor.getAppliedOutput());
+        SmartDashboard.putNumber("Shooter Angle Voltage", m_motor.getAppliedOutput() * m_motor.getBusVoltage());
+        SmartDashboard.putNumber("Shooter Angle output current", m_motor.getOutputCurrent());
     }
 }

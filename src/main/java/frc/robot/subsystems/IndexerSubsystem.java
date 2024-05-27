@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkLowLevel.MotorType;
+
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.SparkLimitSwitch;
 
@@ -15,11 +16,14 @@ public class IndexerSubsystem extends SubsystemBase {
     private final CANSparkMax m_motorRight = new CANSparkMax(IndexerConstants.kMotorRightCanId, MotorType.kBrushless);
     private final CANSparkMax m_motorLeft = new CANSparkMax(IndexerConstants.kMotorLeftCanId, MotorType.kBrushless);
 
-    private final SparkLimitSwitch m_switch = m_motorLeft.getForwardLimitSwitch(SparkLimitSwitch.Type.kNormallyClosed);
+    private final SparkLimitSwitch m_switchUp = m_motorLeft
+            .getForwardLimitSwitch(SparkLimitSwitch.Type.kNormallyClosed);
+    private final SparkLimitSwitch m_switchDown = m_motorRight
+            .getReverseLimitSwitch(SparkLimitSwitch.Type.kNormallyClosed);
 
     public IndexerSubsystem() {
         // Initialize anything else that couldn't be initialized yet
-
+        m_switchDown.enableLimitSwitch(false);
         // Configure anything
         m_motorRight.follow(m_motorLeft, true);
 
@@ -49,7 +53,11 @@ public class IndexerSubsystem extends SubsystemBase {
     }
 
     public boolean getNoteAcquired() {
-        return m_switch.isPressed();
+        return m_switchUp.isPressed();
+    }
+
+    public boolean getNoteRumble() {
+        return m_switchDown.isPressed();
     }
 
     public void stop() {
@@ -57,11 +65,11 @@ public class IndexerSubsystem extends SubsystemBase {
     }
 
     public void setSwitchEnabled() {
-        m_switch.enableLimitSwitch(true);
+        m_switchUp.enableLimitSwitch(true);
     }
 
     public void setSwitchDisabled() {
-        m_switch.enableLimitSwitch(false);
+        m_switchUp.enableLimitSwitch(false);
     }
 
     @Override
@@ -71,5 +79,7 @@ public class IndexerSubsystem extends SubsystemBase {
         // If there were actually 2 of the same subsystems, take care to differentiate each instance by name.
         // Otherwise, they will fight over the same Smart Dashboard key/name.
         SmartDashboard.putBoolean("Have Note", getNoteAcquired());
+        SmartDashboard.putNumber("Indexer Voltage", m_motorLeft.getAppliedOutput() * m_motorLeft.getBusVoltage());
+        SmartDashboard.putNumber("Indexer output current", m_motorLeft.getOutputCurrent());
     }
 }

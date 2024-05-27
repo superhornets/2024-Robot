@@ -17,6 +17,7 @@ import edu.wpi.first.math.geometry.Rotation3d;
 import edu.wpi.first.math.geometry.Transform3d;
 import edu.wpi.first.math.geometry.Translation3d;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.VisionAprilTagConstants;
@@ -71,14 +72,9 @@ public class VisionAprilTagSubsystem extends SubsystemBase {
      * If the alliance information is not available, defaults to the ID of the blue alliance speaker.
      */
     public int getAprilTagSpeakerIDAprilTagIDSpeaker() {
-        try {
-            if (DriverStation.Alliance.Red.equals(DriverStation.getAlliance().get()))
-                return 4;
-            return 7;
-        } catch (Exception e) {
-            return 7;
-        }
-
+        if (Alliance.Red.equals(DriverStation.getAlliance().orElse(Alliance.Blue)))
+            return 4;
+        return 7;
     }
 
     public boolean getSpeakerTargetVisibleAprilTag() {

@@ -32,6 +32,7 @@ public class RumbleCommand extends Command {
 
     @Override
     public boolean isFinished() {
+        System.out.println("Finish rumble");
         return Timer.getFPGATimestamp() - m_startTime >= OIConstants.kRumbleTime;
     }
 

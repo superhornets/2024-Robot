@@ -111,8 +111,8 @@ public class ShooterAngleSubsystem extends SubsystemBase {
     }
 
     public boolean isAtSetpoint() {
-        double upperBound = goal + 4;
-        double lowerBound = goal - 4;
+        double upperBound = goal + 3;
+        double lowerBound = goal - 3;
         return (m_encoder.getPosition() > lowerBound) && (m_encoder.getPosition() < upperBound);
     }
 

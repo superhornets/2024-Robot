@@ -68,9 +68,8 @@ public final class Constants {
         public static final double kTurnControllerTolerance = 3;//degrees
         public static final double kTurnControllerToleranceAcc = .5; //degrees/s
         public static final double kSlowModeMultiplier = 0.25;
-        public static final double kFastModeMultiplier = 1;
-        public static final double kNormalModeMultiplier = 0.75; //0.25 is the slow mode
-    }
+        public static final double kFastModeMultiplier = 0.25; //1 is normal
+        public static final double kNormalModeMultiplier = 0.25; //0.75 is normal
 
     public static final class ModuleConstants {
         // The MAXSwerve module can be configured with one of three pinion gears: 12T, 13T, or 14T.
@@ -260,6 +259,7 @@ public final class Constants {
         public static final int kSplitLength = 20;
         public static final int kPort = 9;
     }
+}
 }
 
 
